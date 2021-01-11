@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 /* Variant for main container */
 const containerVariants = {
@@ -24,7 +24,12 @@ const Questions = ({addQA, mainQA}) => {
     /* Submits new state data to parent */
     const handleSubmit = (e) => { e.preventDefault(); addQA(QA.question, QA.answer); }
     /* Stores all the questions current active in list */
-    const QAlist = mainQA.map(QA => { return ( <div> {QA.question} </div>)})
+    const questionList = mainQA.map(QA => { return ( 
+    <div className="myQuestions">
+        {QA.question} 
+        <button><FontAwesomeIcon icon={faTrash} size="sm" className="remove-btn"/></button>
+    </div>
+    )})
 
     /* Modal for "View Questions" button */  
     function MyVerticallyCenteredModal(props) {
@@ -34,7 +39,7 @@ const Questions = ({addQA, mainQA}) => {
                 <Modal.Title id="contained-modal-title-vcenter">My Questions</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <p>{QAlist}</p>
+                <p>{questionList}</p>
             </Modal.Body>
             <Modal.Footer>
                 <button onClick={props.onHide} className="main-btn">Close</button>
