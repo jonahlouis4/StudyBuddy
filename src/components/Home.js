@@ -18,13 +18,13 @@ const Home = () => {
         animate="visible"
         exit="exit">
             {/* Header */}
-            <div className="Home-Header">
+            <div className="home-header">
                 <h1>study buddy</h1>
                 <h2>, a simple flash card web application made for studying.</h2>
             </div>
             {/* Body */}
             <div className="Home-Content">
-                <Link to="/questions" className="Home-links">add a question</Link>
+                <Link to="/questions" className="home-links">add a question</Link>
                 <br />
                 {/* <Link to="/quiz" className="Home-links">start the quiz</Link> */}
             </div>
