@@ -9,9 +9,9 @@ function App() {
   const location = useLocation();
   /* useState for App */
   const [QA, setQA] = useState([
-    {question: "Question 1", answer: "Answer1"},
-    {question: "Question 2", answer: "Answer2"},
-    {question: "Question 3", answer: "Answer3"}
+    {question: "What language is React written in?", answer: "Javascript"},
+    {question: "What company created React?", answer: "Facebook"},
+    {question: "What does DOM stand for?", answer: "Document Object Model"}
   ]);
 
   /* Add question and answer */
