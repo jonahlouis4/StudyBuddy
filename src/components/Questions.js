@@ -25,7 +25,7 @@ const Questions = ({addQA, mainQA}) => {
     const handleSubmit = (e) => { e.preventDefault(); addQA(QA.question, QA.answer); }
     /* Stores all the questions current active in list */
     const questionList = mainQA.map(QA => { return ( 
-    <div className="myQuestions">
+    <div className="myQuestions" key={QA.id}>
         {QA.question} 
         <button><FontAwesomeIcon icon={faTrash} size="sm" className="remove-btn"/></button>
     </div>
