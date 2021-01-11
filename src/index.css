@@ -36,4 +36,5 @@ body {
 .home-links:hover { width: 100%; background-color: #FF6B6B; }
 
 /* QUESTIONS.JS */
-.questionsC { }
+/* Questions header */
+.questions-header { padding: 75px 0;}

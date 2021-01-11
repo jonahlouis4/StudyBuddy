@@ -55,7 +55,7 @@ const Questions = ({addQA, mainQA}) => {
             {/* Modal */}
             <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
             {/* Header */}
-            <div>
+            <div className="questions-header">
                 <Link to="/">Return Home</Link>
                 <button onClick={() => setModalShow(true)}>view questions</button>
             </div>
