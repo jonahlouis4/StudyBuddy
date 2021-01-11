@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 /* Variant for main container */
 const containerVariants = {
@@ -22,11 +24,7 @@ const Questions = ({addQA, mainQA}) => {
     /* Submits new state data to parent */
     const handleSubmit = (e) => { e.preventDefault(); addQA(QA.question, QA.answer); }
     /* Stores all the questions current active in list */
-    const QAlist = mainQA.map(QA => {
-        return (
-            <div> {QA.question} </div>
-        )
-    })
+    const QAlist = mainQA.map(QA => { return ( <div> {QA.question} </div>)})
 
     /* Modal for "View Questions" button */  
     function MyVerticallyCenteredModal(props) {
@@ -39,7 +37,7 @@ const Questions = ({addQA, mainQA}) => {
                 <p>{QAlist}</p>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
+                <button onClick={props.onHide} className="main-btn">Close</button>
             </Modal.Footer>
         </Modal>
         );
@@ -56,19 +54,19 @@ const Questions = ({addQA, mainQA}) => {
             <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
             {/* Header */}
             <div className="questions-header">
-                <Link to="/">Return Home</Link>
-                <button onClick={() => setModalShow(true)}>view questions</button>
+                <Link to="/"><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>
+                <button onClick={() => setModalShow(true)} className="main-btn">view questions</button>
             </div>
             {/* Form */}
-            <form className="Questions-Form" onSubmit={(handleSubmit)}>
+            <form className="questions-form" onSubmit={(handleSubmit)}>
                 {/* Question input */}
-                <p className="qLabel">enter a question</p>
-                <textarea className="qTextarea" id="question" name="question" onChange={handleChange}></textarea>
+                <p className="q-label">enter a question</p>
+                <textarea className="q-textArea" id="question" name="question" onChange={handleChange}></textarea>
                 {/* Answer input */}
-                <p className="qLabel" id="qLabelAnswer">enter the answer</p>
-                <textarea className="qTextarea" id="answer" name="answer" onChange={handleChange}></textarea>
+                <p className="q-label" id="qLabelAnswer">enter the answer</p>
+                <textarea className="q-textArea" id="answer" name="answer" onChange={handleChange}></textarea>
                 {/* Submit button */}
-                <div className="Q-btnContainer"><input type="submit" value="add" id="Questions-btn"/></div>
+                <div className="Q-btnContainer"><input type="submit" value="add" className="main-btn"/></div>
             </form>
         </motion.div>
     )
