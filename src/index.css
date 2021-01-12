@@ -86,12 +86,8 @@ body {
   color: white;
   font-size: 16px;
   font-family: inherit;
-  transition: .1s border, .5s width;
+  transition: .5s border, .5s width;
 }
-  /* Normal state (text area) */
-  .q-areaNormal { background-color: #2C2F33; }
-  /* Error state (text area) */
-  .q-areaError { background-color: #ff6b6b3f; }
   .q-textArea:hover {
     border: 2px solid #FF6B6B;
     width: 100%;
@@ -100,6 +96,10 @@ body {
     border: 2px solid #FF6B6B;
     width: 100%;
   }
+    /* Normal state (text area) */
+    .q-areaNormal { background-color: #2C2F33; }
+    /* Error state (text area) */
+    .q-areaError { background-color: #ff6b6b3f; }
 /* Button container */
 .Q-btnContainer { padding-top: 45px; }
 /* My Questions div */
