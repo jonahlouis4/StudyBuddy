@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
 import Modal from 'react-bootstrap/Modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
@@ -17,7 +17,11 @@ const containerVariants = {
     hover: { scale: 1.1 },
     tap: { scale: 0.9 }
   }
-
+  /* Variants for message */ 
+  const msgVariants = { 
+    active: { opacity: 1, x: 10 },
+    inactive: { opacity: 0, x: 0  }
+}
 
 const Questions = ({addQA, delQA, mainQA}) => { 
     /* Local useState for questions and answers */
@@ -33,12 +37,16 @@ const Questions = ({addQA, delQA, mainQA}) => {
     /* Sets value to show or hide modal */
     const [modalShow, setModalShow] = React.useState(false);
 
+    /* Determines if message is shown or not */
+    const [validActive, setValid] = useState(false);
+    const [errQActive, setErrQ] = useState(false);
+    const [errAActive, setErrA] = useState(false);
+
     /* Changes state for 'Questions' from user input  */
     const handleChange = (e) => { 
-        // Empty message 
-        setMessage(prevMsg => {
-            return { ...prevMsg, validMsg:"", errMsgQ: "", errMsgA: ""}
-        });
+        // Hide all messages 
+        setValid(false); setErrQ(false); setErrA(false);
+
         // Add typed value to local useState QA
         setQA((prevQA) => ({...prevQA, 
             [e.target.id]: e.target.value
@@ -51,13 +59,17 @@ const Questions = ({addQA, delQA, mainQA}) => {
         e.target.reset();
 
         // Check if form is valid 
-        if (isValid) { 
+        if (isValid) {      
+            setValid(true);
+            
             // set message 
             setMessage(prevMsg => {
                 return { ...prevMsg, validMsg:"question has been added!"}
             });
             
             addQA(QA.question, QA.answer);               
+        } else {
+            setValid(false);
         }
         setQA({question: "", answer: ""}) 
     }
@@ -73,7 +85,7 @@ const Questions = ({addQA, delQA, mainQA}) => {
             setMessage(prevMsg => {
                 return { ...prevMsg, errMsgQ:"*please enter a question"}
             });
-
+            setErrQ(true);
             valid = false; 
         } else { 
             setAreaClassQ({class:"q-textArea q-areaNormal"}); 
@@ -85,7 +97,7 @@ const Questions = ({addQA, delQA, mainQA}) => {
              setMessage(prevMsg => {
                 return { ...prevMsg, errMsgA:"*please enter a answer"}
             });
-
+            setErrA(true);
             valid = false; 
         } else { 
             setAreaClassA({class:"q-textArea q-areaNormal"}); 
@@ -153,9 +165,9 @@ const Questions = ({addQA, delQA, mainQA}) => {
             </form>
             {/* Form messages */}
             <div className="q-message">
-                <p id="q-msg-valid">{ message.validMsg }</p>
-                <p id="q-msg-error">{ message.errMsgQ }</p>
-                <p id="q-msg-error">{ message.errMsgA }</p>
+                <motion.p variants={msgVariants} animate={validActive ? "active" : "inactive"} id="q-msg-valid">{ message.validMsg }</motion.p>
+                <motion.p variants={msgVariants} animate={errQActive ? "active" : "inactive"} id="q-msg-error">{ message.errMsgQ }</motion.p>
+                <motion.p variants={msgVariants} animate={errAActive ? "active" : "inactive"} id="q-msg-error">{ message.errMsgA }</motion.p>
             </div>
         </motion.div>
     )

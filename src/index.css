@@ -107,6 +107,6 @@ body {
   .myQuestions button { float: right; background-color: #2C2F33; border: none;  outline: none !important; }
 .remove-btn { color: #FF6B6B; }
 /* Form message div */
-.q-message {  padding: 25px 0; font-weight: 700; }
+.q-message {  padding: 25px 0; font-weight: 700; cursor: default; user-select: none; }
   #q-msg-valid { color:#8ce99a; }
   #q-msg-error { color: #FF6B6B; }
