@@ -9,12 +9,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- UNIVERSAL --- */
+
+/* 
+--- UNIVERSAL --- 
+*/
 /* Main container wrapper - Fullscreen div */
 .container { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
+
 /* Return button */
 .return-btn { float: left; transition: all .2s ease-in-out; }
   .return-btn:hover { color: rgba(255, 107, 107, 0.5) !important; transform: scale(1.3); }
+
 /* Main Button */
 .main-btn {  
   font-size: 16px;
@@ -31,11 +36,14 @@ body {
 }
   .main-btn:hover { transform: scale(1.1); background-color: rgba(255, 107, 107, 0.5); }
 
-/* --- HOME.JS --- */
+/*
+--- HOME.JS ---
+*/
 /* home header */
 .home-header {padding: 75px 0; }
   .home-header h1 { font-weight: 900; font-size: 50px; }
   .home-header h2 { font-size: 18px; font-weight: 500; }
+
 /* Home links */
 .home-links {
   display: block;
@@ -52,7 +60,10 @@ body {
 }
 .home-links:hover { width: 100%; background-color: #FF6B6B; }
 
-/* --- QUESTIONS.JS --- */
+
+/* 
+--- QUESTIONS.JS --- 
+*/
 /* Questions header */
 .questions-header { padding: 75px 0; }
   /* Button */  
@@ -73,12 +84,15 @@ body {
   border-radius: 5px;                                                                     /* use same radius as Home-Links */
   border: 2px solid #23272A;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: #2C2F33;
   color: white;
   font-size: 16px;
   font-family: inherit;
   transition: .1s border, .5s width;
 }
+  /* Normal state (text area) */
+  .q-areaNormal { background-color: #2C2F33; }
+  /* Error state (text area) */
+  .q-areaError { background-color: #ff6b6b3f; }
   .q-textArea:hover {
     border: 2px solid #FF6B6B;
     width: 100%;
@@ -92,5 +106,5 @@ body {
 /* My Questions div */
 .myQuestions { padding: 10px; }
   .myQuestions button { float: right; background-color: #2C2F33; border: none;  outline: none !important; }
-  .remove-btn { color: #FF6B6B; transition: all .2s ease-in-out }
-    .remove-btn:hover { transform: scale(1.3); }
+.remove-btn { color: #FF6B6B; transition: all .2s ease-in-out }
+  .remove-btn:hover { transform: scale(1.3); }

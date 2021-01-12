@@ -14,20 +14,55 @@ const containerVariants = {
   };
 
 
-const Questions = ({addQA, mainQA}) => { 
-    /* Local state declaration for 'Questions' */
-    const [QA, setQA] = useState({question:null, answer:null})
+const Questions = ({addQA, delQA, mainQA}) => { 
+    /* Local useState for questions and answers */
+    const [QA, setQA] = useState({question:"", answer:""})
+
+    /* Local useStates for TextArea class */
+    const [areaClassQ, setAreaClassQ] = useState({class:"q-textArea q-areaNormal"})
+    const [areaClassA, setAreaClassA] = useState({class:"q-textArea q-areaNormal"})
+    
     /* Sets value to show or hide modal */
     const [modalShow, setModalShow] = React.useState(false);
+
     /* Changes state for 'Questions' from user input  */
-    const handleChange = (e) => { setQA((prevQA) => ({...prevQA, [e.target.id]: e.target.value})) }
+    const handleChange = (e) => { 
+        setQA((prevQA) => ({...prevQA, 
+            [e.target.id]: e.target.value
+        })) }
+
     /* Submits new state data to parent */
-    const handleSubmit = (e) => { e.preventDefault(); addQA(QA.question, QA.answer); }
+    const handleSubmit = (e) => { 
+        const isValid = validate();
+        e.preventDefault();
+        e.target.reset();
+
+        // Check if form is valid 
+        if (isValid) { 
+            addQA(QA.question, QA.answer);               
+        }
+        setQA({question: "", answer: ""}) 
+    }
+
+    /* Verifies if fields are empty */
+    const validate = () => {
+        var valid = true;
+
+        // Check if fields are empty 
+        if (QA.question === "" || null) { setAreaClassQ({class:"q-textArea q-areaError"}); valid = false; }
+        else { setAreaClassQ({class:"q-textArea q-areaNormal"}); }
+
+        if (QA.answer === "" || null) { setAreaClassA({class:"q-textArea q-areaError"}); valid = false; }
+        else { setAreaClassA({class:"q-textArea q-areaNormal"}); }
+
+        return valid;
+    }
+
     /* Stores all the questions current active in list */
     const questionList = mainQA.map(QA => { return ( 
     <div className="myQuestions" key={QA.id}>
         {QA.question} 
-        <button><FontAwesomeIcon icon={faTrash} size="sm" className="remove-btn"/></button>
+        <button><FontAwesomeIcon icon={faTrash} size="sm" className="remove-btn" onClick={() => {delQA(QA.id)}}/></button>
     </div>
     )})
 
@@ -39,7 +74,7 @@ const Questions = ({addQA, mainQA}) => {
                 <Modal.Title id="contained-modal-title-vcenter">My Questions</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <p>{questionList}</p>
+                <div>{questionList}</div>
             </Modal.Body>
             <Modal.Footer>
                 <button onClick={props.onHide} className="main-btn">Close</button>
@@ -66,12 +101,14 @@ const Questions = ({addQA, mainQA}) => {
             <form className="questions-form" onSubmit={(handleSubmit)}>
                 {/* Question input */}
                 <p className="q-label">enter a question</p>
-                <textarea className="q-textArea" id="question" name="question" onChange={handleChange}></textarea>
+                <textarea className={areaClassQ.class} id="question" name="question" onChange={handleChange} ></textarea>
                 {/* Answer input */}
                 <p className="q-label" id="qLabelAnswer">enter the answer</p>
-                <textarea className="q-textArea" id="answer" name="answer" onChange={handleChange}></textarea>
+                <textarea className={areaClassA.class} id="answer" name="answer" onChange={handleChange} ></textarea>
                 {/* Submit button */}
-                <div className="Q-btnContainer"><input type="submit" value="add" className="main-btn"/></div>
+                <div className="Q-btnContainer">
+                    <input type="submit" value="add" className="main-btn"/>
+                </div>
             </form>
         </motion.div>
     )

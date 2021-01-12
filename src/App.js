@@ -23,13 +23,20 @@ function App() {
     }])
   }
 
+  /* Delete question and answer */
+  const delQA = (id) => {
+    let mainQA = QA.filter(currQA => {
+      return currQA.id !== id
+    });
+    setQA([...mainQA])
+  }
+
   return (
     <AnimatePresence>
       <Switch location={location} key={location.key} >
         <Route exact path="/" component={Home} />
-        <Route path="/questions"><Questions addQA={addQA} mainQA={QA} /></Route>
+        <Route path="/questions"><Questions addQA={addQA} delQA={delQA} mainQA={QA} /></Route>
       </Switch>
-      {console.log(QA)}
     </AnimatePresence>
   );
 }
