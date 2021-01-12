@@ -32,7 +32,7 @@ function App() {
   }
 
   return (
-    <AnimatePresence>
+    <AnimatePresence exitBeforeEnter>
       <Switch location={location} key={location.key} >
         <Route exact path="/" component={Home} />
         <Route path="/questions"><Questions addQA={addQA} delQA={delQA} mainQA={QA} /></Route>
