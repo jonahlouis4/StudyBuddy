@@ -13,9 +13,6 @@ body {
 /* 
 --- UNIVERSAL --- 
 */
-/* Main container wrapper - Fullscreen div */
-.container { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
-
 /* Return button */
 .return-btn { float: left; transition: all .2s ease-in-out; }
   .return-btn:hover { color: rgba(255, 107, 107, 0.5) !important; transform: scale(1.3); }
