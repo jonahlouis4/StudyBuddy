@@ -12,6 +12,11 @@ const containerVariants = {
     visible: { x: 0, opacity: 1 },
     exit: { x: -300, opacity: 0 }
   };
+  /* Vairants for buttons */
+  const buttonVariants = {
+    hover: { scale: 1.1 },
+    tap: { scale: 0.9 }
+  }
 
 
 const Questions = ({addQA, delQA, mainQA}) => { 
@@ -93,7 +98,9 @@ const Questions = ({addQA, delQA, mainQA}) => {
     const questionList = mainQA.map(QA => { return ( 
     <div className="myQuestions" key={QA.id}>
         {QA.question} 
-        <button><FontAwesomeIcon icon={faTrash} size="sm" className="remove-btn" onClick={() => {delQA(QA.id)}}/></button>
+        <motion.button variants={buttonVariants} whileHover={{ scale: 1.2 }} whileTap="tap" >
+            <FontAwesomeIcon icon={faTrash} size="sm" className="remove-btn" onClick={() => {delQA(QA.id)}}/>
+        </motion.button>
     </div>
     )})
 
@@ -108,7 +115,7 @@ const Questions = ({addQA, delQA, mainQA}) => {
                 <div>{questionList}</div>
             </Modal.Body>
             <Modal.Footer>
-                <button onClick={props.onHide} className="main-btn">Close</button>
+                <motion.button variants={buttonVariants} whileHover="hover" whileTap="tap" onClick={props.onHide} className="main-btn">Close</motion.button>
             </Modal.Footer>
         </Modal>
         );
@@ -126,7 +133,10 @@ const Questions = ({addQA, delQA, mainQA}) => {
             {/* Header */}
             <div className="questions-header">
                 <Link to="/"><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>
-                <button onClick={() => setModalShow(true)} className="main-btn">view questions</button>
+                <motion.button 
+                variants={buttonVariants} 
+                whileHover="hover" 
+                whileTap="tap" onClick={() => setModalShow(true)} className="main-btn">view questions</motion.button>
             </div>
             {/* Form */}
             <form className="questions-form" onSubmit={(handleSubmit)}>
@@ -138,7 +148,7 @@ const Questions = ({addQA, delQA, mainQA}) => {
                 <textarea className={areaClassA.class} id="answer" name="answer" onChange={handleChange} ></textarea>
                 {/* Submit button */}
                 <div className="Q-btnContainer">
-                    <input type="submit" value="add" className="main-btn"/>
+                    <motion.input variants={buttonVariants} whileHover="hover" whileTap="tap" type="submit" value="add" className="main-btn"/>
                 </div>
             </form>
             {/* Form messages */}
