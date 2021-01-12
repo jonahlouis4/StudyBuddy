@@ -21,12 +21,20 @@ const Questions = ({addQA, delQA, mainQA}) => {
     /* Local useStates for TextArea class */
     const [areaClassQ, setAreaClassQ] = useState({class:"q-textArea q-areaNormal"})
     const [areaClassA, setAreaClassA] = useState({class:"q-textArea q-areaNormal"})
+
+    /* Local userState for message */
+    const [message, setMessage] = useState({validMsg:"", errMsgQ:"", errMsgA:""})
     
     /* Sets value to show or hide modal */
     const [modalShow, setModalShow] = React.useState(false);
 
     /* Changes state for 'Questions' from user input  */
     const handleChange = (e) => { 
+        // Empty message 
+        setMessage(prevMsg => {
+            return { ...prevMsg, validMsg:"", errMsgQ: "", errMsgA: ""}
+        });
+        // Add typed value to local useState QA
         setQA((prevQA) => ({...prevQA, 
             [e.target.id]: e.target.value
         })) }
@@ -39,6 +47,11 @@ const Questions = ({addQA, delQA, mainQA}) => {
 
         // Check if form is valid 
         if (isValid) { 
+            // set message 
+            setMessage(prevMsg => {
+                return { ...prevMsg, validMsg:"question has been added!"}
+            });
+            
             addQA(QA.question, QA.answer);               
         }
         setQA({question: "", answer: ""}) 
@@ -49,11 +62,29 @@ const Questions = ({addQA, delQA, mainQA}) => {
         var valid = true;
 
         // Check if fields are empty 
-        if (QA.question === "" || null) { setAreaClassQ({class:"q-textArea q-areaError"}); valid = false; }
-        else { setAreaClassQ({class:"q-textArea q-areaNormal"}); }
+        // Question
+        if (QA.question === "" || null) { 
+            setAreaClassQ({class:"q-textArea q-areaError"}); 
+            setMessage(prevMsg => {
+                return { ...prevMsg, errMsgQ:"*please enter a question"}
+            });
 
-        if (QA.answer === "" || null) { setAreaClassA({class:"q-textArea q-areaError"}); valid = false; }
-        else { setAreaClassA({class:"q-textArea q-areaNormal"}); }
+            valid = false; 
+        } else { 
+            setAreaClassQ({class:"q-textArea q-areaNormal"}); 
+        }
+
+        // Answer 
+        if (QA.answer === "" || null) {
+             setAreaClassA({class:"q-textArea q-areaError"}); 
+             setMessage(prevMsg => {
+                return { ...prevMsg, errMsgA:"*please enter a answer"}
+            });
+
+            valid = false; 
+        } else { 
+            setAreaClassA({class:"q-textArea q-areaNormal"}); 
+        }
 
         return valid;
     }
@@ -110,6 +141,12 @@ const Questions = ({addQA, delQA, mainQA}) => {
                     <input type="submit" value="add" className="main-btn"/>
                 </div>
             </form>
+            {/* Form messages */}
+            <div className="q-message">
+                <p id="q-msg-valid">{ message.validMsg }</p>
+                <p id="q-msg-error">{ message.errMsgQ }</p>
+                <p id="q-msg-error">{ message.errMsgA }</p>
+            </div>
         </motion.div>
     )
 }
