@@ -9,9 +9,9 @@ function App() {
   const location = useLocation();
   /* useState for App */
   const [QA, setQA] = useState([
-    {question: "Question 1", answer: "Answer1"},
-    {question: "Question 2", answer: "Answer2"},
-    {question: "Question 3", answer: "Answer3"}
+    {id: 0, question: "What language is React written in?", answer: "JavaScript"},
+    {id: 1, question: "What company created React?", answer: "Facebook"},
+    {id: 2, question: "What does DOM stand for?", answer: "Document Object Model"}
   ]);
 
   /* Add question and answer */
@@ -23,13 +23,20 @@ function App() {
     }])
   }
 
+  /* Delete question and answer */
+  const delQA = (id) => {
+    let mainQA = QA.filter(currQA => {
+      return currQA.id !== id
+    });
+    setQA([...mainQA])
+  }
+
   return (
-    <AnimatePresence>
+    <AnimatePresence exitBeforeEnter>
       <Switch location={location} key={location.key} >
         <Route exact path="/" component={Home} />
-        <Route path="/questions"><Questions addQA={addQA} mainQA={QA} /></Route>
+        <Route path="/questions"><Questions addQA={addQA} delQA={delQA} mainQA={QA} /></Route>
       </Switch>
-      {console.log(QA)}
     </AnimatePresence>
   );
 }

@@ -1,0 +1,29 @@
+/*
+*   === APP.SCSS === 
+*   Contains custom bootstrap used in the project. Mainly used to change the default settings
+*    of bootstrap or generating different bootstrap components
+*
+*/
+
+/* -- Default Colours -- */
+$primary: #FF6B6B;
+$dark: #23272A;
+$secondary: #2C2F33;
+
+/* -- Body -- */
+$body-bg: $dark;
+$body-color: white;
+
+/* -- Modal -- */
+$modal-content-bg: $secondary;
+$modal-header-border-color: #343a40;
+
+/* -- Close -- */
+$close-color: white;
+
+/* Links */
+$link-decoration: none;
+$link-hover-color: white;
+$link-hover-decoration: none;
+
+@import "~bootstrap/scss/bootstrap";
