@@ -107,3 +107,16 @@ body {
 .q-message {  padding: 25px 0; font-weight: 700; cursor: default; user-select: none; }
   #q-msg-valid { color:#8ce99a; }
   #q-msg-error { color: #FF6B6B; }
+
+/* Query for extra small devices */
+@media only screen and (max-width: 320px) {
+  .home-header {padding: 20px 0; }
+  .questions-header { padding: 20px 0; }
+  .questions-form { padding-top: 55px; }
+} 
+
+/* Query for small devices */
+@media only screen and (max-width: 489px) and (min-width: 321px) {
+  .home-header {padding: 35px 0; }
+  .questions-header { padding: 35px 0; }
+}
