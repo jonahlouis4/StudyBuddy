@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import Modal from 'react-bootstrap/Modal'
+import QuestionsModal from './QuestionsModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
@@ -74,7 +74,7 @@ const Questions = ({addQA, delQA, mainQA}) => {
         var valid = true;
 
         // Both questions are empty 
-        if (QA.question === "" && QA.answer == "") {
+        if (QA.question === "" && QA.answer === "") {
             setMsg({message: "*please enter a question and a answer", id:errId})
             setTextAreaClass({questionClass: tErrClass, answerClass: tErrClass });
             setMsgValidation(prevMsg => { return {...prevMsg, errQuestion: true, errAnswer: true } })
@@ -118,23 +118,6 @@ const Questions = ({addQA, delQA, mainQA}) => {
     </div>
     )})
 
-    /* Modal for "View Questions" button */  
-    function MyVerticallyCenteredModal(props) {
-        return (
-        <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">My Questions</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <div>{questionList}</div>
-            </Modal.Body>
-            <Modal.Footer>
-                <motion.button variants={buttonVariants} whileHover="hover" whileTap="tap" onClick={props.onHide} className="main-btn">Close</motion.button>
-            </Modal.Footer>
-        </Modal>
-        );
-    }
-
     return (
         <motion.div className="questionC container"
         variants={containerVariants}
@@ -143,17 +126,17 @@ const Questions = ({addQA, delQA, mainQA}) => {
         exit="exit"
         >
             {/* Modal */}
-            <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
+            <QuestionsModal show={modalShow} onHide={() => setModalShow(false)} questionlist={questionList} />
             {/* Header */}
-            <div className="questions-header">
+            <motion.div className="questions-header">
                 <Link to="/"><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>
                 <motion.button 
                 variants={buttonVariants} 
                 whileHover="hover" 
                 whileTap="tap" onClick={() => setModalShow(true)} className="main-btn">view questions</motion.button>
-            </div>
+            </motion.div>
             {/* Form */}
-            <form className="questions-form" onSubmit={(handleSubmit)}>
+            <motion.form className="questions-form" onSubmit={(handleSubmit)}>
                 {/* Question input */}
                 <p className="q-label">enter a question</p>
                 <textarea className={textAreaClass.questionClass} id="question" name="question" onChange={handleChange} ></textarea>
@@ -164,11 +147,11 @@ const Questions = ({addQA, delQA, mainQA}) => {
                 <div className="Q-btnContainer">
                     <motion.input variants={buttonVariants} whileHover="hover" whileTap="tap" type="submit" value="add" className="main-btn"/>
                 </div>
-            </form>
+            </motion.form>
             {/* Form messages */}
-            <div className="q-message">
+            <motion.div className="q-message">
                 <motion.p variants={msgVariants} animate={messageActive() ? "active" : "inactive"} id={msg.id}>{msg.message}</motion.p>
-            </div>
+            </motion.div>
         </motion.div>
     )
 }
