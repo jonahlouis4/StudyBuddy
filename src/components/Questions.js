@@ -9,7 +9,8 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 /* Variant for main container */
 const containerVariants = {
     hidden: { x: 300, opacity: 0,},
-    visible: { x: 0, opacity: 1 },
+    visible: { x: 0, opacity: 1, 
+        transition: { staggerChildren: 0.1 } },
     exit: { x: 300, opacity: 0 }
   };
   /* Vairants for buttons */
@@ -21,6 +22,11 @@ const containerVariants = {
   const msgVariants = { 
     active: { opacity: 1, x: 10 },
     inactive: { opacity: 0, x: 0  }
+}
+
+const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
 }
 
 const Questions = ({addQA, delQA, mainQA}) => { 
@@ -128,7 +134,7 @@ const Questions = ({addQA, delQA, mainQA}) => {
             {/* Modal */}
             <QuestionsModal show={modalShow} onHide={() => setModalShow(false)} questionlist={questionList} />
             {/* Header */}
-            <motion.div className="questions-header">
+            <motion.div variants={fadeIn} className="questions-header">
                 <Link to="/"><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>
                 <motion.button 
                 variants={buttonVariants} 
@@ -136,22 +142,22 @@ const Questions = ({addQA, delQA, mainQA}) => {
                 whileTap="tap" onClick={() => setModalShow(true)} className="main-btn">view questions</motion.button>
             </motion.div>
             {/* Form */}
-            <motion.form className="questions-form" onSubmit={(handleSubmit)}>
+            <form className="questions-form" onSubmit={(handleSubmit)}>
                 {/* Question input */}
-                <p className="q-label">enter a question</p>
-                <textarea className={textAreaClass.questionClass} id="question" name="question" onChange={handleChange} ></textarea>
+                <motion.p variants={fadeIn} className="q-label">enter a question</motion.p>
+                <motion.textarea variants={fadeIn} className={textAreaClass.questionClass} id="question" name="question" onChange={handleChange} ></motion.textarea>
                 {/* Answer input */}
-                <p className="q-label" id="qLabelAnswer">enter the answer</p>
-                <textarea className={textAreaClass.answerClass} id="answer" name="answer" onChange={handleChange} ></textarea>
+                <motion.p variants={fadeIn} className="q-label" id="qLabelAnswer">enter the answer</motion.p>
+                <motion.textarea variants={fadeIn} className={textAreaClass.answerClass} id="answer" name="answer" onChange={handleChange} ></motion.textarea>
                 {/* Submit button */}
-                <div className="Q-btnContainer">
+                <motion.div variants={fadeIn} className="Q-btnContainer">
                     <motion.input variants={buttonVariants} whileHover="hover" whileTap="tap" type="submit" value="add" className="main-btn"/>
-                </div>
-            </motion.form>
+                </motion.div>
+            </form>
             {/* Form messages */}
-            <motion.div className="q-message">
+            <div className="q-message">
                 <motion.p variants={msgVariants} animate={messageActive() ? "active" : "inactive"} id={msg.id}>{msg.message}</motion.p>
-            </motion.div>
+            </div>
         </motion.div>
     )
 }
