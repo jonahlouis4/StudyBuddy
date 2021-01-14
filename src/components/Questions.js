@@ -23,7 +23,7 @@ const containerVariants = {
     active: { opacity: 1, x: 10 },
     inactive: { opacity: 0, x: 0  }
 }
-
+/* Fade in variant */
 const fadeIn = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 }
@@ -125,7 +125,7 @@ const Questions = ({addQA, delQA, mainQA}) => {
     )})
 
     return (
-        <motion.div className="questionC container"
+        <motion.div className="container"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

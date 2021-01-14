@@ -61,14 +61,13 @@ body {
 --- QUESTIONS.JS --- 
 */
 /* Questions header */
-.questions-header { padding: 75px 0; }
-  /* Button */  
-  .questions-header button { float: right; background-color: #339AF0; }
+.questions-header { padding: 75px 0; } 
+    .questions-header button { float: right; background-color: #339AF0; }
     .questions-header button:hover { background-color: rgba(51, 155, 240, 0.5); }
 /* Questions form */
 .questions-form { padding-top: 75px; }
-  .q-label { font-size: 18px; padding: 15px 0; margin: 0; font-weight: 900; }
-  #qLabelAnswer { padding-top: 30px; }
+    .q-label { font-size: 18px; padding: 15px 0; margin: 0; font-weight: 900; }
+    #qLabelAnswer { padding-top: 30px; }
 /* Text area */
 .q-textArea {
   width: 90%;
@@ -93,25 +92,32 @@ body {
     border: 2px solid #FF6B6B;
     width: 100%;
   }
-    /* Normal state (text area) */
-    .q-areaNormal { background-color: #2C2F33; }
-    /* Error state (text area) */
-    .q-areaError { background-color: #ff6b6b3f; }
+  /* Normal state (text area) */
+  .q-areaNormal { background-color: #2C2F33; }
+  /* Error state (text area) */
+  .q-areaError { background-color: #ff6b6b3f; }
 /* Button container */
 .Q-btnContainer { padding-top: 45px; }
 /* My Questions div */
 .myQuestions { padding: 10px; }
-  .myQuestions button { float: right; background-color: #2C2F33; border: none;  outline: none !important; }
+    .myQuestions button { float: right; background-color: #2C2F33; border: none;  outline: none !important; }
 .remove-btn { color: #FF6B6B; }
 /* Form message div */
 .q-message {  padding: 25px 0; font-weight: 700; cursor: default; user-select: none; }
-  #q-msg-valid { color:#8ce99a; }
-  #q-msg-error { color: #FF6B6B; }
+    #q-msg-valid { color:#8ce99a; }
+    #q-msg-error { color: #FF6B6B; }
+
+
+/* 
+-- QUIZ.JS -- 
+*/
+.quiz-header { padding: 75px 0; }
 
 /* Query for extra small devices */
 @media only screen and (max-width: 320px) {
   .home-header {padding: 20px 0; }
   .questions-header { padding: 20px 0; }
+  .quiz-header { padding: 20px 0; }
   .questions-form { padding-top: 55px; }
 } 
 

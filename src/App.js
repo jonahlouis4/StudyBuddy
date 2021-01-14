@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Home from './components/Home'
 import Questions from './components/Questions'
+import Quiz from './components/Quiz'
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 
@@ -36,6 +37,7 @@ function App() {
       <Switch location={location} key={location.key} >
         <Route exact path="/" component={Home} />
         <Route path="/questions"><Questions addQA={addQA} delQA={delQA} mainQA={QA} /></Route>
+        <Route path="/quiz"><Quiz mainQA={QA} /></Route>
       </Switch>
     </AnimatePresence>
   );

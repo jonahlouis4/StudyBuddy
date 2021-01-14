@@ -32,7 +32,7 @@ const Home = () => {
             <div className="Home-Content">
                 <motion.div variants={fadeIn}><Link to="/questions" className="home-links">add a question</Link></motion.div>
                 <br />
-                {/* <motion.div variants={fadeIn}><Link to="/quiz" className="home-links">start the quiz</Link></motion.div> */} 
+                <motion.div variants={fadeIn}><Link to="/quiz" className="home-links">start the quiz</Link></motion.div> 
             </div>
         </motion.div>
     )
