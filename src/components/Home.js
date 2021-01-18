@@ -2,19 +2,20 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-/* Variant for main container */
+/** Variant for main container */
 const containerVariants = {
     hidden: { x: -300, opacity: 0,},
     visible: { x: 0, opacity: 1, 
         transition: { staggerChildren: 0.1 } },
     exit: { x: -300, opacity: 0 }
   };
-
+/** Fade in variant */
 const fadeIn = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 }
 }
 
+/** Home page of Study Buddy */
 const Home = () => {
     return (
         <motion.div 
