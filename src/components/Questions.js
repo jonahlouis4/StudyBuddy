@@ -6,50 +6,60 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
-/* Variant for main container */
+/** Variant for main container */
 const containerVariants = {
     hidden: { x: 300, opacity: 0,},
     visible: { x: 0, opacity: 1, 
         transition: { staggerChildren: 0.1 } },
     exit: { x: 300, opacity: 0 }
   };
-  /* Vairants for buttons */
+  /** Vairants for buttons */
   const buttonVariants = {
     hover: { scale: 1.1 },
     tap: { scale: 0.9 }
   }
-  /* Variants for message */ 
+  /** Variants for message */ 
   const msgVariants = { 
     active: { opacity: 1, x: 10 },
     inactive: { opacity: 0, x: 0  }
 }
-/* Fade in variant */
+/** Fade in variant */
 const fadeIn = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 }
 }
 
+/**
+ * Operates the addition of questions + answers and the ability
+ * to view and remote them.
+ * @param {function} addQA - Reference to function that adds a question + answer
+ * @param {function} delQA - Reference to function that removes a question + answer
+ * @param {function} mainQA - Reference to the QA state from App.js 
+ */
 const Questions = ({addQA, delQA, mainQA}) => { 
-    /* Stores the valid ID for success message */
+    /** Stores the valid ID for success message */
     const validId = "q-msg-valid";   
-    /* Stores the error ID for error message */                   
+    /** Stores the error ID for error message */                   
     const errId = "q-msg-error"; 
-    /* Stores the normal class colour for text area */
+    /** Stores the normal class colour for text area */
     const tNormClass = "q-textArea q-areaNormal";
-    /* Stores the error class colour for text area */
+    /** Stores the error class colour for text area */
     const tErrClass = "q-textArea q-areaError";
-    /* Local useStates for questions and answers */
+    /** Local useStates for questions and answers */
     const [QA, setQA] = useState({question:"", answer:""})
-    /* Local useStates for TextArea class (Sets the colour) */
+    /** Local useStates for TextArea class (Sets the colour) */
     const [textAreaClass, setTextAreaClass] = useState({questionClass:tNormClass, answerClass: tNormClass})
-    /* Sets value to show or hide modal */
+    /** Sets value to show or hide modal */
     const [modalShow, setModalShow] = React.useState(false);
-    /* Determines if message is shown or not */
+    /** Determines if message is shown or not */
     const [msgValidation, setMsgValidation] = useState({success: false, errQuestion: false, errAnswer: false})
-    /* Stores the message for below the form */
+    /** Stores the message for below the form */
     const [msg, setMsg] = useState({message:"", id:""})
 
-    /* Handles every user change */
+    /**
+     * Handles every user change
+     * @param {event} e - event that user triggerred
+     */
     const handleChange = (e) => { 
         // Hide all messages 
         setMsgValidation({success: false, errQuestion: false, errAnswer: false})
@@ -57,7 +67,10 @@ const Questions = ({addQA, delQA, mainQA}) => {
         setQA((prevQA) => ({...prevQA, [e.target.id]: e.target.value})) 
     }
 
-    /* Handles Submit button */
+    /**
+     * Handles Submit button
+     * @param {event} e - event that user triggerred 
+     */
     const handleSubmit = (e) => { 
         const isValid = validate();
         e.preventDefault();
@@ -74,7 +87,7 @@ const Questions = ({addQA, delQA, mainQA}) => {
         setQA({question: "", answer: ""}) 
     }
 
-    /* Verifies if fields are empty */
+    /** Verifies if fields are empty */
     const validate = () => {
         // false if user did not fill fields 
         var valid = true;
@@ -108,7 +121,7 @@ const Questions = ({addQA, delQA, mainQA}) => {
         return valid;
     }
 
-    /* Returns true if message is active, false if no message is active */
+    /** Returns true if message is active, false if no message is active */
     function messageActive() {
         if (msgValidation.success || msgValidation.errQuestion || msgValidation.errAnswer) { return true; } 
         return false;
