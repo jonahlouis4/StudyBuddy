@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import QuizEnter from './pages/QuizEnter'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -23,7 +24,7 @@ const fadeIn = {
  */
 const Quiz = ({mainQA}) => {
     /** Copy of the main QA state */
-    const [QAcopy, setQACopy] = useState([...mainQA]);
+    const [QAcopy] = useState([...mainQA]);
 
     /* 
     * This function shuffles the copy version of the main QA state array
@@ -47,6 +48,14 @@ const Quiz = ({mainQA}) => {
         }         
     }
 
+    const GoThroughQuestions = () => {
+        /* --- TODO ---
+         * 1. Create current state - Holds first question in shuffled state
+         * 2. Go through all Quiz pages, in end, increment value of current state index by 1
+         * 3. At end of quiz, reset current state index 
+        */
+    }
+
     return (
         <motion.div className="container" 
         variants={containerVariants} 
@@ -60,7 +69,8 @@ const Quiz = ({mainQA}) => {
             </motion.div>
             {/* Body */}
             <div>
-                
+                {/* Call QuizEnter component */}
+                {GoThroughQuestions()}
             </div>
         </motion.div>
     )
