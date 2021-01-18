@@ -18,7 +18,11 @@ function App() {
     {id: 2, question: "What does DOM stand for?", answer: "Document Object Model"}
   ]);
 
-  /** Adds a question + answer attached */
+  /**
+   * Adds a question + answer attached
+   * @param {string} question - question entered by user
+   * @param {string} answer - answer to question entered by user
+   */
   const addQA = (question, answer) => {
     setQA(prevQA => [...prevQA, {
       id: prevQA.length,
@@ -27,7 +31,10 @@ function App() {
     }])
   }
 
-  /* Deletes a question + answer attached */
+  /**
+   * Deletes a question + answer attached
+   * @param {number} id - id represents the question + answer that will be deleted
+   */
   const delQA = (id) => {
     let mainQA = QA.filter(currQA => {
       return currQA.id !== id
