@@ -5,17 +5,20 @@ import Quiz from './components/Quiz'
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 
+/**
+ * Main function component of Study Buddy
+ */
 function App() {
-  /* Used to store the current location of the present page */
+  /** Used to store the current location of the present page */
   const location = useLocation();
-  /* useState for App */
+  /** useState for App */
   const [QA, setQA] = useState([
     {id: 0, question: "What language is React written in?", answer: "JavaScript"},
     {id: 1, question: "What company created React?", answer: "Facebook"},
     {id: 2, question: "What does DOM stand for?", answer: "Document Object Model"}
   ]);
 
-  /* Add question and answer */
+  /** Adds a question + answer attached */
   const addQA = (question, answer) => {
     setQA(prevQA => [...prevQA, {
       id: prevQA.length,
@@ -24,7 +27,7 @@ function App() {
     }])
   }
 
-  /* Delete question and answer */
+  /* Deletes a question + answer attached */
   const delQA = (id) => {
     let mainQA = QA.filter(currQA => {
       return currQA.id !== id
