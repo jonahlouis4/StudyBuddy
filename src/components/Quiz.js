@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import QuizEnter from './pages/QuizEnter'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,11 +10,16 @@ const containerVariants = {
     visible: { x: 0, opacity: 1, 
         transition: { staggerChildren: 0.1 } },
     exit: { x: 300, opacity: 0 }
-  };
+};
 /** Fade in variant */
 const fadeIn = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 }
+}
+/** Vairants for buttons */
+const buttonVariants = {
+    hover: { scale: 1.1 },
+    tap: { scale: 0.9 }
 }
 
 /**
@@ -25,6 +29,29 @@ const fadeIn = {
 const Quiz = ({mainQA}) => {
     /** Copy of the main QA state */
     const [QAcopy] = useState([...mainQA]);
+    /** Index of current question */
+    const [currQuestion, setCurrQuestion] = useState(0);
+    /** Stores every answer input */
+    const [answer, setAnswer] = useState("");
+
+    /**
+     * Handles every user change
+     * @param {event} e - event that user triggerred
+     */
+    const handleChange = (e) => { 
+        setAnswer((prevAnswer) => ({...prevAnswer, [answer]: e.target.value})) 
+    }
+
+    /**
+     * Handles Submit button
+     * @param {event} e - event that user triggerred 
+     */
+    const handleSubmit = (e) => { 
+        e.preventDefault();
+        e.target.reset();
+
+        setCurrQuestion(currQuestion + 1);          
+    }
 
     /* 
     * This function shuffles the copy version of the main QA state array
@@ -48,14 +75,6 @@ const Quiz = ({mainQA}) => {
         }         
     }
 
-    const GoThroughQuestions = () => {
-        /* --- TODO ---
-         * 1. Create current state - Holds first question in shuffled state
-         * 2. Go through all Quiz pages, in end, increment value of current state index by 1
-         * 3. At end of quiz, reset current state index 
-        */
-    }
-
     return (
         <motion.div className="container" 
         variants={containerVariants} 
@@ -65,12 +84,25 @@ const Quiz = ({mainQA}) => {
         >
             {/* Header */}
             <motion.div className="quiz-header" variants={fadeIn}>
-                <Link to="/"><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>
+                <Link to="/" ><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>
             </motion.div>
             {/* Body */}
-            <div>
-                {/* Call QuizEnter component */}
-                {GoThroughQuestions()}
+            <div className="quiz-body">
+                {/* QUESTION */}
+                <div className="quiz-questionBox">
+                    <motion.p variants={fadeIn}>{currQuestion+1}/{QAcopy.length}</motion.p>
+                    <motion.p variants={fadeIn} className="label">{QAcopy[currQuestion].question}</motion.p>
+                </div>
+                 {/* ENTER ANSWER */}
+                <div className="quiz-answerBox">
+                    <form className="questions-form" onSubmit={handleSubmit}>
+                        <motion.p variants={fadeIn} className="label">Enter the answer</motion.p>
+                        <motion.textarea variants={fadeIn} className="textArea areaNormal" id="answer" name="answer" onChange={handleChange}></motion.textarea>
+                        <motion.div variants={fadeIn} className="Q-btnContainer">
+                            <motion.input variants={fadeIn} variants={buttonVariants} whileHover="hover" whileTap="tap" type="submit" value="Submit" className="main-btn"/>
+                        </motion.div>
+                    </form>
+                </div>
             </div>
         </motion.div>
     )

@@ -42,9 +42,9 @@ const Questions = ({addQA, delQA, mainQA}) => {
     /** Stores the error ID for error message */                   
     const errId = "q-msg-error"; 
     /** Stores the normal class colour for text area */
-    const tNormClass = "q-textArea q-areaNormal";
+    const tNormClass = "textArea areaNormal";
     /** Stores the error class colour for text area */
-    const tErrClass = "q-textArea q-areaError";
+    const tErrClass = "textArea areaError";
     /** Local useStates for questions and answers */
     const [QA, setQA] = useState({question:"", answer:""})
     /** Local useStates for TextArea class (Sets the colour) */
@@ -103,7 +103,6 @@ const Questions = ({addQA, delQA, mainQA}) => {
         if (QA.question === "") { 
             setMsg({message: "*please enter a question", id:errId})
             setTextAreaClass(prevClass => { return {...prevClass, questionClass: tErrClass }})
-            console.log(textAreaClass)
             setMsgValidation(prevMsg => { return {...prevMsg, errQuestion: true } })
             valid = false; 
         } else { 
@@ -155,12 +154,12 @@ const Questions = ({addQA, delQA, mainQA}) => {
                 whileTap="tap" onClick={() => setModalShow(true)} className="main-btn">view questions</motion.button>
             </motion.div>
             {/* Form */}
-            <form className="questions-form" onSubmit={(handleSubmit)}>
+            <form className="myForm" onSubmit={(handleSubmit)}>
                 {/* Question input */}
-                <motion.p variants={fadeIn} className="q-label">enter a question</motion.p>
+                <motion.p variants={fadeIn} className="label">enter a question</motion.p>
                 <motion.textarea variants={fadeIn} className={textAreaClass.questionClass} id="question" name="question" onChange={handleChange} ></motion.textarea>
                 {/* Answer input */}
-                <motion.p variants={fadeIn} className="q-label" id="qLabelAnswer">enter the answer</motion.p>
+                <motion.p variants={fadeIn} className="label" id="qLabelAnswer">enter the answer</motion.p>
                 <motion.textarea variants={fadeIn} className={textAreaClass.answerClass} id="answer" name="answer" onChange={handleChange} ></motion.textarea>
                 {/* Submit button */}
                 <motion.div variants={fadeIn} className="Q-btnContainer">

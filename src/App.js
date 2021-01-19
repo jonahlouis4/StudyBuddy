@@ -4,6 +4,7 @@ import Questions from './components/Questions'
 import Quiz from './components/Quiz'
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
+import QuizEnter from './components/pages/QuizEnter'
 
 /**
  * Main function component of Study Buddy
@@ -48,6 +49,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/questions"><Questions addQA={addQA} delQA={delQA} mainQA={QA} /></Route>
         <Route path="/quiz"><Quiz mainQA={QA} /></Route>
+        <Route path="/quiz=1"><QuizEnter /></Route>
       </Switch>
     </AnimatePresence>
   );
