@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import QuizEnter from './pages/QuizEnter'
+import QuizResult from './pages/QuizResult'
+import QuizComplete from './pages/QuizComplete'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import QuizResult from './pages/QuizResult'
 
 /** Variant for main container */
 const containerVariants = {
@@ -46,7 +47,7 @@ const Quiz = ({mainQA}) => {
     /** Stores every answer input */
     const [answer, setAnswer] = useState({answer: ""});
     /** Determines the render of the body */
-    const [result, setResult] = useState(false);
+    const [result, setResult] = useState(0);
 
     /* 
     * This function shuffles the copy version of the main QA state array
@@ -83,7 +84,7 @@ const Quiz = ({mainQA}) => {
     const setQuestionIndex = (indexNum) => { setCurrQuestion(indexNum); }
 
     /**
-     * Sets the state of the result (true or false)
+     * Sets the state of the result (0 = enter, 1 = result, 2 = complete)
      * @param {boolean} result - result controlled by child components
      */
     const getResult = (result) => { setResult(result) }
@@ -93,18 +94,17 @@ const Quiz = ({mainQA}) => {
      * @param {boolean} result - current state of result
      */
     function setBody (result) {
-        // Went through all questions
-        
-        // Still have questions to go through...
-        if (!result) {
+        if (result === 0) {
             return <QuizEnter QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} 
                         addAnswer={addAnswer} containerVariantsChild={containerVariantsChild} 
                         fadeIn={fadeIn} buttonVariants={buttonVariants} />
-        } else {
+        } else if (result === 1) {
             return <QuizResult QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} answer={answer} 
                         setQuestionIndex={setQuestionIndex} containerVariantsChild={containerVariantsChild} 
                         buttonVariants={buttonVariants} fadeIn={fadeIn} />
-        }
+        } else if (result === 2) {
+            return <QuizComplete />
+        } 
     }
 
     return (

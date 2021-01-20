@@ -22,7 +22,7 @@ const QuizEnter = ({QAcopy, getResult, currQuestion, addAnswer, containerVariant
         e.target.reset();
         // Send info to parent (Quiz.js)...
         addAnswer(lclAns);
-        getResult(true);        
+        getResult(1);        
     }
 
     return (

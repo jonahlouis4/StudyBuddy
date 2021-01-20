@@ -3,9 +3,14 @@ import { motion } from 'framer-motion'
 
 const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, containerVariantsChild, fadeIn, buttonVariants}) => {
     const handleNext = () => {
-        // Send info to parent (Quiz.js)...
-        getResult(false);
+        // Increment index 
         setQuestionIndex(currQuestion + 1);
+
+        // IF went through all the questions 
+        if (currQuestion >= QAcopy.length-1) {  getResult(2); return;  }
+
+        // IF NOT Send 0 as result instead of 2
+        getResult(0);  
     }
     return (
         <motion.div className="quiz-body" variants={containerVariantsChild} initial="hidden" animate="visible" exit="exit">
