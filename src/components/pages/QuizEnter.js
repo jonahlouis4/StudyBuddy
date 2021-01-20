@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom';
 
 /** Vairants for buttons */
 const buttonVariants = {
@@ -9,7 +10,7 @@ const buttonVariants = {
     tap: { scale: 0.9 }
 }
 
-const QuizEnter = ({QAcopy, fadeIn}) => {
+const QuizEnter = ({QAcopy, getResult, fadeIn}) => {
     /** Index of current question */
     const [currQuestion, setCurrQuestion] = useState(0);
     /** Stores every answer input */
@@ -30,9 +31,10 @@ const QuizEnter = ({QAcopy, fadeIn}) => {
     const handleSubmit = (e) => { 
         e.preventDefault();
         e.target.reset();
-
-        setCurrQuestion(currQuestion + 1);          
+        getResult(true);        
     }
+
+
 
     return (
         <div>

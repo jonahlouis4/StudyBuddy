@@ -2,9 +2,10 @@ import React, {useState} from 'react'
 import Home from './components/Home'
 import Questions from './components/Questions'
 import Quiz from './components/Quiz'
+import QuizEnter from './components/pages/QuizEnter'
+import QuizResult from './components/pages/QuizResult'
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import QuizEnter from './components/pages/QuizEnter'
 
 /**
  * Main function component of Study Buddy
@@ -49,7 +50,8 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/questions"><Questions addQA={addQA} delQA={delQA} mainQA={QA} /></Route>
         <Route path="/quiz"><Quiz mainQA={QA} /></Route>
-        <Route path="/quiz=1"><QuizEnter /></Route>
+        <Route path="/quiz"><QuizEnter /></Route>
+        <Route path="/quiz=result"><QuizResult /></Route>
       </Switch>
     </AnimatePresence>
   );

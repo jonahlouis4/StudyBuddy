@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import QuizResult from './pages/QuizResult'
 
 /** Variant for main container */
 const containerVariants = {
@@ -25,6 +26,8 @@ const fadeIn = {
 const Quiz = ({mainQA}) => {
     /** Copy of the main QA state */
     const [QAcopy] = useState([...mainQA]);
+    /** Determines the render of the body */
+    const [result, setResult] = useState(false);
 
     /* 
     * This function shuffles the copy version of the main QA state array
@@ -48,14 +51,30 @@ const Quiz = ({mainQA}) => {
         }         
     }
 
+    /** Sets the state of the result (true or false) */
+    const getResult = (result) => {
+        setResult(result)
+    }
+
+    /** Returns the correct functional component */
+    function setBody (result) {
+        if (!result) {
+            return <QuizEnter QAcopy={QAcopy} fadeIn={fadeIn} getResult={getResult}/>
+        } else {
+            return <QuizResult getResult={getResult} />
+        }
+    }
+
     return (
         <motion.div className="container" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+            {/* Call to shuffle state */}
             {shuffle()}
             {/* Header */}
             <motion.div className="quiz-header" variants={fadeIn}>
                 <Link to="/" ><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>
             </motion.div>
-            <QuizEnter QAcopy={QAcopy} fadeIn={fadeIn} />
+            {/* Call to determine render */}
+            {setBody(result)}
         </motion.div>
     )
 }
