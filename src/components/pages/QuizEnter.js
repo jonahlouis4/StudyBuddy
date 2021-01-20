@@ -38,7 +38,7 @@ const QuizEnter = ({QAcopy, getResult, currQuestion, addAnswer, containerVariant
                     <motion.p variants={fadeIn} className="label">Enter the answer</motion.p>
                     <motion.textarea variants={fadeIn} className="textArea areaNormal" id="answer" name="answer" onChange={handleChange}></motion.textarea>
                     <motion.div variants={fadeIn} className="Q-btnContainer">
-                        <motion.input variants={fadeIn} 
+                        <motion.input
                         variants={buttonVariants} 
                         animate ={lclAns.answer ? "active" : "inactive" }
                         whileHover="hover" 
