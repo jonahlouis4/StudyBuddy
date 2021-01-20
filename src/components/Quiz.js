@@ -13,6 +13,13 @@ const containerVariants = {
         transition: { staggerChildren: 0.1 } },
     exit: { x: 300, opacity: 0 }
 };
+/** Variant for child component containers */
+const containerVariantsChild = {
+    hidden: { opacity: 0,},
+    visible: { opacity: 1, 
+        transition: { staggerChildren: 0.1 } },
+    exit: { opacity: 0 }
+};
 /** Fade in variant */
 const fadeIn = {
     hidden: { opacity: 0 },
@@ -83,18 +90,20 @@ const Quiz = ({mainQA}) => {
      */
     function setBody (result) {
         if (!result) {
-            return <QuizEnter QAcopy={QAcopy} fadeIn={fadeIn} getResult={getResult} currQuestion={currQuestion} 
-                        addAnswer={addAnswer} buttonVariants={buttonVariants} />
+            return <QuizEnter QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} 
+                        addAnswer={addAnswer} containerVariantsChild={containerVariantsChild} 
+                        fadeIn={fadeIn} buttonVariants={buttonVariants} />
         } else {
             return <QuizResult QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} answer={answer} 
-                        setQuestionIndex={setQuestionIndex}  buttonVariants={buttonVariants} />
+                        setQuestionIndex={setQuestionIndex} containerVariantsChild={containerVariantsChild} 
+                        buttonVariants={buttonVariants} fadeIn={fadeIn} />
         }
     }
 
     return (
         <motion.div className="container" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
             {/* Call to shuffle state */}
-            {/* {shuffle()} */}
+            
             {/* Header */}
             <motion.div className="quiz-header" variants={fadeIn}>
                 <Link to="/" ><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>

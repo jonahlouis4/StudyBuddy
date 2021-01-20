@@ -1,14 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, fadeIn, buttonVariants}) => {
+const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, containerVariantsChild, fadeIn, buttonVariants}) => {
     const handleNext = () => {
         // Send info to parent (Quiz.js)...
         getResult(false);
         setQuestionIndex(currQuestion + 1);
     }
     return (
-        <div className="quiz-body">
+        <motion.div className="quiz-body" variants={containerVariantsChild} initial="hidden" animate="visible" exit="exit">
             {/* QUESTION */}
             <div className="quiz-questionBox">
                 <motion.p variants={fadeIn}>{currQuestion+1}/{QAcopy.length}</motion.p>
@@ -24,11 +24,11 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
                 <motion.p variants={fadeIn} >{ answer.answer }</motion.p>
                 {/* Next */}
                 <motion.div variants={fadeIn} className="Q-btnContainer">
-                    <motion.button variants={fadeIn} variants={buttonVariants} whileHover="hover" 
+                    <motion.button variants={buttonVariants} whileHover="hover" 
                     whileTap="tap" className="main-btn" onClick={handleNext}>next</motion.button>
                 </motion.div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
-const QuizEnter = ({QAcopy, getResult, currQuestion, addAnswer, fadeIn, buttonVariants}) => {
+const QuizEnter = ({QAcopy, getResult, currQuestion, addAnswer, containerVariantsChild, fadeIn, buttonVariants}) => {
     /** Stores local answer input */
     const [lclAns, setLclAns] = useState({answer: ""});
 
@@ -26,7 +26,7 @@ const QuizEnter = ({QAcopy, getResult, currQuestion, addAnswer, fadeIn, buttonVa
     }
 
     return (
-        <div className="quiz-body">
+        <motion.div className="quiz-body" variants={containerVariantsChild} initial="hidden" animate="visible" exit="exit">
             {/* QUESTION */}
             <div className="quiz-questionBox">
                 <motion.p variants={fadeIn}>{currQuestion+1}/{QAcopy.length}</motion.p>
@@ -49,7 +49,7 @@ const QuizEnter = ({QAcopy, getResult, currQuestion, addAnswer, fadeIn, buttonVa
                     </motion.div>
                 </form>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
