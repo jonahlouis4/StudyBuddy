@@ -34,7 +34,8 @@ const buttonVariants = {
 }
 
 /**
- * In charge of starting the quiz in a random order
+ * Start of the quiz implementation. Parent of the pages QuizEnter,
+ * QuizResult, and QuizComplete.
  * @param {QA} mainQA - reference to the QA state from App.js 
  */
 const Quiz = ({mainQA}) => {
@@ -75,7 +76,10 @@ const Quiz = ({mainQA}) => {
      */
     const addAnswer = (answer) => { setAnswer(answer); }
 
-
+    /**
+     * Sets the incremented index of the current question
+     * @param {number} indexNum - new index number of currQuestion state
+     */
     const setQuestionIndex = (indexNum) => { setCurrQuestion(indexNum); }
 
     /**
@@ -89,6 +93,9 @@ const Quiz = ({mainQA}) => {
      * @param {boolean} result - current state of result
      */
     function setBody (result) {
+        // Went through all questions
+        
+        // Still have questions to go through...
         if (!result) {
             return <QuizEnter QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} 
                         addAnswer={addAnswer} containerVariantsChild={containerVariantsChild} 

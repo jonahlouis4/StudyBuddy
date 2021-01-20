@@ -31,7 +31,7 @@ body {
   color: white;
 }
 /* Labels */
-.label { font-size: 18px; padding: 15px 0; margin: 0; font-weight: 900; }
+.label { font-size: 18px; padding: 15px 0; margin: 0; font-weight: 900; user-select: none; }
 
 /* Form */
 .myForm { padding-top: 75px; }
@@ -117,7 +117,6 @@ body {
 .quiz-header { padding: 75px 0; }
 .quiz-questionBox { padding-top: 75px; }
 .quiz-questionBox p { margin: 0; padding: 0 !important; }
-
 
 /*
 -- QUIZRESULT.js --
