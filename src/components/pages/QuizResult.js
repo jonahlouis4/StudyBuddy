@@ -2,6 +2,8 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, containerVariantsChild, fadeIn, buttonVariants}) => {
+    
+    /** Handle event for next button */
     const handleNext = () => {
         // Increment index 
         setQuestionIndex(currQuestion + 1);
@@ -12,6 +14,7 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
         // IF NOT Send 0 as result instead of 2
         getResult(0);  
     }
+
     return (
         <motion.div className="quiz-body" variants={containerVariantsChild} initial="hidden" animate="visible" exit="exit">
             {/* QUESTION */}
