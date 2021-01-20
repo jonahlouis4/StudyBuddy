@@ -18,6 +18,13 @@ const fadeIn = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 }
 }
+/** Vairants for buttons */
+const buttonVariants = {
+    active: { opacity: 1, x: 0 },
+    inactive: { opacity: 0, x: -10  },
+    hover: { scale: 1.1 },
+    tap: { scale: 0.9 }
+}
 
 /**
  * In charge of starting the quiz in a random order
@@ -26,6 +33,10 @@ const fadeIn = {
 const Quiz = ({mainQA}) => {
     /** Copy of the main QA state */
     const [QAcopy] = useState([...mainQA]);
+    /** Index of current question */
+    const [currQuestion, setCurrQuestion] = useState(0);
+    /** Stores every answer input */
+    const [answer, setAnswer] = useState({answer: ""});
     /** Determines the render of the body */
     const [result, setResult] = useState(false);
 
@@ -51,24 +62,39 @@ const Quiz = ({mainQA}) => {
         }         
     }
 
-    /** Sets the state of the result (true or false) */
-    const getResult = (result) => {
-        setResult(result)
-    }
+    /**
+     * Sets the answer state
+     * @param {string} answer - answer entered from QuizEnter 
+     */
+    const addAnswer = (answer) => { setAnswer(answer); }
 
-    /** Returns the correct functional component */
+
+    const setQuestionIndex = (indexNum) => { setCurrQuestion(indexNum); }
+
+    /**
+     * Sets the state of the result (true or false)
+     * @param {boolean} result - result controlled by child components
+     */
+    const getResult = (result) => { setResult(result) }
+
+    /**
+     * Returns the correct functional component
+     * @param {boolean} result - current state of result
+     */
     function setBody (result) {
         if (!result) {
-            return <QuizEnter QAcopy={QAcopy} fadeIn={fadeIn} getResult={getResult}/>
+            return <QuizEnter QAcopy={QAcopy} fadeIn={fadeIn} getResult={getResult} currQuestion={currQuestion} 
+                        addAnswer={addAnswer} buttonVariants={buttonVariants} />
         } else {
-            return <QuizResult getResult={getResult} />
+            return <QuizResult QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} answer={answer} 
+                        setQuestionIndex={setQuestionIndex}  buttonVariants={buttonVariants} />
         }
     }
 
     return (
         <motion.div className="container" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
             {/* Call to shuffle state */}
-            {shuffle()}
+            {/* {shuffle()} */}
             {/* Header */}
             <motion.div className="quiz-header" variants={fadeIn}>
                 <Link to="/" ><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>

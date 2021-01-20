@@ -115,15 +115,21 @@ body {
 -- QUIZ.JS -- 
 */
 .quiz-header { padding: 75px 0; }
+.quiz-questionBox { padding-top: 75px; }
 .quiz-questionBox p { margin: 0; padding: 0 !important; }
-.quiz-questionBox { padding: 75px 0; }
+
+
+/*
+-- QUIZRESULT.js --
+*/
+.quiz-answerBox { padding-top: 75px; }
 
 /* Query for extra small devices */
 @media only screen and (max-width: 320px) {
   .home-header {padding: 20px 0; }
   .questions-header { padding: 20px 0; }
   .quiz-header { padding: 20px 0; }
-  .questions-form { padding-top: 55px; }
+  .myForm { padding-top: 55px; }
 } 
 
 /* Query for small devices */
