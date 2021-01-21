@@ -34,7 +34,7 @@ const QuizEnter = ({QAcopy, getResult, currQuestion, addAnswer, containerVariant
             </div>
                 {/* ENTER ANSWER */}
             <div>
-                <form className="myForm" onSubmit={handleSubmit}>
+                <form className="myForm" id="quizResult-form" onSubmit={handleSubmit}>
                     <motion.p variants={fadeIn} className="label">Enter the answer</motion.p>
                     <motion.textarea variants={fadeIn} className="textArea areaNormal" id="answer" name="answer" onChange={handleChange}></motion.textarea>
                     <motion.div variants={fadeIn} className="Q-btnContainer">

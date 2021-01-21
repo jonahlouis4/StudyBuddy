@@ -129,7 +129,7 @@ body {
 .quizComplete-header { text-align: center; padding-top: 75px; }
 .quizComplete-header h1 { font-weight: 900; font-size: 50px; }
 .quizComplete-header h2 { font-weight: 500; font-size: 18px; }
-.quizComplete-body { padding-top: 75px; margin: auto; width: 500px; }
+.quizComplete-body { padding-top: 75px; margin: auto; width: 400px; }
 .quizComplete-body div { width: 100%; text-align: center; padding: 0; left: 15px;}
 .quizComplete-body button { 
   width: 100%; 
@@ -150,12 +150,16 @@ body {
 
 /* Query for extra small devices */
 @media only screen and (max-width: 320px) {
+  .home-header h1 { font-size: 40px; }
   .home-header {padding: 20px 0; }
   .questions-header { padding: 20px 0; }
   .quiz-header { padding: 20px 0; }
   .myForm { padding-top: 55px; }
+  #quizResult-form { padding-top: 35px; }
+  .quiz-answerBox { padding-top: 35px; }
   .quizComplete-body { width: 200px; }
   .quizComplete-header { padding-top: 20px; }
+  .quizComplete-header h1 { font-size: 40px; }
 } 
 
 /* Query for small devices */
@@ -163,6 +167,8 @@ body {
   .home-header {padding: 35px 0; }
   .questions-header { padding: 35px 0; }
   .quiz-header { padding: 35px 0; }
+  #quizResult-form { padding-top: 35px; }
+  .quiz-answerBox { padding-top: 35px; }
   .quizComplete-body { width: 250px; }
   .quizComplete-header { padding-top: 20px; }
 }
