@@ -2,13 +2,20 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-/* Variant for main container */
+/** Variant for main container */
 const containerVariants = {
     hidden: { x: -300, opacity: 0,},
-    visible: { x: 0, opacity: 1 },
+    visible: { x: 0, opacity: 1, 
+        transition: { staggerChildren: 0.1 } },
     exit: { x: -300, opacity: 0 }
   };
+/** Fade in variant */
+const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+}
 
+/** Home page of Study Buddy */
 const Home = () => {
     return (
         <motion.div 
@@ -19,14 +26,14 @@ const Home = () => {
         exit="exit">
             {/* Header */}
             <div className="home-header">
-                <h1>study buddy</h1>
-                <h2>, a simple flash card web application made for studying.</h2>
+                <motion.h1 variants={fadeIn} >study buddy</motion.h1>
+                <motion.h2 variants={fadeIn} >, a simple flash card web application made for studying.</motion.h2>
             </div>
             {/* Body */}
             <div className="Home-Content">
-                <Link to="/questions" className="home-links">add a question</Link>
+                <motion.div variants={fadeIn}><Link to="/questions" className="home-links">add a question</Link></motion.div>
                 <br />
-                {/* <Link to="/quiz" className="Home-links">start the quiz</Link> */}
+                <motion.div variants={fadeIn}><Link to="/quiz" className="home-links">start the quiz</Link></motion.div> 
             </div>
         </motion.div>
     )
