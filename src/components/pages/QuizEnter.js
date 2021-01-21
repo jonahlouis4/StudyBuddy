@@ -26,7 +26,7 @@ const QuizEnter = ({QAcopy, getResult, currQuestion, addAnswer, containerVariant
     }
 
     return (
-        <motion.div className="quiz-body" variants={containerVariantsChild} initial="hidden" animate="visible" exit="exit">
+        <motion.div variants={containerVariantsChild} initial="hidden" animate="visible" exit="exit">
             {/* QUESTION */}
             <div className="quiz-questionBox">
                 <motion.p variants={fadeIn}>{currQuestion+1}/{QAcopy.length}</motion.p>

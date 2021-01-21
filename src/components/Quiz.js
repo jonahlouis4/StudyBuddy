@@ -94,6 +94,10 @@ const Quiz = ({mainQA}) => {
      * @param {boolean} result - current state of result
      */
     function setBody (result) {
+        // Shuffle questions 
+        if (currQuestion === 0 && answer.answer === "") { shuffle(); }
+
+        // Determine render result 
         if (result === 0) {
             return <QuizEnter QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} 
                         addAnswer={addAnswer} containerVariantsChild={containerVariantsChild} 
@@ -103,14 +107,12 @@ const Quiz = ({mainQA}) => {
                         setQuestionIndex={setQuestionIndex} containerVariantsChild={containerVariantsChild} 
                         buttonVariants={buttonVariants} fadeIn={fadeIn} />
         } else if (result === 2) {
-            return <QuizComplete />
+            return <QuizComplete containerVariantsChild={containerVariantsChild} fadeIn={fadeIn} />
         } 
     }
 
     return (
         <motion.div className="container" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
-            {/* Call to shuffle state */}
-            
             {/* Header */}
             <motion.div className="quiz-header" variants={fadeIn}>
                 <Link to="/" ><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>
