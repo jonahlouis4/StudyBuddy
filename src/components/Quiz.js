@@ -94,7 +94,6 @@ const Quiz = ({mainQA}) => {
      * @param {boolean} result - current state of result
      */
     function setBody (result) {
-        console.log(answer.answer)
         // Shuffle questions 
         if (currQuestion === 0 && answer.answer === "") { shuffle(); }
 
