@@ -14,8 +14,8 @@ function App() {
   /** useState for App */
   const [QA, setQA] = useState([
     {id: 0, question: "What language is React written in?", answer: "JavaScript"},
-    // {id: 1, question: "What company created React?", answer: "Facebook"},
-    // {id: 2, question: "What does DOM stand for?", answer: "Document Object Model"}
+    {id: 1, question: "What company created React?", answer: "Facebook"},
+    {id: 2, question: "What does DOM stand for?", answer: "Document Object Model"}
   ]);
 
   /**

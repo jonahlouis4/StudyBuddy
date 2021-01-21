@@ -94,6 +94,7 @@ const Quiz = ({mainQA}) => {
      * @param {boolean} result - current state of result
      */
     function setBody (result) {
+        console.log(answer.answer)
         // Shuffle questions 
         if (currQuestion === 0 && answer.answer === "") { shuffle(); }
 
@@ -107,7 +108,8 @@ const Quiz = ({mainQA}) => {
                         setQuestionIndex={setQuestionIndex} containerVariantsChild={containerVariantsChild} 
                         buttonVariants={buttonVariants} fadeIn={fadeIn} />
         } else if (result === 2) {
-            return <QuizComplete containerVariantsChild={containerVariantsChild} fadeIn={fadeIn} />
+            return <QuizComplete containerVariantsChild={containerVariantsChild} fadeIn={fadeIn} addAnswer={addAnswer}
+                        setQuestionIndex={setQuestionIndex} getResult={getResult} />
         } 
     }
 
