@@ -10,7 +10,7 @@
 ## :art: Main colours
 All colours are from [Open Color](https://yeun.github.io/open-color/) and [color hex](https://www.color-hex.com/color-palette/25362).
 
-| Colours	       | Code																		  		                                     |
+| Colours	       | Code		|
 |----------------|-----------------------------------------------------------------------------------|
 | Dark Grey	     |![#23272A](https://via.placeholder.com/15/23272A/000000?text=+) `#23272A`  		     |
 | Dark Grey 2    |![#2C2F33](https://via.placeholder.com/15/2C2F33/000000?text=+) `##2C2F33` 		     |
