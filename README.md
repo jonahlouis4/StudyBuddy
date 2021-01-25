@@ -1,4 +1,4 @@
-<h1 align="center">Study Buddy</h1>
+<h1 align="center"><a href="https://jonahlouis4.github.io/StudyBuddy/">Study Buddy</a></h1>
 <p align="center">A simple <b>flash card</b> web application made with <a href="https://reactjs.org/docs/hooks-overview.html" target="_blank">React</a>.</p>
 
 ## :question: How does it work
