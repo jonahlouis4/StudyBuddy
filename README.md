@@ -28,5 +28,5 @@ All colours are from [Open Color](https://yeun.github.io/open-color/) and [color
 A list of possible future implementation:
 
 - [ ] Database implementation
-- [ ] Ability to log in
+- [ ] Ability to log in and create an account
 - [ ] Ability to add questions within subjects
