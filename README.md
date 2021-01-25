@@ -1,5 +1,5 @@
 <h1 align="center"><a href="https://jonahlouis4.github.io/StudyBuddy/">Study Buddy</a></h1>
-<div align="center"><img src="public/sB_demo.png></div>
+<div align="center"><img src="public/sB_demo.png"></div>  
 <p align="center">A simple <b>flash card</b> web application made with <a href="https://reactjs.org/docs/hooks-overview.html" target="_blank">React</a>.</p>
 
 ## :question: How does it work
