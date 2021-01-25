@@ -27,7 +27,7 @@ const Home = () => {
             {/* Header */}
             <div className="home-header">
                 <motion.h1 variants={fadeIn} >study buddy</motion.h1>
-                <motion.h2 variants={fadeIn} >, a simple flash card web application made for studying.</motion.h2>
+                <motion.h2 variants={fadeIn} >, a simple flash card web application designed for studying.</motion.h2>
             </div>
             {/* Body */}
             <div className="Home-Content">
