@@ -24,7 +24,7 @@ const QuestionsModal = (props) => {
             <Modal.Header >
                 <Modal.Title id="contained-modal-title-vcenter">My Questions</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body className="modal-body">
                 <div> { verifyEmpty() } </div>
             </Modal.Body>
             <Modal.Footer>

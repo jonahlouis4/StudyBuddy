@@ -150,9 +150,18 @@ body {
 
 /* Query for extra small devices */
 @media only screen and (max-width: 320px) {
+  /* universal css */
+  .label { font-size: 16px; }
+  .main-btn { font-size: 14px; }
+  /* home */
   .home-header h1 { font-size: 40px; }
+  .home-header h2 { font-size: 16px;  }
   .home-header {padding: 20px 0; }
+  .home-links { font-size: 16px; }
+  /* questions */
   .questions-header { padding: 20px 0; }
+  .modal-body { font-size: 14px; }
+  /* quiz */
   .quiz-header { padding: 20px 0; }
   .myForm { padding-top: 55px; }
   #quizResult-form { padding-top: 35px; }
@@ -164,8 +173,17 @@ body {
 
 /* Query for small devices */
 @media only screen and (max-width: 489px) and (min-width: 321px) {
+  /* universal css */
+  .label { font-size: 16px; }
+  .main-btn { font-size: 14px; }
+  /* home */
+  .home-header h2 { font-size: 16px;  }
   .home-header {padding: 35px 0; }
+  .home-links { font-size: 16px; }
+  /* questions */
   .questions-header { padding: 35px 0; }
+  .modal-body { font-size: 14px; }
+  /* quiz */
   .quiz-header { padding: 35px 0; }
   #quizResult-form { padding-top: 35px; }
   .quiz-answerBox { padding-top: 35px; }
