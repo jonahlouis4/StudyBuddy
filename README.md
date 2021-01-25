@@ -7,6 +7,8 @@
 2. Return to the homepage by pressing the **arrow icon** :arrow_backward: (top left), and press on **start the quiz** :pencil:.
 3. Enjoy!
 
+:warning: *Note: Question order is randomized*
+
 ## :art: Main colours
 All colours are from [Open Color](https://yeun.github.io/open-color/) and [color hex](https://www.color-hex.com/color-palette/25362).
 
