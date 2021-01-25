@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/StudyBuddy/static/css/main.6822f8b9.chunk.css",
+    "main.js": "/StudyBuddy/static/js/main.5160d9e9.chunk.js",
+    "main.js.map": "/StudyBuddy/static/js/main.5160d9e9.chunk.js.map",
+    "runtime-main.js": "/StudyBuddy/static/js/runtime-main.c06774b1.js",
+    "runtime-main.js.map": "/StudyBuddy/static/js/runtime-main.c06774b1.js.map",
+    "static/css/2.150d169a.chunk.css": "/StudyBuddy/static/css/2.150d169a.chunk.css",
+    "static/js/2.07bfc02d.chunk.js": "/StudyBuddy/static/js/2.07bfc02d.chunk.js",
+    "static/js/2.07bfc02d.chunk.js.map": "/StudyBuddy/static/js/2.07bfc02d.chunk.js.map",
+    "static/js/3.c3c64590.chunk.js": "/StudyBuddy/static/js/3.c3c64590.chunk.js",
+    "static/js/3.c3c64590.chunk.js.map": "/StudyBuddy/static/js/3.c3c64590.chunk.js.map",
+    "index.html": "/StudyBuddy/index.html",
+    "static/css/2.150d169a.chunk.css.map": "/StudyBuddy/static/css/2.150d169a.chunk.css.map",
+    "static/css/main.6822f8b9.chunk.css.map": "/StudyBuddy/static/css/main.6822f8b9.chunk.css.map",
+    "static/js/2.07bfc02d.chunk.js.LICENSE.txt": "/StudyBuddy/static/js/2.07bfc02d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c06774b1.js",
+    "static/css/2.150d169a.chunk.css",
+    "static/js/2.07bfc02d.chunk.js",
+    "static/css/main.6822f8b9.chunk.css",
+    "static/js/main.5160d9e9.chunk.js"
+  ]
+}
