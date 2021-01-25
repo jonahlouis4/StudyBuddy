@@ -9,7 +9,7 @@ import './App.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Router basename="/StudyBuddy/">
       <App />
     </Router>
   </React.StrictMode>,
