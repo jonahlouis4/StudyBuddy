@@ -22,3 +22,11 @@ All colours are from [Open Color](https://yeun.github.io/open-color/) and [color
 |"BLUE 5" 	     |![#339AF0](https://via.placeholder.com/15/339AF0/000000?text=+) `#339AF0`  	    |
 |"BLUE 5" (hover)|![#339bf080](https://via.placeholder.com/15/339bf080/000000?text=+) `#339bf080`   |
 |"GREEN 3"       |![#8ce99a](https://via.placeholder.com/15/8ce99a/000000?text=+) `#8ce99a`  		|	
+
+## :memo: Future releases
+
+A list of possible future implementation:
+
+- [ ] Database implementation
+- [ ] Ability to log in
+- [ ] Ability to add questions within subjects
