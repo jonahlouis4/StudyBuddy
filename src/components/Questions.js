@@ -126,7 +126,7 @@ const Questions = ({addQA, delQA, mainQA}) => {
         return false;
     }
 
-    /* Stores all the questions current active in list */
+    /** Stores all the questions current active in list */
     const questionList = mainQA.map(QA => { return ( 
     <div className="myQuestions" key={QA.id}>
         {QA.question} 
