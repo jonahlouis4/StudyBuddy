@@ -10,6 +10,11 @@
 
 :warning: *Note: Question order is randomized*
 
+## :running: To run locally
+From the extracted zip, and inside the second folder.
+1. Install npm in the project folder `npm i`
+2. Run the app `npm start`
+
 ## :art: Main colours
 All colours are from [Open Color](https://yeun.github.io/open-color/) and [color hex](https://www.color-hex.com/color-palette/25362).
 
