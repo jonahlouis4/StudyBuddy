@@ -1,9 +1,15 @@
 import React, {useState} from 'react'
+// Pages
 import Home from './components/Home'
 import Questions from './components/Questions'
 import Quiz from './components/Quiz'
+// React router
 import { Route, Switch, useLocation } from 'react-router-dom'
+// Framer motion
 import { AnimatePresence } from 'framer-motion'
+// Easybase
+import { EasybaseProvider } from 'easybase-react';
+import ebconfig from './ebconfig';
 
 /**
  * Main function component of Study Buddy
@@ -43,13 +49,15 @@ function App() {
   }
 
   return (
-    <AnimatePresence exitBeforeEnter>
-      <Switch location={location} key={location.key} >
-        <Route exact path="/" component={Home} />
-        <Route path="/questions"><Questions addQA={addQA} delQA={delQA} mainQA={QA} /></Route>
-        <Route path="/quiz"><Quiz mainQA={QA} /></Route>
-      </Switch>
-    </AnimatePresence>
+    <EasybaseProvider ebconfig={ebconfig}>
+      <AnimatePresence exitBeforeEnter>
+        <Switch location={location} key={location.key} >
+          <Route exact path="/" component={Home} />
+          <Route path="/questions"><Questions addQA={addQA} delQA={delQA} mainQA={QA} /></Route>
+          <Route path="/quiz"><Quiz mainQA={QA} /></Route>
+        </Switch>
+      </AnimatePresence>
+    </EasybaseProvider>
   );
 }
 
