@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
-const QuizEnter = ({QAcopy, getResult, currQuestion, addAnswer, containerVariantsChild, fadeIn, buttonVariants}) => {
+const QuizEnter = ({QAcopy, getResult, currQuestion, addAnswer, containerVariantsChild, fadeIn, buttonVariants, frame}) => {
     /** Stores local answer input */
     const [lclAns, setLclAns] = useState({answer: ""});
 

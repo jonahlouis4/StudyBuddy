@@ -5,7 +5,6 @@ import QuestionsModal from './QuestionsModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import { useEasybase } from 'easybase-react';
 
 /** Variant for main container */
 const containerVariants = {
@@ -37,7 +36,7 @@ const fadeIn = {
  * @param {function} delQA - Reference to function that removes a question + answer
  * @param {function} mainQA - Reference to the QA state from App.js 
  */
-const Questions = ({addQA, delQA, mainQA}) => { 
+const Questions = ({addQA, delQA, frame}) => { 
     /** Stores the valid ID for success message */
     const validId = "q-msg-valid";   
     /** Stores the error ID for error message */                   
@@ -56,10 +55,6 @@ const Questions = ({addQA, delQA, mainQA}) => {
     const [msgValidation, setMsgValidation] = useState({success: false, errQuestion: false, errAnswer: false})
     /** Stores the message for below the form */
     const [msg, setMsg] = useState({message:"", id:""})
-    /** Easybase db and useReturn to fetch data when changed */
-    const { db, useReturn } = useEasybase();
-    /** Frame created to fetch data when changed */
-    const { frame } = useReturn(() => db("QUIZ CONTENT").return(), []);
 
     /**
      * Handles every user change

@@ -5,8 +5,6 @@ import Quiz from './components/Quiz'
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { useEasybase } from 'easybase-react';
-import Easybase from "easybasejs";
-import ebconfig from "./ebconfig.js";
 
 /**
  * Main function component of Study Buddy
@@ -16,8 +14,10 @@ function App() {
   const location = useLocation();
   /** State that holds all questions and answers */
   const [QA, setQA] = useState([]);
-  /** Easybase database */
-  const { db, e } = useEasybase();
+  /** Easybase db and useReturn to fetch data when changed */
+  const { db, useReturn } = useEasybase();
+  /** Frame created to fetch data when changed */
+  const { frame } = useReturn(() => db("QUIZ CONTENT").return(), []);
 
   const mounted = async() => {
     const qaData = await db('QUIZ CONTENT').return().all();
@@ -53,8 +53,8 @@ function App() {
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.key} >
           <Route exact path="/" component={Home} />
-          <Route path="/questions"><Questions addQA={addQA} delQA={delQA} mainQA={QA} /></Route>
-          <Route path="/quiz"><Quiz mainQA={QA} /></Route>
+          <Route path="/questions"><Questions addQA={addQA} delQA={delQA} mainQA={QA} frame={frame}/></Route>
+          <Route path="/quiz"><Quiz mainQA={QA} frame={frame}/></Route>
         </Switch>
       </AnimatePresence>
   );

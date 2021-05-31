@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import QuizEnter from './pages/QuizEnter'
 import QuizResult from './pages/QuizResult'
 import QuizComplete from './pages/QuizComplete'
@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { useEasybase } from 'easybase-react';
 
 /** Variant for main container */
 const containerVariants = {
@@ -39,7 +40,7 @@ const buttonVariants = {
  * QuizResult, and QuizComplete.
  * @param {QA} mainQA - reference to the QA state from App.js 
  */
-const Quiz = ({mainQA}) => {
+const Quiz = ({mainQA, frame}) => {
     /** Copy of the main QA state */
     const [QAcopy] = useState([...mainQA]);
     /** Index of current question */
@@ -47,7 +48,7 @@ const Quiz = ({mainQA}) => {
     /** Stores every answer input */
     const [answer, setAnswer] = useState({answer: ""});
     /** Determines the render of the body */
-    const [result, setResult] = useState(0);
+    const [result, setResult] = useState(-1);
 
     /* 
     * This function shuffles the copy version of the main QA state array
@@ -84,29 +85,44 @@ const Quiz = ({mainQA}) => {
     const setQuestionIndex = (indexNum) => { setCurrQuestion(indexNum); }
 
     /**
-     * Sets the state of the result (0 = enter, 1 = result, 2 = complete)
+     * Sets the state of the result (0 = enter, 1 = result, 2 = complete, -1 empty state)
      * @param {boolean} result - result controlled by child components
      */
     const getResult = (result) => { setResult(result) }
+
+    useEffect(() => {
+        // No questions in database
+        if (frame.length === 0) { 
+        setResult(-1); 
+        }
+        // Shuffle questions 
+        else if (currQuestion === 0 && answer.answer === "") { 
+            setResult(0); 
+            shuffle(); 
+        }
+    })
 
     /**
      * Returns the correct functional component
      * @param {boolean} result - current state of result
      */
-    function setBody (result) {
-        // Shuffle questions 
-        if (currQuestion === 0 && answer.answer === "") { shuffle(); }
-
+    function SetBody(props) {
+        console.log(QAcopy)
         // Determine render result 
-        if (result === 0) {
+        if (props.result === -1) {
+            return "No questions currently exists."
+        } 
+        else if (props.result === 0) {
             return <QuizEnter QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} 
                         addAnswer={addAnswer} containerVariantsChild={containerVariantsChild} 
-                        fadeIn={fadeIn} buttonVariants={buttonVariants} />
-        } else if (result === 1) {
+                        fadeIn={fadeIn} buttonVariants={buttonVariants} frame={frame}/>
+        } 
+        else if (props.result === 1) {
             return <QuizResult QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} answer={answer} 
                         setQuestionIndex={setQuestionIndex} containerVariantsChild={containerVariantsChild} 
                         buttonVariants={buttonVariants} fadeIn={fadeIn} />
-        } else if (result === 2) {
+        } 
+        else if (props.result === 2) {
             return <QuizComplete containerVariantsChild={containerVariantsChild} fadeIn={fadeIn} addAnswer={addAnswer}
                         setQuestionIndex={setQuestionIndex} getResult={getResult} />
         } 
@@ -119,7 +135,7 @@ const Quiz = ({mainQA}) => {
                 <Link to="/" ><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>
             </motion.div>
             {/* Call to determine render */}
-            {setBody(result)}
+            <SetBody result={result} />
         </motion.div>
     )
 }
