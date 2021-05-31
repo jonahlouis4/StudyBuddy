@@ -120,11 +120,11 @@ const Quiz = ({mainQA, frame}) => {
         else if (props.result === 1) {
             return <QuizResult QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} answer={answer} 
                         setQuestionIndex={setQuestionIndex} containerVariantsChild={containerVariantsChild} 
-                        buttonVariants={buttonVariants} fadeIn={fadeIn} />
+                        buttonVariants={buttonVariants} fadeIn={fadeIn} frame={frame}/>
         } 
         else if (props.result === 2) {
             return <QuizComplete containerVariantsChild={containerVariantsChild} fadeIn={fadeIn} addAnswer={addAnswer}
-                        setQuestionIndex={setQuestionIndex} getResult={getResult} />
+                        setQuestionIndex={setQuestionIndex} getResult={getResult} frame={frame}/>
         } 
     }
 

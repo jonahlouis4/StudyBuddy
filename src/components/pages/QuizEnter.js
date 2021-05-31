@@ -29,8 +29,8 @@ const QuizEnter = ({QAcopy, getResult, currQuestion, addAnswer, containerVariant
         <motion.div variants={containerVariantsChild} initial="hidden" animate="visible" exit="exit">
             {/* QUESTION */}
             <div className="quiz-questionBox">
-                <motion.p variants={fadeIn}>{currQuestion+1}/{QAcopy.length}</motion.p>
-                <motion.p variants={fadeIn} className="label">{QAcopy[currQuestion].question}</motion.p>
+                <motion.p variants={fadeIn}>{currQuestion+1}/{frame.length}</motion.p>
+                <motion.p variants={fadeIn} className="label">{frame[currQuestion].question}</motion.p>
             </div>
                 {/* ENTER ANSWER */}
             <div>

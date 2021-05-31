@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, containerVariantsChild, fadeIn, buttonVariants}) => {
+const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, containerVariantsChild, fadeIn, buttonVariants, frame}) => {
     
     /** Handle event for next button */
     const handleNext = () => {
@@ -19,14 +19,14 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
         <motion.div className="quiz-body" variants={containerVariantsChild} initial="hidden" animate="visible" exit="exit">
             {/* QUESTION */}
             <div className="quiz-questionBox">
-                <motion.p variants={fadeIn}>{currQuestion+1}/{QAcopy.length}</motion.p>
-                <motion.p variants={fadeIn} className="label">{QAcopy[currQuestion].question}</motion.p>
+                <motion.p variants={fadeIn}>{currQuestion+1}/{frame.length}</motion.p>
+                <motion.p variants={fadeIn} className="label">{frame[currQuestion].question}</motion.p>
             </div>
                 {/* ANSWERS */}
             <div className="quiz-answerBox">
                 {/* The answer */}
                 <motion.p variants={fadeIn} className="label">The answer</motion.p>
-                <motion.p variants={fadeIn} >{ QAcopy[currQuestion].answer }</motion.p>
+                <motion.p variants={fadeIn} >{ frame[currQuestion].answer }</motion.p>
                 {/* 'Your' answer */}
                 <motion.p variants={fadeIn} className="label">Your answer</motion.p>
                 <motion.p variants={fadeIn} >{ answer.answer }</motion.p>
