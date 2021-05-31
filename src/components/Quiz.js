@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import QuizEnter from './pages/QuizEnter'
 import QuizResult from './pages/QuizResult'
 import QuizComplete from './pages/QuizComplete'
+import Error from './pages/Error'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -72,7 +73,7 @@ const Quiz = ({mainQA, frame}) => {
         }
         // Shuffle questions 
         else if (currQuestion === 0 && answer.answer === "") { 
-            setResult(0); 
+            setResult(-1); 
         }
     })
 
@@ -83,7 +84,8 @@ const Quiz = ({mainQA, frame}) => {
     function SetBody(props) {
         // Determine render result 
         if (props.result === -1) {
-            return "No questions currently exists."
+            return <Error containerVariantsChild={containerVariantsChild} 
+                        fadeIn={fadeIn} buttonVariants={buttonVariants} />
         } 
         else if (props.result === 0) {
             return <QuizEnter getResult={getResult} currQuestion={currQuestion} 
