@@ -40,7 +40,7 @@ const buttonVariants = {
  * QuizResult, and QuizComplete.
  * @param {QA} mainQA - reference to the QA state from App.js 
  */
-const Quiz = ({mainQA, frame}) => {
+const Quiz = ({frame}) => {
     /** Index of current question */
     const [currQuestion, setCurrQuestion] = useState(0);
     /** Stores every answer input */
@@ -73,7 +73,7 @@ const Quiz = ({mainQA, frame}) => {
         }
         // Shuffle questions 
         else if (currQuestion === 0 && answer.answer === "") { 
-            setResult(-1); 
+            setResult(0); 
         }
     })
 
