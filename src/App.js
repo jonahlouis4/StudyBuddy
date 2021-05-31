@@ -5,6 +5,8 @@ import Quiz from './components/Quiz'
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { useEasybase } from 'easybase-react';
+import Easybase from "easybasejs";
+import ebconfig from "./ebconfig.js";
 
 /**
  * Main function component of Study Buddy
@@ -15,7 +17,7 @@ function App() {
   /** State that holds all questions and answers */
   const [QA, setQA] = useState([]);
   /** Easybase database */
-  const { db } = useEasybase();
+  const { db, e } = useEasybase();
 
   const mounted = async() => {
     const qaData = await db('QUIZ CONTENT').return().all();
@@ -43,11 +45,8 @@ function App() {
    * Deletes a question + answer attached
    * @param {number} id - id represents the question + answer that will be deleted
    */
-  const delQA = (id) => {
-    let mainQA = QA.filter(currQA => {
-      return currQA.id !== id
-    });
-    setQA([...mainQA])
+  const delQA = async(key) => {
+    await db('QUIZ CONTENT', false).delete().where({ _key: key }).one();
   }
 
   return (
