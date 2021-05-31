@@ -1,15 +1,10 @@
-import React, {useState} from 'react'
-// Pages
+import React, { useState, useEffect } from 'react'
 import Home from './components/Home'
 import Questions from './components/Questions'
 import Quiz from './components/Quiz'
-// React router
 import { Route, Switch, useLocation } from 'react-router-dom'
-// Framer motion
 import { AnimatePresence } from 'framer-motion'
-// Easybase
-import { EasybaseProvider } from 'easybase-react';
-import ebconfig from './ebconfig';
+import { useEasybase } from 'easybase-react';
 
 /**
  * Main function component of Study Buddy
@@ -17,12 +12,19 @@ import ebconfig from './ebconfig';
 function App() {
   /** Used to store the current location of the present page */
   const location = useLocation();
-  /** useState for App */
-  const [QA, setQA] = useState([
-    {id: 0, question: "What language is React written in?", answer: "JavaScript"},
-    {id: 1, question: "What company created React?", answer: "Facebook"},
-    {id: 2, question: "What does DOM stand for?", answer: "Document Object Model"}
-  ]);
+  /** State that holds all questions and answers */
+  const [QA, setQA] = useState([]);
+  /** Easybase database */
+  const { db } = useEasybase();
+
+  const mounted = async() => {
+    const qaData = await db("QUIZ CONTENT").return().all();
+    setQA(qaData);
+  }
+
+  useEffect(() => {
+    mounted();
+  }, [])
 
   /**
    * Adds a question + answer attached
@@ -49,7 +51,6 @@ function App() {
   }
 
   return (
-    <EasybaseProvider ebconfig={ebconfig}>
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.key} >
           <Route exact path="/" component={Home} />
@@ -57,7 +58,6 @@ function App() {
           <Route path="/quiz"><Quiz mainQA={QA} /></Route>
         </Switch>
       </AnimatePresence>
-    </EasybaseProvider>
   );
 }
 
