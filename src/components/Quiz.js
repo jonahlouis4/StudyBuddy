@@ -75,7 +75,7 @@ const Quiz = ({frame}) => {
         else if (currQuestion === 0 && answer.answer === "") { 
             setResult(0); 
         }
-    })
+    }, [frame.length, currQuestion, answer.answer])
 
     /**
      * Returns the correct functional component
