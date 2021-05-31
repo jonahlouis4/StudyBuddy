@@ -133,10 +133,10 @@ const Questions = ({addQA, delQA, mainQA}) => {
 
     /** Stores all the questions current active in list */
     const questionList = frame.map(QA => { return ( 
-    <div className="myQuestions" key={QA.id}>
+    <div className="myQuestions" key={QA._key}>
         {QA.question} 
         <motion.button variants={buttonVariants} whileHover={{ scale: 1.2 }} whileTap="tap" >
-            <FontAwesomeIcon icon={faTrash} size="sm" className="remove-btn" onClick={() => {delQA(QA.id)}}/>
+            <FontAwesomeIcon icon={faTrash} size="sm" className="remove-btn" onClick={() => {delQA(QA._key)}}/>
         </motion.button>
     </div>
     )})
