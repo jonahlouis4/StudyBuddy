@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import { useEasybase } from 'easybase-react';
 
 /** Variant for main container */
 const containerVariants = {
@@ -41,36 +40,12 @@ const buttonVariants = {
  * @param {QA} mainQA - reference to the QA state from App.js 
  */
 const Quiz = ({mainQA, frame}) => {
-    /** Copy of the main QA state */
-    const [QAcopy] = useState([...mainQA]);
     /** Index of current question */
     const [currQuestion, setCurrQuestion] = useState(0);
     /** Stores every answer input */
     const [answer, setAnswer] = useState({answer: ""});
     /** Determines the render of the body */
     const [result, setResult] = useState(-1);
-
-    /* 
-    * This function shuffles the copy version of the main QA state array
-    * Part of the solution is from:
-    * https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-    */
-    const shuffle = () => {
-        var currentIndex = QAcopy.length, temporaryValue, randomIndex;
-
-        // While there remains elements to shuffle...
-        while (0 !== currentIndex) {
-
-            // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
-
-            // And swap it with the current element
-            temporaryValue = QAcopy[currentIndex];
-            QAcopy[currentIndex] = QAcopy[randomIndex];
-            QAcopy[randomIndex] = temporaryValue;
-        }         
-    }
 
     /**
      * Sets the answer state
@@ -98,7 +73,6 @@ const Quiz = ({mainQA, frame}) => {
         // Shuffle questions 
         else if (currQuestion === 0 && answer.answer === "") { 
             setResult(0); 
-            shuffle(); 
         }
     })
 
@@ -107,18 +81,17 @@ const Quiz = ({mainQA, frame}) => {
      * @param {boolean} result - current state of result
      */
     function SetBody(props) {
-        console.log(QAcopy)
         // Determine render result 
         if (props.result === -1) {
             return "No questions currently exists."
         } 
         else if (props.result === 0) {
-            return <QuizEnter QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} 
+            return <QuizEnter getResult={getResult} currQuestion={currQuestion} 
                         addAnswer={addAnswer} containerVariantsChild={containerVariantsChild} 
                         fadeIn={fadeIn} buttonVariants={buttonVariants} frame={frame}/>
         } 
         else if (props.result === 1) {
-            return <QuizResult QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} answer={answer} 
+            return <QuizResult getResult={getResult} currQuestion={currQuestion} answer={answer} 
                         setQuestionIndex={setQuestionIndex} containerVariantsChild={containerVariantsChild} 
                         buttonVariants={buttonVariants} fadeIn={fadeIn} frame={frame}/>
         } 

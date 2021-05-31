@@ -9,7 +9,7 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
         setQuestionIndex(currQuestion + 1);
 
         // IF went through all the questions 
-        if (currQuestion >= QAcopy.length-1) {  getResult(2); return;  }
+        if (currQuestion >= frame.length-1) {  getResult(2); return;  }
 
         // IF NOT Send 0 as result instead of 2
         getResult(0);  
