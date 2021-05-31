@@ -18,7 +18,7 @@ function App() {
   const { db } = useEasybase();
 
   const mounted = async() => {
-    const qaData = await db("QUIZ CONTENT").return().all();
+    const qaData = await db('QUIZ CONTENT').return().all();
     setQA(qaData);
   }
 
@@ -31,12 +31,12 @@ function App() {
    * @param {string} question - question entered by user
    * @param {string} answer - answer to question entered by user
    */
-  const addQA = (question, answer) => {
-    setQA(prevQA => [...prevQA, {
-      id: prevQA.length,
+  const addQA = async(question, answer) => {
+    // Add question + answer to db table "QUIZ CONTENT"
+    await db('QUIZ CONTENT').insert({
       question: question,
       answer: answer
-    }])
+    }).one();
   }
 
   /**

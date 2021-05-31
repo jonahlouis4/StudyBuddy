@@ -5,6 +5,7 @@ import QuestionsModal from './QuestionsModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { useEasybase } from 'easybase-react';
 
 /** Variant for main container */
 const containerVariants = {
@@ -55,6 +56,10 @@ const Questions = ({addQA, delQA, mainQA}) => {
     const [msgValidation, setMsgValidation] = useState({success: false, errQuestion: false, errAnswer: false})
     /** Stores the message for below the form */
     const [msg, setMsg] = useState({message:"", id:""})
+    /** Easybase db and useReturn to fetch data when changed */
+    const { db, useReturn } = useEasybase();
+    /** Frame created to fetch data when changed */
+    const { frame } = useReturn(() => db("QUIZ CONTENT").return(), []);
 
     /**
      * Handles every user change
@@ -127,7 +132,7 @@ const Questions = ({addQA, delQA, mainQA}) => {
     }
 
     /** Stores all the questions current active in list */
-    const questionList = mainQA.map(QA => { return ( 
+    const questionList = frame.map(QA => { return ( 
     <div className="myQuestions" key={QA.id}>
         {QA.question} 
         <motion.button variants={buttonVariants} whileHover={{ scale: 1.2 }} whileTap="tap" >
