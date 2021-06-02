@@ -23,7 +23,7 @@ const Nav = () => {
                 <span 
                 className="navbar-brand mb-0 h1"
                 >
-                    <Link to="/Home" >StudyBuddy</Link>
+                    <Link to="/" >StudyBuddy</Link>
                 </span>
                 <button 
                 onClick={signOutUser} 
