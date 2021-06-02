@@ -62,6 +62,11 @@ const Questions = ({addQA, delQA, frame}) => {
             // Can now copy paste instead of typing evertime 
             addQA(document.getElementById('question').value, document.getElementById('answer').value);  
             setQA({question: "", answer: ""}) 
+
+            // Timeout required for question to be added to serverless database
+            setTimeout(() => {
+                window.location.reload();
+              }, 1000);
         }
         setValidated(true);
     };
