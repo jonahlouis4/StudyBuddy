@@ -52,18 +52,18 @@ const Questions = ({addQA, delQA, frame}) => {
      * @param {event} e - event that user triggerred 
      */
     const handleSubmit = (event) => {
-      const form = event.currentTarget;
+        const form = event.currentTarget;
 
-      event.preventDefault();
+        event.preventDefault();
 
-      if (form.checkValidity() === false) {
-        event.stopPropagation();
-      } else {
-        // Can now copy paste instead of typing evertime 
-        addQA(document.getElementById('question').value, document.getElementById('answer').value);  
-        setQA({question: "", answer: ""}) 
-      }
-      setValidated(true);
+        if (form.checkValidity() === false) {
+            event.stopPropagation();
+        } else {
+            // Can now copy paste instead of typing evertime 
+            addQA(document.getElementById('question').value, document.getElementById('answer').value);  
+            setQA({question: "", answer: ""}) 
+        }
+        setValidated(true);
     };
 
     /**
@@ -73,7 +73,6 @@ const Questions = ({addQA, delQA, frame}) => {
     const handleChange = (e) => { 
         // Add every input value to local useState QA
         setQA((prevQA) => ({...prevQA, [e.target.id]: e.target.value})) 
-        console.log(QA)
     }
 
     /** Stores all the questions current active in list */
