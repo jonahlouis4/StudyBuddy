@@ -8,29 +8,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Form } from 'react-bootstrap'
 
-/** Variant for main container */
-const containerVariants = {
-    visible: { 
-        transition: { 
-            staggerChildren: 0.1 
-        } 
-    },
-  };
-  /** Vairants for buttons */
-  const buttonVariants = {
-    hover: { scale: 1.1 },
-    tap: { scale: 0.9 }
-  }
-  /** Variants for message */ 
-  const msgVariants = { 
-    active: { opacity: 1, x: 10 },
-    inactive: { opacity: 0, x: 0  }
-}
-/** Fade in variant */
-const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 }
-}
+    /** Variant for main container */
+    const containerVariants = {
+        visible: { 
+            transition: { 
+                staggerChildren: 0.1 
+            } 
+        },
+    };
+    /** Vairants for buttons */
+    const buttonVariants = {
+        hover: { scale: 1.1 },
+        tap: { scale: 0.9 }
+    }
+    /** Fade in variant */
+    const fadeIn = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 }
+    }
 
 /**
  * Operates the addition of questions + answers and the ability
