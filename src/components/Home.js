@@ -28,22 +28,36 @@ const Home = () => {
 
     return (
         <motion.div 
-        className="homeC container" 
         variants={containerVariants} 
         initial="hidden" 
         animate="visible"
         exit="exit">
-            {/* Header */}
-            <div className="home-header">
-                <button onClick={signOutUser} >Sign Out</button>
+            <nav 
+            className="navbar navbar-light"
+            >
+                <div 
+                className="container-fluid"
+                >
+                    <span className="navbar-brand mb-0 h1">
+                        StudyBuddy
+                    </span>
+                    <button 
+                    onClick={signOutUser} 
+                    className="btn btn-primary"
+                    >
+                        Sign Out
+                    </button>
+                </div>
+            </nav>
+            <div>
                 <motion.h1 variants={fadeIn} >study buddy</motion.h1>
                 <motion.h2 variants={fadeIn} >, a simple flash card web application designed for studying.</motion.h2>
             </div>
             {/* Body */}
-            <div className="Home-Content">
-                <motion.div variants={fadeIn}><Link to="/questions" className="home-links">add questions</Link></motion.div>
+            <div>
+                <motion.div variants={fadeIn}><Link to="/questions" >add questions</Link></motion.div>
                 <br />
-                <motion.div variants={fadeIn}><Link to="/quiz" className="home-links">start the quiz</Link></motion.div> 
+                <motion.div variants={fadeIn}><Link to="/quiz">start the quiz</Link></motion.div> 
             </div>
         </motion.div>
     )

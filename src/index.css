@@ -9,7 +9,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 /* 
 ------------ 
 UNIVERSAL 
@@ -80,26 +79,7 @@ UNIVERSAL
 HOME.JS 
 ------------ 
 */
-  /* home header */
-  .home-header { padding: 75px 0; }
-    .home-header h1 { font-weight: 900; font-size: 50px; }
-    .home-header h2 { font-size: 18px; font-weight: 500; }
 
-  /* Home links */
-  .home-links {
-    display: block;
-    box-sizing: border-box;
-    width: 80%;
-    font-size: 18px;
-    text-decoration: none;
-    color: white;
-    background-color: #2C2F33;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding: 20px;
-    transition: .5s width, background-color 1s;
-  }
-    .home-links:hover { width: 100%; background-color: #FF6B6B; }
 
 /* 
 ------------ 
