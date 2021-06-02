@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEasybase } from 'easybase-react';
+import Nav from './Nav'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
@@ -18,40 +18,17 @@ const fadeIn = {
 
 /** Home page of Study Buddy */
 const Home = () => {
-    const { isUserSignedIn, signOut } = useEasybase();
-
-    const signOutUser = () => {
-        if (isUserSignedIn()) {
-          signOut();
-        } 
-      }
-
     return (
         <motion.div 
+        className="container"
         variants={containerVariants} 
         initial="hidden" 
         animate="visible"
         exit="exit">
-            <nav 
-            className="navbar navbar-light"
-            >
-                <div 
-                className="container-fluid"
-                >
-                    <span className="navbar-brand mb-0 h1">
-                        StudyBuddy
-                    </span>
-                    <button 
-                    onClick={signOutUser} 
-                    className="btn btn-primary"
-                    >
-                        Sign Out
-                    </button>
-                </div>
-            </nav>
+            {/* Navbar */}
+            <Nav />
             <div>
-                <motion.h1 variants={fadeIn} >study buddy</motion.h1>
-                <motion.h2 variants={fadeIn} >, a simple flash card web application designed for studying.</motion.h2>
+                <motion.h4 variants={fadeIn} >A simple flash card web application designed for studying.</motion.h4>
             </div>
             {/* Body */}
             <div>
