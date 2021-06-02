@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEasybase } from 'easybase-react';
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
@@ -17,6 +18,14 @@ const fadeIn = {
 
 /** Home page of Study Buddy */
 const Home = () => {
+    const { isUserSignedIn, signOut } = useEasybase();
+
+    const signOutUser = () => {
+        if (isUserSignedIn()) {
+          signOut();
+        } 
+      }
+
     return (
         <motion.div 
         className="homeC container" 
@@ -26,6 +35,7 @@ const Home = () => {
         exit="exit">
             {/* Header */}
             <div className="home-header">
+                <button onClick={signOutUser} >Sign Out</button>
                 <motion.h1 variants={fadeIn} >study buddy</motion.h1>
                 <motion.h2 variants={fadeIn} >, a simple flash card web application designed for studying.</motion.h2>
             </div>

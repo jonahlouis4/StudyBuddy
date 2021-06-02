@@ -27,8 +27,12 @@ const LogIn = () => {
     }
 
     return (
-        <div>
-            Hello from log in
+        <div
+        className="container"
+        >
+            <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
+            <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+            <button onClick={onSignInClick}>Sign In</button>
         </div>
     )
 }
