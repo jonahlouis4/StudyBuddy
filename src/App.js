@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Home from './components/Home'
+import LogIn from './components/LogIn'
 import Questions from './components/Questions'
 import Quiz from './components/Quiz'
 import { Route, Switch, useLocation } from 'react-router-dom'
@@ -18,7 +19,18 @@ function App() {
   const { db, useReturn } = useEasybase();
   /** Frame created to fetch data when changed */
   const { frame } = useReturn(() => db("QUIZ CONTENT").return(), []);
+  /** User authentication */
+  const { isUserSignedIn } = useEasybase();
 
+  const SetContent = () => {
+    if (!isUserSignedIn()) {
+      return <LogIn />
+    } else {
+      return <Home />
+    }
+  }
+
+  /** Adds all questions from database to state */
   const mounted = async() => {
     const qaData = await db('QUIZ CONTENT').return().all();
     setQA(qaData);
@@ -52,8 +64,10 @@ function App() {
   return (
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.key} >
-          <Route exact path="/" component={Home} />
-          <Route path="/questions"><Questions addQA={addQA} delQA={delQA} mainQA={QA} frame={frame}/></Route>
+          <Route exact path="/" component={SetContent} />
+          <Route path="/questions">
+            <Questions addQA={addQA} delQA={delQA} mainQA={QA} frame={frame}/>
+          </Route>
           <Route path="/quiz"><Quiz mainQA={QA} frame={frame}/></Route>
         </Switch>
       </AnimatePresence>
