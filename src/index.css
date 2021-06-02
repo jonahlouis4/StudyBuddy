@@ -84,6 +84,7 @@ HOME.JS
   }
     .home--links:hover {
       color: white !important;
+      text-decoration: none;
     }
 
 /* 
