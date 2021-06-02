@@ -20,21 +20,45 @@ const fadeIn = {
 const Home = () => {
     return (
         <motion.div 
-        className="container"
         variants={containerVariants} 
         initial="hidden" 
         animate="visible"
         exit="exit">
             {/* Navbar */}
             <Nav />
-            <div>
-                <motion.h4 variants={fadeIn} >A simple flash card web application designed for studying.</motion.h4>
-            </div>
-            {/* Body */}
-            <div>
-                <motion.div variants={fadeIn}><Link to="/questions" >add questions</Link></motion.div>
-                <br />
-                <motion.div variants={fadeIn}><Link to="/quiz">start the quiz</Link></motion.div> 
+            {/* Home Content */}
+            <div
+            className="container py-5"
+            >
+                <motion.h2 
+                variants={fadeIn}
+                style={{textAlign:'center'}}
+                >
+                    Select one of the following options
+                </motion.h2>
+                <motion.div 
+                className="pt-5"
+                variants={fadeIn}
+                >
+                    <div 
+                    className="d-grid"
+                    >
+                        <button 
+                        className="btn btn-lg btn-primary col-12" 
+                        type="button"
+                        variants={fadeIn}
+                        >
+                            <Link to="/questions" >Add Questions</Link>
+                        </button>
+                        <button 
+                        className="btn btn-lg btn-primary col-12 mt-5" 
+                        type="button"
+                        variants={fadeIn}
+                        >
+                            <Link to="/quiz" >Start Quiz</Link>
+                        </button>
+                    </div>
+                </motion.div>
             </div>
         </motion.div>
     )
