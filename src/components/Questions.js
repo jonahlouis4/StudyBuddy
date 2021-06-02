@@ -5,7 +5,6 @@ import QuestionsModal from './QuestionsModal'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Form } from 'react-bootstrap'
 
@@ -41,25 +40,11 @@ const fadeIn = {
  * @param {function} mainQA - Reference to the QA state from App.js 
  */
 const Questions = ({addQA, delQA, frame}) => { 
-    /** Stores the valid ID for success message */
-    const validId = "q-msg-valid";   
-    /** Stores the error ID for error message */                   
-    const errId = "q-msg-error"; 
-    /** Stores the normal class colour for text area */
-    const tNormClass = "textArea areaNormal";
-    /** Stores the error class colour for text area */
-    const tErrClass = "textArea areaError";
     /** Local useStates for questions and answers */
     const [QA, setQA] = useState({question:"", answer:""})
-    /** Local useStates for TextArea class (Sets the colour) */
-    const [textAreaClass, setTextAreaClass] = useState({questionClass:tNormClass, answerClass: tNormClass})
     /** Sets value to show or hide modal */
     const [modalShow, setModalShow] = React.useState(false);
-    /** Determines if message is shown or not */
-    const [msgValidation, setMsgValidation] = useState({success: false, errQuestion: false, errAnswer: false})
-    /** Stores the message for below the form */
-    const [msg, setMsg] = useState({message:"", id:""})
-
+    /** State of form - valid or invalid */
     const [validated, setValidated] = useState(false);
 
     /**
@@ -68,14 +53,17 @@ const Questions = ({addQA, delQA, frame}) => {
      */
     const handleSubmit = (event) => {
       const form = event.currentTarget;
+
+      event.preventDefault();
+
       if (form.checkValidity() === false) {
-        event.preventDefault();
         event.stopPropagation();
+      } else {
+        // Can now copy paste instead of typing evertime 
+        addQA(document.getElementById('question').value, document.getElementById('answer').value);  
+        setQA({question: "", answer: ""}) 
       }
-  
       setValidated(true);
-      addQA(QA.question, QA.answer);  
-      setQA({question: "", answer: ""}) 
     };
 
     /**
@@ -83,10 +71,9 @@ const Questions = ({addQA, delQA, frame}) => {
      * @param {event} e - event that user triggerred
      */
     const handleChange = (e) => { 
-        // Hide all messages 
-        setMsgValidation({success: false, errQuestion: false, errAnswer: false})
         // Add every input value to local useState QA
         setQA((prevQA) => ({...prevQA, [e.target.id]: e.target.value})) 
+        console.log(QA)
     }
 
     /** Stores all the questions current active in list */
@@ -153,22 +140,22 @@ const Questions = ({addQA, delQA, frame}) => {
                 onSubmit={handleSubmit}
                 >
                     <Form.Group
-                    controlId="val-question"
+                    controlId="question"
                     xxl="12"
                     >
-                        
                         <Form.Label>Enter a question</Form.Label>
                         <Form.Control
                             required
                             type="text"
                             placeholder="Type your question"
+                            onChange={handleChange}
                         />
                         <Form.Control.Feedback type="invalid">
                             Please enter a question.
                         </Form.Control.Feedback>
                     </Form.Group>     
                     <Form.Group
-                    controlId="val-answer"
+                    controlId="answer"
                     xxl="12"
                     >
                         <Form.Label>Enter the answer</Form.Label>
@@ -176,11 +163,18 @@ const Questions = ({addQA, delQA, frame}) => {
                             required
                             type="text"
                             placeholder="Type your answer"
+                            onChange={handleChange}
                         />
                         <Form.Control.Feedback type="invalid">
                             Please enter an answer.
                         </Form.Control.Feedback>
                     </Form.Group>
+                    <button 
+                    className="btn btn-primary"
+                    type="submit"
+                    >
+                        Add
+                    </button>
                 </Form>
             </div>
             <Footer />
