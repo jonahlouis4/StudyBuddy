@@ -48,14 +48,14 @@ const Home = () => {
                         type="button"
                         variants={fadeIn}
                         >
-                            <Link to="/questions" >Add Questions</Link>
+                            <Link to="/questions" className="home--links">Add Questions</Link>
                         </button>
                         <button 
                         className="btn btn-lg btn-primary col-12 mt-5" 
                         type="button"
                         variants={fadeIn}
                         >
-                            <Link to="/quiz" >Start Quiz</Link>
+                            <Link to="/quiz" className="home--links">Start Quiz</Link>
                         </button>
                     </div>
                 </motion.div>
