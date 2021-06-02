@@ -44,22 +44,35 @@ const Home = () => {
                     <div 
                     className="d-grid"
                     >
-                        <motion.button 
-                        className="btn btn-lg btn-primary col-12" 
-                        type="button"
+                        <motion.div
                         variants={fadeIn}
-                        whileHover={{ scale: 1.1 }}
                         >
-                            <Link to="/questions" className="home--links">Add Questions</Link>
-                        </motion.button>
-                        <motion.button 
-                        className="btn btn-lg btn-primary col-12 mt-5" 
-                        type="button"
+                            <Link to="/questions" className="home--links">
+                                <motion.button 
+                                className="btn btn-lg btn-primary col-12" 
+                                type="button"
+                                variants={fadeIn}
+                                whileHover={{ scale: 1.1 }}
+                                >
+                                    Add Questions
+                                </motion.button>
+                            </Link>
+                        </motion.div>
+                        <motion.div
                         variants={fadeIn}
-                        whileHover={{ scale: 1.1 }}
+                        className="mt-5"
                         >
-                            <Link to="/quiz" className="home--links">Start Quiz</Link>
-                        </motion.button>
+                            <Link to="/quiz" className="home--links">
+                                <motion.button 
+                                className="btn btn-lg btn-primary col-12" 
+                                type="button"
+                                variants={fadeIn}
+                                whileHover={{ scale: 1.1 }}
+                                >
+                                    Start Quiz
+                                </motion.button>
+                            </Link>
+                        </motion.div>
                     </div>
                 </motion.div>
             </div>
