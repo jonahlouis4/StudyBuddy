@@ -20,7 +20,7 @@ const fadeIn = {
 const Home = () => {
     return (
         <motion.div 
-        className="home--wrapper"
+        className="home--wrapper bg--container--1"
         variants={containerVariants} 
         initial="hidden" 
         animate="visible"
@@ -44,20 +44,22 @@ const Home = () => {
                     <div 
                     className="d-grid"
                     >
-                        <button 
+                        <motion.button 
                         className="btn btn-lg btn-primary col-12" 
                         type="button"
                         variants={fadeIn}
+                        whileHover={{ scale: 1.1 }}
                         >
                             <Link to="/questions" className="home--links">Add Questions</Link>
-                        </button>
-                        <button 
+                        </motion.button>
+                        <motion.button 
                         className="btn btn-lg btn-primary col-12 mt-5" 
                         type="button"
                         variants={fadeIn}
+                        whileHover={{ scale: 1.1 }}
                         >
                             <Link to="/quiz" className="home--links">Start Quiz</Link>
-                        </button>
+                        </motion.button>
                     </div>
                 </motion.div>
             </div>
