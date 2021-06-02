@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { Form } from 'react-bootstrap'
 
 /** Variant for main container */
 const containerVariants = {
@@ -59,6 +60,24 @@ const Questions = ({addQA, delQA, frame}) => {
     /** Stores the message for below the form */
     const [msg, setMsg] = useState({message:"", id:""})
 
+    const [validated, setValidated] = useState(false);
+
+    /**
+     * Handles Submit button
+     * @param {event} e - event that user triggerred 
+     */
+    const handleSubmit = (event) => {
+      const form = event.currentTarget;
+      if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+  
+      setValidated(true);
+      addQA(QA.question, QA.answer);  
+      setQA({question: "", answer: ""}) 
+    };
+
     /**
      * Handles every user change
      * @param {event} e - event that user triggerred
@@ -68,65 +87,6 @@ const Questions = ({addQA, delQA, frame}) => {
         setMsgValidation({success: false, errQuestion: false, errAnswer: false})
         // Add every input value to local useState QA
         setQA((prevQA) => ({...prevQA, [e.target.id]: e.target.value})) 
-    }
-
-    /**
-     * Handles Submit button
-     * @param {event} e - event that user triggerred 
-     */
-    const handleSubmit = (e) => { 
-        const isValid = validate();
-        e.preventDefault();
-        e.target.reset();
-
-        // Check if form is valid 
-        if (isValid) {       
-            setMsgValidation(prevMsg => { return {...prevMsg, success: true }}); 
-            setMsg({message: "question has been added!", id:validId});        
-            addQA(QA.question, QA.answer);               
-        } else {
-            setMsgValidation(prevMsg => { return {...prevMsg, success: false } }) 
-        }
-        setQA({question: "", answer: ""}) 
-    }
-
-    /** Verifies if fields are empty */
-    const validate = () => {
-        // false if user did not fill fields 
-        var valid = true;
-
-        // Both questions are empty 
-        if (QA.question === "" && QA.answer === "") {
-            setMsg({message: "*please enter a question and a answer", id:errId})
-            setTextAreaClass({questionClass: tErrClass, answerClass: tErrClass });
-            setMsgValidation(prevMsg => { return {...prevMsg, errQuestion: true, errAnswer: true } })
-            return valid = false; 
-        }
-        // Question is empty only 
-        if (QA.question === "") { 
-            setMsg({message: "*please enter a question", id:errId})
-            setTextAreaClass(prevClass => { return {...prevClass, questionClass: tErrClass }})
-            setMsgValidation(prevMsg => { return {...prevMsg, errQuestion: true } })
-            valid = false; 
-        } else { 
-            setTextAreaClass(prevClass => { return {...prevClass, questionClass: tNormClass }}) 
-        }
-        // Answer is empty only 
-        if (QA.answer === "") {
-            setMsg({message: "*please enter a answer", id:errId})
-            setTextAreaClass(prevClass => { return {...prevClass, answerClass: tErrClass }}); 
-            setMsgValidation(prevMsg => { return {...prevMsg, errAnswer: true } })
-            valid = false; 
-        } else { 
-            setTextAreaClass(prevClass => { return {...prevClass, answerClass: tNormClass }}); 
-        }
-        return valid;
-    }
-
-    /** Returns true if message is active, false if no message is active */
-    function messageActive() {
-        if (msgValidation.success || msgValidation.errQuestion || msgValidation.errAnswer) { return true; } 
-        return false;
     }
 
     /** Stores all the questions current active in list */
@@ -186,23 +146,42 @@ const Questions = ({addQA, delQA, frame}) => {
                         </div>
                     </div>
                 </motion.div>
-                {/* Form */}
-                <form className="myForm" onSubmit={(handleSubmit)}>
-                    {/* Question input */}
-                    <motion.p variants={fadeIn} className="label">enter a question</motion.p>
-                    <motion.textarea variants={fadeIn} className={textAreaClass.questionClass} id="question" name="question" onChange={handleChange} ></motion.textarea>
-                    {/* Answer input */}
-                    <motion.p variants={fadeIn} className="label" id="qLabelAnswer">enter the answer</motion.p>
-                    <motion.textarea variants={fadeIn} className={textAreaClass.answerClass} id="answer" name="answer" onChange={handleChange} ></motion.textarea>
-                    {/* Submit button */}
-                    <motion.div variants={fadeIn} className="Q-btnContainer">
-                        <motion.input variants={buttonVariants} whileHover="hover" whileTap="tap" type="submit" value="add" className="main-btn"/>
-                    </motion.div>
-                </form>
-                {/* Form messages */}
-                <div className="q-message">
-                    <motion.p variants={msgVariants} animate={messageActive() ? "active" : "inactive"} id={msg.id}>{msg.message}</motion.p>
-                </div>
+                <Form
+                className="mt-5"
+                noValidate
+                validated={validated}
+                onSubmit={handleSubmit}
+                >
+                    <Form.Group
+                    controlId="val-question"
+                    xxl="12"
+                    >
+                        
+                        <Form.Label>Enter a question</Form.Label>
+                        <Form.Control
+                            required
+                            type="text"
+                            placeholder="Type your question"
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            Please enter a question.
+                        </Form.Control.Feedback>
+                    </Form.Group>     
+                    <Form.Group
+                    controlId="val-answer"
+                    xxl="12"
+                    >
+                        <Form.Label>Enter the answer</Form.Label>
+                        <Form.Control
+                            required
+                            type="text"
+                            placeholder="Type your answer"
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            Please enter an answer.
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                </Form>
             </div>
             <Footer />
         </motion.div>
