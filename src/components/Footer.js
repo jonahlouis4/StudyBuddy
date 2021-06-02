@@ -25,14 +25,14 @@ const Footer = () => {
                         <p
                         className="text-secondary"
                         >
-                           Made with { heartIcon } by <a href="https://www.jonahlouis.ca/" target="_blank">Jonah Louis</a> 
+                           Made with { heartIcon } by <a href="https://www.jonahlouis.ca/" target="_blank" rel="noreferrer">Jonah Louis</a> 
                         </p> 
                     </div>
                     <div
                     className="col-4 text-right"
                     >
                         {/*  */}
-                        <a href="https://github.com/jonahlouis4/StudyBuddy" target="_blank">
+                        <a href="https://github.com/jonahlouis4/StudyBuddy" target="_blank" rel="noreferrer">
                             { githubIcon }
                         </a>
                     </div>
