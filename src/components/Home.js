@@ -23,14 +23,12 @@ const fadeIn = {
 const Home = () => {
     return (
         <motion.div 
-        className="home--wrapper bg--container--1"
+        className="main--wrapper bg--container--1"
         variants={containerVariants} 
         initial="hidden" 
         animate="visible"
         exit="exit">
-            {/* Navbar */}
             <Nav />
-            {/* Home Content */}
             <div
             className="container py-5"
             >

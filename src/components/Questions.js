@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import Nav from './Nav'
+import Footer from './Footer'
+import QuestionsModal from './QuestionsModal'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import QuestionsModal from './QuestionsModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
@@ -137,12 +139,14 @@ const Questions = ({addQA, delQA, frame}) => {
     )})
 
     return (
-        <motion.div className="container"
+        <motion.div 
+        className="main--wrapper"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         exit="exit"
         >
+            <Nav />
             {/* Modal */}
             <QuestionsModal show={modalShow} onHide={() => setModalShow(false)} questionlist={questionList} />
             {/* Header */}
@@ -170,6 +174,7 @@ const Questions = ({addQA, delQA, frame}) => {
             <div className="q-message">
                 <motion.p variants={msgVariants} animate={messageActive() ? "active" : "inactive"} id={msg.id}>{msg.message}</motion.p>
             </div>
+            <Footer />
         </motion.div>
     )
 }
