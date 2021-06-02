@@ -20,6 +20,7 @@ const fadeIn = {
 const Home = () => {
     return (
         <motion.div 
+        className="home--wrapper"
         variants={containerVariants} 
         initial="hidden" 
         animate="visible"

@@ -79,6 +79,10 @@ UNIVERSAL
 HOME.JS 
 ------------ 
 */
+  .home--wrapper {
+    background: url("./images/bg--1.svg");
+    height: 100vh;
+  }
   .home--links {
     color: white !important;
   }
