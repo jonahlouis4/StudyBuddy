@@ -5,7 +5,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 const Footer = () => {
     const heartIcon = <FontAwesomeIcon icon={faHeart} className="text-danger"/>
-    const githubIcon = <FontAwesomeIcon icon={faGithub} className="text-primary"/>
+    const githubIcon = <FontAwesomeIcon icon={faGithub} className="text-secondary" style={{fontSize:'20px'}}/>
     const myFooter = { marginTop: 'auto' }
 
     return (
