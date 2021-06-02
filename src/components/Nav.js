@@ -1,15 +1,18 @@
 import React from 'react'
 import { useEasybase } from 'easybase-react';
-import { Link } from 'react-router-dom'
+import { useHistory , Link } from 'react-router-dom'
 
 const Nav = () => {
     /** User authentication - easybase */
     const { isUserSignedIn, signOut } = useEasybase();
+    /** Used to redirect user to '/' */
+    const history = useHistory();
 
     /** Sign out user */
     const signOutUser = () => {
         if (isUserSignedIn()) {
           signOut();
+          history.push("/");
         } 
       }
 

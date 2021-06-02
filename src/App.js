@@ -22,7 +22,7 @@ function App() {
   /** User authentication */
   const { isUserSignedIn } = useEasybase();
 
-  const SetContent = () => {
+  const SetHome = () => {
     if (!isUserSignedIn()) {
       return <LogIn />
     } else {
@@ -64,7 +64,7 @@ function App() {
   return (
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.key} >
-          <Route exact path="/" component={SetContent} />
+          <Route exact path="/" component={SetHome} />
           <Route path="/questions">
             <Questions addQA={addQA} delQA={delQA} mainQA={QA} frame={frame}/>
           </Route>
