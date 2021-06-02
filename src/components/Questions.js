@@ -8,24 +8,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Form } from 'react-bootstrap'
 
-    /** Variant for main container */
-    const containerVariants = {
-        visible: { 
-            transition: { 
-                staggerChildren: 0.1 
-            } 
-        },
-    };
-    /** Vairants for buttons */
-    const buttonVariants = {
-        hover: { scale: 1.1 },
-        tap: { scale: 0.9 }
-    }
-    /** Fade in variant */
-    const fadeIn = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 }
-    }
+/** Variant for main container */
+const containerVariants = {
+    visible: { 
+        transition: { 
+            staggerChildren: 0.1 
+        } 
+    },
+};
+/** Fade in variant */
+const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+}
 
 /**
  * Operates the addition of questions + answers and the ability
@@ -77,9 +72,12 @@ const Questions = ({addQA, delQA, frame}) => {
 
     /** Stores all the questions current active in list */
     const questionList = frame.map(QA => { return ( 
-    <div className="myQuestions" key={QA._key}>
+    <div 
+    className="myQuestions" 
+    key={QA._key}
+    >
         {QA.question} 
-        <motion.button variants={buttonVariants} whileHover={{ scale: 1.2 }} whileTap="tap" >
+        <motion.button>
             <FontAwesomeIcon icon={faTrash} size="sm" className="remove-btn" onClick={() => {delQA(QA._key)}}/>
         </motion.button>
     </div>
@@ -122,9 +120,6 @@ const Questions = ({addQA, delQA, frame}) => {
                         className="col-6 text-right"
                         >
                             <motion.button 
-                            variants={buttonVariants} 
-                            whileHover="hover" 
-                            whileTap="tap" 
                             onClick={() => setModalShow(true)} 
                             className="btn btn-primary"
                             >view questions
@@ -132,7 +127,10 @@ const Questions = ({addQA, delQA, frame}) => {
                         </div>
                     </div>
                 </motion.div>
-                <Form
+                <motion.div
+                variants={fadeIn}
+                >
+                                    <Form
                 className="mt-5"
                 noValidate
                 validated={validated}
@@ -175,6 +173,7 @@ const Questions = ({addQA, delQA, frame}) => {
                         Add
                     </button>
                 </Form>
+                </motion.div>
             </div>
             <Footer />
         </motion.div>
