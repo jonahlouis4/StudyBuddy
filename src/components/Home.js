@@ -6,11 +6,13 @@ import { motion } from 'framer-motion'
 
 /** Variant for main container */
 const containerVariants = {
-    hidden: { x: -300, opacity: 0,},
-    visible: { x: 0, opacity: 1, 
-        transition: { staggerChildren: 0.1 } },
-    exit: { x: -300, opacity: 0 }
+    visible: { 
+        transition: { 
+            staggerChildren: 0.1 
+        } 
+    },
   };
+
 /** Fade in variant */
 const fadeIn = {
     hidden: { opacity: 0 },
@@ -58,7 +60,6 @@ const Home = () => {
                                 <motion.button 
                                 className="btn btn-lg btn-primary col-6" 
                                 type="button"
-                                variants={fadeIn}
                                 whileHover={{ scale: 1.1 }}
                                 >
                                     Add Questions
@@ -73,7 +74,6 @@ const Home = () => {
                                 <motion.button 
                                 className="btn btn-lg btn-primary col-6" 
                                 type="button"
-                                variants={fadeIn}
                                 whileHover={{ scale: 1.1 }}
                                 >
                                     Start Quiz
