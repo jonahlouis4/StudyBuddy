@@ -45,7 +45,7 @@ const QuestionsModal = (props) => {
     /** Returns list if questions exists or a message if it's empty */
     const verifyEmpty = () => {
         if (props.frame.length === 0) { 
-            return <p>No questions exists.</p> 
+            return "No questions exists."
         } 
         else { 
             return QuestionList 
