@@ -116,11 +116,14 @@ const Quiz = ({frame}) => {
             variants={containerVariants} 
             initial="hidden" 
             animate="visible" 
-            exit="exit">
-                <motion.div className="quiz-header" variants={fadeIn}>
-                    <Link to="/" ><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>
-                </motion.div>
-                {/* Call to determine render */}
+            exit="exit"
+            >
+                <ol 
+                className="breadcrumb pl-0 mt-3"
+                >
+                    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                    <li className="breadcrumb-item active" aria-current="page">Quiz</li>
+                </ol>
                 <SetBody result={result} />
             </motion.div>
             <Footer />
