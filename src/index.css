@@ -105,6 +105,7 @@ QUIZCOMPLETE.JS
   /* quiz */
   .quizenter--container-2 { padding-bottom: 3.5rem; }
   .quizresult--container-1 { padding-bottom: 4rem; }
+  .quizcomplete--wrapper { padding-bottom: 8rem; }
 } 
 
 /* Query for small devices */

@@ -28,6 +28,7 @@ const QuizComplete = ({ addAnswer, setQuestionIndex, getResult, containerVariant
 
     return (
         <motion.div 
+        className="quizcomplete--wrapper"
         variants={containerVariantsChild}
         initial="hidden" 
         animate="visible" 
@@ -51,7 +52,6 @@ const QuizComplete = ({ addAnswer, setQuestionIndex, getResult, containerVariant
                     <button onClick={exit} className="btn btn-lg btn-danger">Leave</button>
                 </div>
             </motion.div>
-
         </motion.div>
     )
 }
