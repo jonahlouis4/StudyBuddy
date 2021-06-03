@@ -22,7 +22,7 @@ npm start
 ```
 
 ## :art: Main colours
-All colours are from [Bootswatch](https://bootswatch.com/litera/).
+All colours are from [Bootswatch: Litera](https://bootswatch.com/litera/).
 
 ## :memo: Future releases
 
