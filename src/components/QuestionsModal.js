@@ -2,13 +2,6 @@ import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import { motion } from 'framer-motion'
-
-/** Variants for close button */
-const buttonVariants = {
-    hover: { scale: 1.1 },
-    tap: { scale: 0.9 }
-  }
 
   /**
    * Modal for viewing and deleting questions + answers that exists
@@ -22,19 +15,28 @@ const QuestionsModal = (props) => {
         key={QA._key}
         >
             <div
-            className="row"
+            className="row border-bottom border-secondary py-4"
             >
                 <div
-                className="col-10"
+                className="col-10 "
                 >
-                    {QA.question} 
+                    Q: {QA.question} 
+                    <br />
+                    A: {QA.answer}
                 </div>
                 <div
                 className="col-2"
                 >
-                    <motion.button>
-                        <FontAwesomeIcon icon={faTrash} size="sm" className="remove-btn" onClick={() => {props.delQA(QA._key)}}/>
-                    </motion.button>
+                    <button 
+                    className="bg-white"
+                    >
+                        <FontAwesomeIcon 
+                        icon={faTrash} 
+                        size="sm" 
+                        onClick={() => {props.delQA(QA._key)}}
+                        className="text-danger"
+                        />
+                    </button>
                 </div>
             </div>
         </div>
@@ -73,15 +75,12 @@ const QuestionsModal = (props) => {
                 </>
             </Modal.Body>
             <Modal.Footer>
-                <motion.button 
-                variants={buttonVariants} 
-                whileHover="hover" 
-                whileTap="tap" 
+                <button 
                 onClick={props.onHide} 
-                className="main-btn"
+                className="btn btn-primary"
                 >
                     Close
-                </motion.button>
+                </button>
             </Modal.Footer>
         </Modal>  
     )
