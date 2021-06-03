@@ -30,7 +30,7 @@ const Home = () => {
         exit="exit">
             <Nav />
             <div
-            className="container py-5"
+            className="container home--container-1 pt-5"
             >
                 <motion.h2
                 className="text-primary text-center"
