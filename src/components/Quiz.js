@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import Nav from './Nav'
+import Footer from './Footer'
 import QuizEnter from './pages/QuizEnter'
 import QuizResult from './pages/QuizResult'
 import QuizComplete from './pages/QuizComplete'
@@ -10,10 +12,11 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 /** Variant for main container */
 const containerVariants = {
-    hidden: { x: 300, opacity: 0,},
-    visible: { x: 0, opacity: 1, 
-        transition: { staggerChildren: 0.1 } },
-    exit: { x: 300, opacity: 0 }
+    visible: { 
+        transition: { 
+            staggerChildren: 0.1 
+        } 
+    },
 };
 /** Variant for child component containers */
 const containerVariantsChild = {
@@ -104,14 +107,24 @@ const Quiz = ({frame}) => {
     }
 
     return (
-        <motion.div className="container" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
-            {/* Header */}
-            <motion.div className="quiz-header" variants={fadeIn}>
-                <Link to="/" ><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>
+        <div
+        className="main--wrapper"
+        >
+            <Nav />
+            <motion.div 
+            className="container" 
+            variants={containerVariants} 
+            initial="hidden" 
+            animate="visible" 
+            exit="exit">
+                <motion.div className="quiz-header" variants={fadeIn}>
+                    <Link to="/" ><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>
+                </motion.div>
+                {/* Call to determine render */}
+                <SetBody result={result} />
             </motion.div>
-            {/* Call to determine render */}
-            <SetBody result={result} />
-        </motion.div>
+            <Footer />
+        </div>
     )
 }
 
