@@ -51,16 +51,15 @@ const QuizEnter = ({ getResult, currQuestion, addAnswer, containerVariantsChild,
                 </motion.h6>
             </div>
                 {/* ENTER ANSWER */}
-            <div
+            <motion.div
             className="quizenter--container-2 pt-5"
+            variants={fadeIn} 
             >
                 <Form
                 onSubmit={handleSubmit}
                 >
                   <Form.Group>
-                    <Form.Label
-                        variants={fadeIn} 
-                        >
+                    <Form.Label>
                             Enter the answer
                         </Form.Label>
                         <Form.Control 
@@ -76,8 +75,6 @@ const QuizEnter = ({ getResult, currQuestion, addAnswer, containerVariantsChild,
                             <motion.input
                             variants={buttonVariants} 
                             animate ={lclAns.answer ? "active" : "inactive" }
-                            whileHover="hover" 
-                            whileTap="tap" 
                             type="submit" 
                             value="Submit" 
                             className="btn btn-primary"
@@ -85,7 +82,7 @@ const QuizEnter = ({ getResult, currQuestion, addAnswer, containerVariantsChild,
                         </motion.div>
                   </Form.Group>
                 </Form>
-            </div>
+            </motion.div>
         </motion.div>
     )
 }

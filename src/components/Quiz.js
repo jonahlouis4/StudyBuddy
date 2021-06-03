@@ -32,8 +32,6 @@ const fadeIn = {
 const buttonVariants = {
     active: { opacity: 1, x: 0 },
     inactive: { opacity: 0, x: -10  },
-    hover: { scale: 1.1 },
-    tap: { scale: 0.9 }
 }
 
 /**
