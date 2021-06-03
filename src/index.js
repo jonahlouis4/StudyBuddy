@@ -6,12 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss';
+// Easybase
+import { EasybaseProvider } from 'easybase-react';
+import ebconfig from './ebconfig';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename="/StudyBuddy/">
-      <App />
-    </Router>
+    <EasybaseProvider ebconfig={ebconfig}>
+      <Router basename="/StudyBuddy/">
+        <App />
+      </Router>
+    </EasybaseProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

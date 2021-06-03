@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, containerVariantsChild, fadeIn, buttonVariants}) => {
+const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, containerVariantsChild, fadeIn, buttonVariants, frame}) => {
     
     /** Handle event for next button */
     const handleNext = () => {
@@ -9,31 +9,58 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
         setQuestionIndex(currQuestion + 1);
 
         // IF went through all the questions 
-        if (currQuestion >= QAcopy.length-1) {  getResult(2); return;  }
+        if (currQuestion >= frame.length-1) {  getResult(2); return;  }
 
         // IF NOT Send 0 as result instead of 2
         getResult(0);  
     }
 
     return (
-        <motion.div className="quiz-body" variants={containerVariantsChild} initial="hidden" animate="visible" exit="exit">
+        <motion.div 
+        className="" 
+        variants={containerVariantsChild} 
+        initial="hidden" 
+        animate="visible" 
+        exit="exit"
+        >
             {/* QUESTION */}
-            <div className="quiz-questionBox">
-                <motion.p variants={fadeIn}>{currQuestion+1}/{QAcopy.length}</motion.p>
-                <motion.p variants={fadeIn} className="label">{QAcopy[currQuestion].question}</motion.p>
+            <div 
+            className="quiz--container-1"
+            >
+                <motion.h6 variants={fadeIn} style={{fontWeight:400}} className="text-primary">
+                    {currQuestion+1}/{frame.length}
+                </motion.h6>
+                <motion.h6 variants={fadeIn} style={{fontWeight:500}} className="mt-0 pt-0">
+                    {frame[currQuestion].question}
+                </motion.h6>
             </div>
                 {/* ANSWERS */}
-            <div className="quiz-answerBox">
+            <div 
+            className="mt-5 quizresult--container-1"
+            >
                 {/* The answer */}
-                <motion.p variants={fadeIn} className="label">The answer</motion.p>
-                <motion.p variants={fadeIn} >{ QAcopy[currQuestion].answer }</motion.p>
+                <motion.h6 variants={fadeIn} style={{fontWeight:600}} >
+                    The answer
+                </motion.h6>
+                <motion.h6 variants={fadeIn} style={{fontWeight:400}} >
+                    { frame[currQuestion].answer }
+                </motion.h6>
                 {/* 'Your' answer */}
-                <motion.p variants={fadeIn} className="label">Your answer</motion.p>
-                <motion.p variants={fadeIn} >{ answer.answer }</motion.p>
+                <motion.h6 variants={fadeIn} className="mt-5" style={{fontWeight:600}}>
+                    Your answer
+                </motion.h6>
+                <motion.h6 variants={fadeIn} style={{fontWeight:400}}>
+                    { answer.answer }
+                </motion.h6>
                 {/* Next */}
-                <motion.div variants={fadeIn} className="Q-btnContainer">
-                    <motion.button variants={buttonVariants} whileHover="hover" 
-                    whileTap="tap" className="main-btn" onClick={handleNext}>next</motion.button>
+                <motion.div variants={fadeIn}>
+                    <motion.button 
+                    variants={buttonVariants} 
+                    className="btn btn-primary mt-3" 
+                    onClick={handleNext}
+                    >
+                        next
+                    </motion.button>
                 </motion.div>
             </div>
         </motion.div>

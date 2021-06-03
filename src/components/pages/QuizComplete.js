@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
 /**
  * Allows the user to exit (return home) or restart the quiz
@@ -12,6 +10,8 @@ import Col from 'react-bootstrap/Col'
 const QuizComplete = ({ addAnswer, setQuestionIndex, getResult, containerVariantsChild, fadeIn }) => {
     /** Stores empty answer input */
     const [emptyAnswer] = useState({answer: ""});
+    /** Used to redirect user to '/' */
+    const history = useHistory();
     
     /** Resets all data to restart the quiz */
     const restart = () => {
@@ -21,21 +21,37 @@ const QuizComplete = ({ addAnswer, setQuestionIndex, getResult, containerVariant
         getResult(0);
     }
 
-    return (
-        <motion.div variants={containerVariantsChild}
-        initial="hidden" animate="visible" exit="exit"
-        >
-            <div className="quizComplete-header">
-                <motion.h1 variants={fadeIn} >quiz complete</motion.h1>
-                <motion.h2 variants={fadeIn}>select one of the following options</motion.h2>
-            </div>
-            <motion.div className="quizComplete-body" variants={fadeIn}>
-                <Row>
-                    <Col><button onClick={restart} id="btn-restart">restart</button></Col>
-                    <Col><Link to="/"><button id="btn-exit">exit</button></Link></Col>
-                </Row>
-            </motion.div>
+    /** Redirect the user to the homepage */
+    const exit = () => {
+        history.push('/');
+    }
 
+    return (
+        <motion.div 
+        className="quizcomplete--wrapper"
+        variants={containerVariantsChild}
+        initial="hidden" 
+        animate="visible" 
+        exit="exit"
+        >
+            <div 
+            className="mt-5 text-center"
+            >
+                <motion.h2 variants={fadeIn} className="text-primary">Quiz Complete!</motion.h2>
+                <motion.h4 variants={fadeIn}>Select one of the following options</motion.h4>
+            </div>
+            <motion.div 
+            className="btn-group justify-content-center mt-4" 
+            variants={fadeIn}
+            style={{width: '100%'}}
+            >
+                <div
+                className="btn-group"
+                >
+                    <button onClick={restart} className="btn btn-lg btn-primary">Restart</button>
+                    <button onClick={exit} className="btn btn-lg btn-danger">Leave</button>
+                </div>
+            </motion.div>
         </motion.div>
     )
 }
