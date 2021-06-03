@@ -4,8 +4,6 @@ import Footer from './Footer'
 import QuestionsModal from './QuestionsModal'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Form } from 'react-bootstrap'
 
 /** Variant for main container */
@@ -70,19 +68,6 @@ const Questions = ({addQA, delQA, frame}) => {
         setQA((prevQA) => ({...prevQA, [e.target.id]: e.target.value})) 
     }
 
-    /** Stores all the questions current active in list */
-    const questionList = frame.map(QA => { return ( 
-    <div 
-    className="myQuestions" 
-    key={QA._key}
-    >
-        {QA.question} 
-        <motion.button>
-            <FontAwesomeIcon icon={faTrash} size="sm" className="remove-btn" onClick={() => {delQA(QA._key)}}/>
-        </motion.button>
-    </div>
-    )})
-
     return (
         <motion.div 
         className="main--wrapper"
@@ -95,7 +80,8 @@ const Questions = ({addQA, delQA, frame}) => {
             <QuestionsModal 
             show={modalShow} 
             onHide={() => setModalShow(false)} 
-            questionlist={questionList} 
+            frame={frame}
+            delQA={delQA}
             />
             <div
             className="container"
