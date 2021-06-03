@@ -20,13 +20,9 @@ const Footer = () => {
                 className="row"
                 >
                     <div
-                    className="col-8"
+                    className="col-8 text-secondary"
                     >
-                        <p
-                        className="text-secondary"
-                        >
-                           Made with { heartIcon } by <a href="https://www.jonahlouis.ca/" target="_blank" rel="noreferrer">Jonah Louis</a> 
-                        </p> 
+                        Made with { heartIcon } by <a href="https://www.jonahlouis.ca/" target="_blank" rel="noreferrer">Jonah Louis</a> 
                     </div>
                     <div
                     className="col-4 text-right"
