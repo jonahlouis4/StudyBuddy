@@ -32,6 +32,10 @@ const LogIn = () => {
             onSignInClick();
         } else {
             onSignUpClick();
+            // Timeout required user to be redirected to home
+            setTimeout(() => {
+                window.location.reload();
+                }, 1000);
         }
       }
   
