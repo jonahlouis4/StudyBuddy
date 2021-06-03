@@ -108,7 +108,8 @@ const Questions = ({addQA, delQA, frame}) => {
                             <motion.button 
                             onClick={() => setModalShow(true)} 
                             className="btn btn-primary"
-                            >view questions
+                            >
+                                View questions
                             </motion.button>
                         </div>
                     </div>
