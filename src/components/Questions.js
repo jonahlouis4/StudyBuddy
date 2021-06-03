@@ -70,7 +70,7 @@ const Questions = ({addQA, delQA, frame}) => {
 
     return (
         <motion.div 
-        className="main--wrapper"
+        className="main--wrapper bg--container--1"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
