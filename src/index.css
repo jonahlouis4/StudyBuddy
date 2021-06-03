@@ -24,26 +24,7 @@ UNIVERSAL
     flex-direction: column;
     min-height: 100vh;
   }
-  /* Return button */
-  .return-btn { 
-    float: left; 
-    transition: all .2s ease-in-out; 
-  }
-    .return-btn:hover { color: rgba(255, 107, 107, 0.5) !important; transform: scale(1.3); }
 
-  /* Main Button */
-  .main-btn {  
-    font-size: 16px;
-    font-weight: 900;
-    border-radius: 15px;
-    padding: 7px 15px;;
-    border: none;
-    outline: none !important;
-    cursor: pointer;
-    background-color: #FF6B6B;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    color: white;
-  }
 /* Labels */
 .label { 
   font-size: 18px; 
@@ -52,37 +33,6 @@ UNIVERSAL
   font-weight: 900; 
   user-select: none; 
 }
-
-/* Form */
-.myForm { padding-top: 75px; }
-/* Text area */
-.textArea {
-  width: 90%;
-  padding: 20px;                                                                          /* use same padding as buttons in Home (Home-links) */
-  outline: none;
-  resize: none;
-  overflow: auto;
-  box-sizing: border-box;
-  border-radius: 5px;                                                                     /* use same radius as Home-Links */
-  border: 2px solid #23272A;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  color: white;
-  font-size: 16px;
-  font-family: inherit;
-  transition: .5s border, .5s width, .5s background-color;
-}
-  .textArea:hover {
-    border: 2px solid #FF6B6B;
-    width: 100%;
-  }
-  .textArea:focus {
-    border: 2px solid #FF6B6B;
-    width: 100%;
-  }
-  /* Normal state (text area) */
-  .areaNormal { background-color: #2C2F33; }
-  /* Error state (text area) */
-  .areaError { background-color: #ff6b6b3f; }
 
 /*
 ------------  
@@ -103,12 +53,11 @@ QUESTIONS.JS
 ------------ 
 */
     /* My Questions div */
-    .myQuestions { padding: 10px; }
-        .myQuestions button { 
-          float: right; 
-          border: none;  
-          outline: none !important; 
-        }
+    .myQuestions button { 
+      float: right; 
+      border: none;  
+      outline: none !important; 
+    }
 
 /* 
 ------------ 
@@ -159,31 +108,19 @@ QUIZCOMPLETE.JS
     color: white;
     transition: .5s background-color;
   }
-  /* button 1 (restart) */
-  #btn-restart { background-color: #339AF0; border-radius: 5px 0 0 5px; }
-    #btn-restart:hover { background-color: #339bf098; }
-  /* button 2 (exit) */
-  #btn-exit { background-color: #FF6B6B; border-radius: 0 5px 5px 0; }
-    #btn-exit:hover { background-color: #ff6b6b9a; }
 
 /* Query for extra small devices */
 @media only screen and (max-width: 320px) {
   /* universal css */
   .label { font-size: 16px; }
-  .main-btn { font-size: 14px; }
   /* home */
   .home--container-1 { padding-bottom: 5rem; }
-  .home-header h1 { font-size: 40px; }
-  .home-header h2 { font-size: 16px;  }
-  .home-header {padding: 20px 0; }
-  .home-links { font-size: 16px; }
   /* questions */
   .questions--container-1 { padding-bottom: 6rem; }
   .questions-header { padding: 20px 0; }
   .modal-body { font-size: 14px; }
   /* quiz */
   .quiz-header { padding: 20px 0; }
-  .myForm { padding-top: 55px; }
   #quizResult-form { padding-top: 35px; }
   .quiz-answerBox { padding-top: 35px; }
   .quizComplete-body { width: 200px; }
@@ -195,13 +132,7 @@ QUIZCOMPLETE.JS
 @media only screen and (max-width: 489px) and (min-width: 321px) {
   /* universal css */
   .label { font-size: 16px; }
-  .main-btn { font-size: 14px; }
-  /* home */
-  .home-header h2 { font-size: 16px;  }
-  .home-header {padding: 35px 0; }
-  .home-links { font-size: 16px; }
   /* questions */
-  .questions-header { padding: 35px 0; }
   .modal-body { font-size: 14px; }
   /* quiz */
   .quiz-header { padding: 35px 0; }
