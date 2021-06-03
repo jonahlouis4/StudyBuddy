@@ -80,7 +80,7 @@ const LogIn = () => {
         >
             <Nav logged={false} />
             <div
-            className="container"
+            className="login--wrapper container"
             >
                 <div
                 className="text-center"
@@ -97,7 +97,7 @@ const LogIn = () => {
                     </h4>
                 </div>
                 <div
-                className="mt-5 p-5 shadow-lg bg-white"
+                className="mt-5 py-5 px-4 px-sm-5 shadow-lg bg-white"
                 >
                     <Form
                     noValidate
