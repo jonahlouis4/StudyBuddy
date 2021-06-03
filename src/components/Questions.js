@@ -84,7 +84,7 @@ const Questions = ({addQA, delQA, frame}) => {
             delQA={delQA}
             />
             <div
-            className="container"
+            className="container questions--container-1"
             >
                 <motion.div 
                 variants={fadeIn}
