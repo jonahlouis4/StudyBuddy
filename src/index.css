@@ -74,7 +74,7 @@ QUESTIONSMODAL.JS
 
 /* 
 ------------ 
-QUIZENTER.JS 
+QUIZ.JS 
 ------------ 
 */
   .quiz--container-1 {
@@ -87,31 +87,10 @@ QUIZENTER.JS
 
 /*
 ------------ 
-QUIZRESULT.js 
------------- 
-*/
-
-
-/*
------------- 
 QUIZCOMPLETE.JS
 ------------ 
 */
-  .quizComplete-header { text-align: center; padding-top: 75px; }
-  .quizComplete-header h1 { font-weight: 900; font-size: 50px; }
-  .quizComplete-header h2 { font-weight: 500; font-size: 18px; }
-  .quizComplete-body { padding-top: 75px; margin: auto; width: 400px; }
-  .quizComplete-body div { width: 100%; text-align: center; padding: 0; left: 15px;}
-  .quizComplete-body button { 
-    width: 100%; 
-    height: 100px; 
-    border: none;
-    outline: none !important;
-    font-weight: 900;
-    font-size: 18px;
-    color: white;
-    transition: .5s background-color;
-  }
+
 
 /* Query for extra small devices */
 @media only screen and (max-width: 320px) {
@@ -125,9 +104,7 @@ QUIZCOMPLETE.JS
   .modal-body { font-size: 14px; }
   /* quiz */
   .quizenter--container-2 { padding-bottom: 3.5rem; }
-  .quizComplete-body { width: 200px; }
-  .quizComplete-header { padding-top: 20px; }
-  .quizComplete-header h1 { font-size: 40px; }
+  .quizresult--container-1 { padding-bottom: 4rem; }
 } 
 
 /* Query for small devices */
@@ -136,12 +113,9 @@ QUIZCOMPLETE.JS
   .label { font-size: 16px; }
   /* questions */
   .modal-body { font-size: 14px; }
-  /* quiz */
-  .quizComplete-body { width: 250px; }
-  .quizComplete-header { padding-top: 20px; }
 }
 
 /* Query for small devices */
 @media only screen and (max-width: 550px) and (min-width: 490px) {
-  .quizComplete-body { width: 400px; }
+  
 }

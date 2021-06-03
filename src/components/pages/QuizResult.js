@@ -36,7 +36,7 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
             </div>
                 {/* ANSWERS */}
             <div 
-            className="mt-5"
+            className="mt-5 quizresult--container-1"
             >
                 {/* The answer */}
                 <motion.h6 variants={fadeIn} style={{fontWeight:600}} >
