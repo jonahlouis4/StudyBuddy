@@ -74,15 +74,6 @@ QUESTIONSMODAL.JS
 
 /* 
 ------------ 
-QUIZ.JS 
------------- 
-*/
-  .quiz-header { padding: 75px 0; }
-  .quiz-questionBox { padding-top: 75px; }
-  .quiz-questionBox p { margin: 0; padding: 0 !important; }
-
-/* 
------------- 
 QUIZENTER.JS 
 ------------ 
 */
@@ -134,9 +125,6 @@ QUIZCOMPLETE.JS
   .modal-body { font-size: 14px; }
   /* quiz */
   .quizenter--container-2 { padding-bottom: 3.5rem; }
-  .quiz-header { padding: 20px 0; }
-  #quizResult-form { padding-top: 35px; }
-  .quiz-answerBox { padding-top: 35px; }
   .quizComplete-body { width: 200px; }
   .quizComplete-header { padding-top: 20px; }
   .quizComplete-header h1 { font-size: 40px; }
@@ -149,9 +137,6 @@ QUIZCOMPLETE.JS
   /* questions */
   .modal-body { font-size: 14px; }
   /* quiz */
-  .quiz-header { padding: 35px 0; }
-  #quizResult-form { padding-top: 35px; }
-  .quiz-answerBox { padding-top: 35px; }
   .quizComplete-body { width: 250px; }
   .quizComplete-header { padding-top: 20px; }
 }
