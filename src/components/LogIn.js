@@ -104,6 +104,14 @@ const LogIn = () => {
                     validated={validated}
                     onSubmit={handleSubmit}
                     >
+                        <div
+                        className="mb-3"
+                        style={{fontWeight:600}}
+                        >
+                            Test username: studybuddytest
+                            <br />
+                            Test password: studybuddytest
+                        </div>
                         <Form.Group
                         controlId="username"
                         >
