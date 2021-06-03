@@ -108,9 +108,9 @@ const LogIn = () => {
                         className="mb-3"
                         style={{fontWeight:600}}
                         >
-                            Test username: studybuddytest
+                            Test username: <span style={{fontWeight:400}}>studybuddytest</span>
                             <br />
-                            Test password: studybuddytest
+                            Test password: <span style={{fontWeight:400}}>studybuddytest</span>
                         </div>
                         <Form.Group
                         controlId="username"
