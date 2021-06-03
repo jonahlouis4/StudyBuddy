@@ -25,58 +25,38 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
         >
             {/* QUESTION */}
             <div 
-            className=""
+            className="quiz--container-1"
             >
-                <motion.p 
-                variants={fadeIn}
-                >
+                <motion.h6 variants={fadeIn} style={{fontWeight:400}} className="text-primary">
                     {currQuestion+1}/{frame.length}
-                </motion.p>
-                <motion.p 
-                variants={fadeIn} 
-                className=""
-                >
+                </motion.h6>
+                <motion.h6 variants={fadeIn} style={{fontWeight:500}} className="mt-0 pt-0">
                     {frame[currQuestion].question}
-                </motion.p>
+                </motion.h6>
             </div>
                 {/* ANSWERS */}
             <div 
-            className=""
+            className="mt-5"
             >
                 {/* The answer */}
-                <motion.p 
-                variants={fadeIn} 
-                className=""
-                >
+                <motion.h6 variants={fadeIn} style={{fontWeight:600}} >
                     The answer
-                </motion.p>
-                <motion.p 
-                variants={fadeIn} 
-                >
+                </motion.h6>
+                <motion.h6 variants={fadeIn} style={{fontWeight:400}} >
                     { frame[currQuestion].answer }
-                </motion.p>
+                </motion.h6>
                 {/* 'Your' answer */}
-                <motion.p 
-                variants={fadeIn} 
-                className="label"
-                >
+                <motion.h6 variants={fadeIn} className="mt-5" style={{fontWeight:600}}>
                     Your answer
-                </motion.p>
-                <motion.p 
-                variants={fadeIn} 
-                >
+                </motion.h6>
+                <motion.h6 variants={fadeIn} style={{fontWeight:400}}>
                     { answer.answer }
-                </motion.p>
+                </motion.h6>
                 {/* Next */}
-                <motion.div 
-                variants={fadeIn} 
-                className="Q-btnContainer"
-                >
+                <motion.div variants={fadeIn}>
                     <motion.button 
                     variants={buttonVariants} 
-                    whileHover="hover" 
-                    whileTap="tap" 
-                    className="main-btn" 
+                    className="btn btn-primary mt-3" 
                     onClick={handleNext}
                     >
                         next

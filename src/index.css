@@ -77,7 +77,7 @@ QUESTIONSMODAL.JS
 QUIZENTER.JS 
 ------------ 
 */
-  .quizenter--container-1 {
+  .quiz--container-1 {
     white-space: pre-wrap;      /* CSS3 */   
     white-space: -moz-pre-wrap; /* Firefox */    
     white-space: -pre-wrap;     /* Opera <7 */   

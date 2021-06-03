@@ -35,10 +35,11 @@ const QuizEnter = ({ getResult, currQuestion, addAnswer, containerVariantsChild,
         >
             {/* QUESTION */}
             <div 
-            className="quizenter--container-1">
+            className="quiz--container-1">
                 <motion.h6 
                 variants={fadeIn}
                 style={{fontWeight:400}}
+                className="text-primary"
                 >
                     {currQuestion+1}/{frame.length}
                 </motion.h6>
