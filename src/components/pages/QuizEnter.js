@@ -67,6 +67,7 @@ const QuizEnter = ({ getResult, currQuestion, addAnswer, containerVariantsChild,
                             rows={3} 
                             onChange={handleChange}
                             id="answer"
+                            style={{resize:'none'}}
                             />
                         <motion.div 
                         className="pt-3"
