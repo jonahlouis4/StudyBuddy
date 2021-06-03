@@ -8,6 +8,18 @@ const Nav = () => {
     /** Used to redirect user to '/' */
     const history = useHistory();
 
+    /** Displays sign out button */
+    const signOutBtn = () => {
+        if (isUserSignedIn()) {
+            return <button 
+                    onClick={signOutUser} 
+                    className="btn btn-outline-primary"
+                    >
+                        Sign Out
+                    </button>
+        }
+    }
+
     /** Sign out user */
     const signOutUser = () => {
         if (isUserSignedIn()) {
@@ -28,12 +40,7 @@ const Nav = () => {
                 >
                     <Link to="/" >StudyBuddy</Link>
                 </span>
-                <button 
-                onClick={signOutUser} 
-                className="btn btn-outline-primary"
-                >
-                    Sign Out
-                </button>
+                { signOutBtn() }
             </div>
         </nav>
     )
