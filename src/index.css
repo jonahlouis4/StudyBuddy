@@ -25,15 +25,6 @@ UNIVERSAL
     min-height: 100vh;
   }
 
-/* Labels */
-.label { 
-  font-size: 18px; 
-  padding: 15px 0; 
-  margin: 0; 
-  font-weight: 900; 
-  user-select: none; 
-}
-
 /*
 ------------  
 HOME.JS 
@@ -85,13 +76,6 @@ QUIZ.JS
     word-wrap: break-word;      /* IE */
   }
 
-/*
------------- 
-QUIZCOMPLETE.JS
------------- 
-*/
-
-
 /* Query for extra small devices */
 @media only screen and (max-width: 320px) {
   /* universal css */
@@ -110,13 +94,6 @@ QUIZCOMPLETE.JS
 
 /* Query for small devices */
 @media only screen and (max-width: 489px) and (min-width: 321px) {
-  /* universal css */
-  .label { font-size: 16px; }
   /* questions */
   .modal-body { font-size: 14px; }
-}
-
-/* Query for small devices */
-@media only screen and (max-width: 550px) and (min-width: 490px) {
-  
 }
