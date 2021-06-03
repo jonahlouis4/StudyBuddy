@@ -6,23 +6,30 @@ const Error = ({containerVariantsChild, fadeIn, buttonVariants}) => {
     return (
         <motion.div
         variants={containerVariantsChild}
-        initial="hidden" animate="visible" exit="exit"
-        className="quiz-questionBox"
-        style={{textAlign:'center'}}
+        initial="hidden" 
+        animate="visible" 
+        exit="exit"
+        className="error--wrapper mt-5 text-center"
         >
-            <motion.h2 variants={fadeIn}>Ooops! You forgot to add questions.</motion.h2> 
-            <motion.p variants={fadeIn}>Please add a minimum of one question before starting the quiz.</motion.p>
+            <motion.h2 
+            className="text-primary"
+            variants={fadeIn}
+            >
+                Ooops! You forgot to add questions.
+            </motion.h2> 
+            <motion.h4
+            variants={fadeIn}
+            >
+                Please make sure to add at least one question before starting a quiz.
+            </motion.h4>
             <motion.div
-            className="Q-btnContainer"
             variants={fadeIn}
             >
                 <motion.button 
-                className="main-btn"
+                className="btn btn-lg btn-primary mt-4"
                 variants={buttonVariants} 
-                whileHover="hover" 
-                whileTap="tap" 
                 >
-                    <Link to="/questions" style={{color:'white'}}>add questions</Link>
+                    <Link to="/questions" className="error--btn--link">Add Questions</Link>
                 </motion.button>
             </motion.div>
            

@@ -76,6 +76,19 @@ QUIZ.JS
     word-wrap: break-word;      /* IE */
   }
 
+/* 
+------------ 
+ERROR.JS 
+------------ 
+*/
+  .error--btn--link {
+    color: white;
+  }
+  .error--btn--link:hover {
+    color: white;
+    text-decoration: none;
+  }
+
 /* Query for extra small devices */
 @media only screen and (max-width: 320px) {
   /* universal css */
@@ -92,6 +105,8 @@ QUIZ.JS
   .quizcomplete--wrapper { padding-bottom: 8rem; }
   /* login */
   .login--wrapper { padding-bottom: 6rem; }
+  /* Error */
+  .error--wrapper { padding-bottom: 6rem; }
 } 
 
 /* Query for small devices */
