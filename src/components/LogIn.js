@@ -32,6 +32,7 @@ const LogIn = () => {
             onSignInClick();
         } else {
             onSignUpClick();
+
             // Timeout required user to be redirected to home
             setTimeout(() => {
                 window.location.reload();
@@ -68,7 +69,7 @@ const LogIn = () => {
                     </>
         } else {
             return <>
-                        <button className="btn btn-primary" type="submit">Sign Up</button>
+                        <button className="btn btn-danger" type="submit">Sign Up</button>
                         <Link className="pl-3" onClick={() => setType(true)}>Or return to sign in</Link>
                     </>
         }
