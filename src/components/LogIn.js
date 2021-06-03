@@ -3,7 +3,6 @@ import Nav from './Nav'
 import Footer from './Footer'
 import { useEasybase } from 'easybase-react';
 import { Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
 
 const LogIn = () => {
     /** User authentication */
@@ -65,12 +64,12 @@ const LogIn = () => {
         if (signIn === true) {
             return  <>
                         <button className="btn btn-primary" type="submit">Sign In</button>
-                        <Link className="pl-3" onClick={() => setType(false)}>Or create an account</Link>
+                        <a className="pl-3" onClick={() => setType(false)}>Or create an account</a>
                     </>
         } else {
             return <>
                         <button className="btn btn-danger" type="submit">Sign Up</button>
-                        <Link className="pl-3" onClick={() => setType(true)}>Or return to sign in</Link>
+                        <a className="pl-3" onClick={() => setType(true)}>Or return to sign in</a>
                     </>
         }
     }
@@ -129,12 +128,6 @@ const LogIn = () => {
                         </Form.Group>
                         { myFormType() }
                     </Form>
-
-
-                    {/* <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
-                    <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-                    <button onClick={onSignInClick}>Sign In</button>
-                    <button onClick={onSignUpClick}>Sign Up</button> */}
                 </div>
             </div>
             <Footer />
