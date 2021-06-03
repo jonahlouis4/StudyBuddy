@@ -7,8 +7,6 @@ import QuizComplete from './pages/QuizComplete'
 import Error from './pages/Error'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 /** Variant for main container */
 const containerVariants = {
