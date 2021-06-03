@@ -56,7 +56,7 @@ const Home = () => {
                         >
                             <Link to="/questions" className="home--links">
                                 <motion.button 
-                                className="btn btn-lg btn-primary col-6" 
+                                className="btn btn-lg btn-primary col-12 col-md-8 col-lg-6" 
                                 type="button"
                                 whileHover={{ scale: 1.1 }}
                                 >
@@ -70,7 +70,7 @@ const Home = () => {
                         >
                             <Link to="/quiz" className="home--links">
                                 <motion.button 
-                                className="btn btn-lg btn-primary col-6" 
+                                className="btn btn-lg btn-primary col-12 col-md-8 col-lg-6" 
                                 type="button"
                                 whileHover={{ scale: 1.1 }}
                                 >
