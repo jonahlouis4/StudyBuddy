@@ -116,7 +116,7 @@ const Questions = ({addQA, delQA, frame}) => {
                 <motion.div
                 variants={fadeIn}
                 >
-                                    <Form
+                <Form
                 className="mt-5"
                 noValidate
                 validated={validated}

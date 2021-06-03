@@ -86,7 +86,7 @@ QUIZ.JS
 QUIZENTER.JS 
 ------------ 
 */
-  .quiz--container-1 {
+  .quizenter--container-1 {
     white-space: pre-wrap;      /* CSS3 */   
     white-space: -moz-pre-wrap; /* Firefox */    
     white-space: -pre-wrap;     /* Opera <7 */   
@@ -99,7 +99,7 @@ QUIZENTER.JS
 QUIZRESULT.js 
 ------------ 
 */
-  .quiz-answerBox { padding-top: 75px; }
+
 
 /*
 ------------ 
@@ -133,6 +133,7 @@ QUIZCOMPLETE.JS
   .questions-header { padding: 20px 0; }
   .modal-body { font-size: 14px; }
   /* quiz */
+  .quizenter--container-2 { padding-bottom: 3.5rem; }
   .quiz-header { padding: 20px 0; }
   #quizResult-form { padding-top: 35px; }
   .quiz-answerBox { padding-top: 35px; }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Form } from 'react-bootstrap';
 
 const QuizEnter = ({ getResult, currQuestion, addAnswer, containerVariantsChild, fadeIn, buttonVariants, frame}) => {
     /** Stores local answer input */
@@ -34,7 +35,7 @@ const QuizEnter = ({ getResult, currQuestion, addAnswer, containerVariantsChild,
         >
             {/* QUESTION */}
             <div 
-            className="quiz--container-1">
+            className="quizenter--container-1">
                 <motion.h6 
                 variants={fadeIn}
                 style={{fontWeight:400}}
@@ -50,22 +51,40 @@ const QuizEnter = ({ getResult, currQuestion, addAnswer, containerVariantsChild,
                 </motion.h6>
             </div>
                 {/* ENTER ANSWER */}
-            <div>
-                <form 
-                className="myForm" id="quizResult-form" onSubmit={handleSubmit}>
-                    <motion.p variants={fadeIn} className="label">Enter the answer</motion.p>
-                    <motion.textarea variants={fadeIn} className="textArea areaNormal" id="answer" name="answer" onChange={handleChange}></motion.textarea>
-                    <motion.div variants={fadeIn} className="Q-btnContainer">
-                        <motion.input
-                        variants={buttonVariants} 
-                        animate ={lclAns.answer ? "active" : "inactive" }
-                        whileHover="hover" 
-                        whileTap="tap" 
-                        type="submit" 
-                        value="Submit" 
-                        className="main-btn"/>
-                    </motion.div>
-                </form>
+            <div
+            className="quizenter--container-2 pt-5"
+            >
+                <Form
+                onSubmit={handleSubmit}
+                >
+                  <Form.Group>
+                    <Form.Label
+                        variants={fadeIn} 
+                        >
+                            Enter the answer
+                        </Form.Label>
+                        <Form.Control 
+                            as="textarea" 
+                            rows={3} 
+                            onChange={handleChange}
+                            id="answer"
+                            />
+                        <motion.div 
+                        className="pt-3"
+                        variants={fadeIn} 
+                        >
+                            <motion.input
+                            variants={buttonVariants} 
+                            animate ={lclAns.answer ? "active" : "inactive" }
+                            whileHover="hover" 
+                            whileTap="tap" 
+                            type="submit" 
+                            value="Submit" 
+                            className="btn btn-primary"
+                            />
+                        </motion.div>
+                  </Form.Group>
+                </Form>
             </div>
         </motion.div>
     )
