@@ -104,7 +104,7 @@ const Quiz = ({frame}) => {
 
     return (
         <div
-        className="main--wrapper"
+        className="main--wrapper bg--container--1"
         >
             <Nav />
             <motion.div 
