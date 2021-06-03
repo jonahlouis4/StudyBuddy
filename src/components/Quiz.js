@@ -1,18 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import Nav from './Nav'
+import Footer from './Footer'
 import QuizEnter from './pages/QuizEnter'
 import QuizResult from './pages/QuizResult'
 import QuizComplete from './pages/QuizComplete'
+import Error from './pages/Error'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 /** Variant for main container */
 const containerVariants = {
-    hidden: { x: 300, opacity: 0,},
-    visible: { x: 0, opacity: 1, 
-        transition: { staggerChildren: 0.1 } },
-    exit: { x: 300, opacity: 0 }
+    visible: { 
+        transition: { 
+            staggerChildren: 0.1 
+        } 
+    },
 };
 /** Variant for child component containers */
 const containerVariantsChild = {
@@ -30,8 +32,6 @@ const fadeIn = {
 const buttonVariants = {
     active: { opacity: 1, x: 0 },
     inactive: { opacity: 0, x: -10  },
-    hover: { scale: 1.1 },
-    tap: { scale: 0.9 }
 }
 
 /**
@@ -39,37 +39,13 @@ const buttonVariants = {
  * QuizResult, and QuizComplete.
  * @param {QA} mainQA - reference to the QA state from App.js 
  */
-const Quiz = ({mainQA}) => {
-    /** Copy of the main QA state */
-    const [QAcopy] = useState([...mainQA]);
+const Quiz = ({frame}) => {
     /** Index of current question */
     const [currQuestion, setCurrQuestion] = useState(0);
     /** Stores every answer input */
     const [answer, setAnswer] = useState({answer: ""});
     /** Determines the render of the body */
-    const [result, setResult] = useState(0);
-
-    /* 
-    * This function shuffles the copy version of the main QA state array
-    * Part of the solution is from:
-    * https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-    */
-    const shuffle = () => {
-        var currentIndex = QAcopy.length, temporaryValue, randomIndex;
-
-        // While there remains elements to shuffle...
-        while (0 !== currentIndex) {
-
-            // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
-
-            // And swap it with the current element
-            temporaryValue = QAcopy[currentIndex];
-            QAcopy[currentIndex] = QAcopy[randomIndex];
-            QAcopy[randomIndex] = temporaryValue;
-        }         
-    }
+    const [result, setResult] = useState(-1);
 
     /**
      * Sets the answer state
@@ -84,43 +60,70 @@ const Quiz = ({mainQA}) => {
     const setQuestionIndex = (indexNum) => { setCurrQuestion(indexNum); }
 
     /**
-     * Sets the state of the result (0 = enter, 1 = result, 2 = complete)
+     * Sets the state of the result (0 = enter, 1 = result, 2 = complete, -1 empty state)
      * @param {boolean} result - result controlled by child components
      */
     const getResult = (result) => { setResult(result) }
+
+    useEffect(() => {
+        // No questions in database
+        if (frame.length === 0) { 
+        setResult(-1); 
+        }
+        // Shuffle questions 
+        else if (currQuestion === 0 && answer.answer === "") { 
+            setResult(0); 
+        }
+    }, [frame.length, currQuestion, answer.answer])
 
     /**
      * Returns the correct functional component
      * @param {boolean} result - current state of result
      */
-    function setBody (result) {
-        // Shuffle questions 
-        if (currQuestion === 0 && answer.answer === "") { shuffle(); }
-
+    function SetBody(props) {
         // Determine render result 
-        if (result === 0) {
-            return <QuizEnter QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} 
-                        addAnswer={addAnswer} containerVariantsChild={containerVariantsChild} 
+        if (props.result === -1) {
+            return <Error containerVariantsChild={containerVariantsChild} 
                         fadeIn={fadeIn} buttonVariants={buttonVariants} />
-        } else if (result === 1) {
-            return <QuizResult QAcopy={QAcopy} getResult={getResult} currQuestion={currQuestion} answer={answer} 
+        } 
+        else if (props.result === 0) {
+            return <QuizEnter getResult={getResult} currQuestion={currQuestion} 
+                        addAnswer={addAnswer} containerVariantsChild={containerVariantsChild} 
+                        fadeIn={fadeIn} buttonVariants={buttonVariants} frame={frame}/>
+        } 
+        else if (props.result === 1) {
+            return <QuizResult getResult={getResult} currQuestion={currQuestion} answer={answer} 
                         setQuestionIndex={setQuestionIndex} containerVariantsChild={containerVariantsChild} 
-                        buttonVariants={buttonVariants} fadeIn={fadeIn} />
-        } else if (result === 2) {
+                        buttonVariants={buttonVariants} fadeIn={fadeIn} frame={frame}/>
+        } 
+        else if (props.result === 2) {
             return <QuizComplete containerVariantsChild={containerVariantsChild} fadeIn={fadeIn} addAnswer={addAnswer}
-                        setQuestionIndex={setQuestionIndex} getResult={getResult} />
+                        setQuestionIndex={setQuestionIndex} getResult={getResult} frame={frame}/>
         } 
     }
 
     return (
-        <motion.div className="container" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
-            {/* Header */}
-            <motion.div className="quiz-header" variants={fadeIn}>
-                <Link to="/" ><FontAwesomeIcon icon={faChevronLeft} size="2x" className="return-btn"/></Link>
+        <div
+        className="main--wrapper bg--container--1"
+        >
+            <Nav />
+            <motion.div 
+            className="container" 
+            variants={containerVariants} 
+            initial="hidden" 
+            animate="visible" 
+            exit="exit"
+            >
+                <ol 
+                className="breadcrumb pl-0 mt-3"
+                >
+                    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                    <li className="breadcrumb-item active" aria-current="page">Quiz</li>
+                </ol>
+                <SetBody result={result} />
             </motion.div>
-            {/* Call to determine render */}
-            {setBody(result)}
-        </motion.div>
+            <Footer />
+        </div>
     )
 }
 
