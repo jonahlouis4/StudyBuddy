@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
-const QuizEnter = ({QAcopy, getResult, currQuestion, addAnswer, containerVariantsChild, fadeIn, buttonVariants, frame}) => {
+const QuizEnter = ({ getResult, currQuestion, addAnswer, containerVariantsChild, fadeIn, buttonVariants, frame}) => {
     /** Stores local answer input */
     const [lclAns, setLclAns] = useState({answer: ""});
 
@@ -26,15 +26,33 @@ const QuizEnter = ({QAcopy, getResult, currQuestion, addAnswer, containerVariant
     }
 
     return (
-        <motion.div variants={containerVariantsChild} initial="hidden" animate="visible" exit="exit">
+        <motion.div 
+        variants={containerVariantsChild} 
+        initial="hidden" 
+        animate="visible" 
+        exit="exit"
+        >
             {/* QUESTION */}
-            <div className="quiz-questionBox">
-                <motion.p variants={fadeIn}>{currQuestion+1}/{frame.length}</motion.p>
-                <motion.p variants={fadeIn} className="label">{frame[currQuestion].question}</motion.p>
+            <div 
+            className="quiz--container-1">
+                <motion.h6 
+                variants={fadeIn}
+                style={{fontWeight:400}}
+                >
+                    {currQuestion+1}/{frame.length}
+                </motion.h6>
+                <motion.h6 
+                variants={fadeIn} 
+                className="my-0 py-0"
+                style={{fontWeight:500}}
+                >
+                    {frame[currQuestion].question}
+                </motion.h6>
             </div>
                 {/* ENTER ANSWER */}
             <div>
-                <form className="myForm" id="quizResult-form" onSubmit={handleSubmit}>
+                <form 
+                className="myForm" id="quizResult-form" onSubmit={handleSubmit}>
                     <motion.p variants={fadeIn} className="label">Enter the answer</motion.p>
                     <motion.textarea variants={fadeIn} className="textArea areaNormal" id="answer" name="answer" onChange={handleChange}></motion.textarea>
                     <motion.div variants={fadeIn} className="Q-btnContainer">
