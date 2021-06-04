@@ -66,12 +66,12 @@ const LogIn = () => {
         if (signIn === true) {
             return  <>
                         <button className="btn btn-primary" type="submit">Sign In</button>
-                        <a role="button" className="ml-1 btn btn-link" onClick={() => setType(false)}>Or create an account</a>
+                        <a role="button" className="ml-sm-1 btn btn-link" onClick={() => setType(false)}>Or create an account</a>
                     </>
         } else {
             return <>
                         <button className="btn btn-danger" type="submit">Sign Up</button>
-                        <a role="button" className="ml-1 btn btn-link" onClick={() => setType(true)}>Or return to sign in</a>
+                        <a role="button" className="ml-sm-1 btn btn-link" onClick={() => setType(true)}>Or return to sign in</a>
                     </>
         }
     }
@@ -106,7 +106,7 @@ const LogIn = () => {
         >
             <Nav logged={false} />
             <div
-            className="login--wrapper container"
+            className="login--wrapper container mb-5"
             >
                 <div
                 className="text-center"
@@ -162,8 +162,12 @@ const LogIn = () => {
                     <div
                     className="text-center"
                     >
-                        <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-                            <button variant="success" className="btn btn-lg btn-link">Try it out without signin up</button>
+                        <OverlayTrigger 
+                        trigger="click" 
+                        placement="bottom" 
+                        overlay={popover}
+                        >
+                            <button variant="success" className="btn btn-lg btn-link mt-3">Try it out without signin up</button>
                         </OverlayTrigger>
                     </div>
                 </div>

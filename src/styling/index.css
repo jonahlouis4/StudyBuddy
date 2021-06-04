@@ -103,7 +103,7 @@ ERROR.JS
   .quizresult--container-1 { padding-bottom: 4rem; }
   .quizcomplete--wrapper { padding-bottom: 8rem; }
   /* login */
-  .login--wrapper { padding-bottom: 6rem; }
+  .login--wrapper { padding-bottom: 2rem; }
   /* Error */
   .error--wrapper { padding-bottom: 6rem; }
 } 
@@ -112,5 +112,5 @@ ERROR.JS
 @media only screen and (max-width: 489px) and (min-width: 321px) {
   /* questions */
   .modal-body { font-size: 14px; }
-  .login--wrapper { padding-bottom: 6rem; }
+  .login--wrapper { padding-bottom: 2rem; }
 }
