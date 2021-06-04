@@ -3,6 +3,8 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 import { useEasybase } from 'easybase-react';
 import { Form } from 'react-bootstrap';
+import Popover from 'react-bootstrap/Popover';
+import OverlayTrigger  from 'react-bootstrap/OverlayTrigger';
 
 const LogIn = () => {
     /** User authentication */
@@ -74,6 +76,17 @@ const LogIn = () => {
         }
     }
 
+    const popover = (
+        <Popover id="popover-basic">
+          <Popover.Title as="h3">Sign in with the following:</Popover.Title>
+          <Popover.Content style={{fontWeight:600}}>
+            Username: <span style={{fontWeight:400}}>studybuddytest</span>
+            <br />
+            Password: <span style={{fontWeight:400}}>studybuddytest</span>
+          </Popover.Content>
+        </Popover>
+      );
+
     return (
         <div
         className="bg--container--1 main--wrapper"
@@ -108,9 +121,6 @@ const LogIn = () => {
                         className="mb-3"
                         style={{fontWeight:600}}
                         >
-                            Test username: <span style={{fontWeight:400}}>studybuddytest</span>
-                            <br />
-                            Test password: <span style={{fontWeight:400}}>studybuddytest</span>
                         </div>
                         <Form.Group
                         controlId="username"
@@ -136,6 +146,13 @@ const LogIn = () => {
                         </Form.Group>
                         { myFormType() }
                     </Form>
+                    <div
+                    className="text-center"
+                    >
+                        <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+                            <button variant="success" className="btn btn-lg btn-link">Try it out without signin up</button>
+                        </OverlayTrigger>
+                    </div>
                 </div>
             </div>
             <Footer />
