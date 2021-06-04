@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss';
 // Easybase
@@ -13,7 +13,7 @@ import ebconfig from './ebconfig';
 ReactDOM.render(
   <React.StrictMode>
     <EasybaseProvider ebconfig={ebconfig}>
-      <Router basename="/StudyBuddy/">
+      <Router basename="/sb/">
         <App />
       </Router>
     </EasybaseProvider>
