@@ -68,7 +68,9 @@ function App() {
           <Route path="/questions">
             <Questions addQA={addQA} delQA={delQA} mainQA={QA} frame={frame}/>
           </Route>
-          <Route path="/quiz"><Quiz mainQA={QA} frame={frame}/></Route>
+          <Route path="/quiz">
+            <Quiz mainQA={QA} frame={frame}/>
+          </Route>
         </Switch>
       </AnimatePresence>
   );
