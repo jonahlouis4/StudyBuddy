@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/StudyBuddy/static/css/main.159b46bc.chunk.css",
-    "main.js": "/StudyBuddy/static/js/main.eeb10dc4.chunk.js",
-    "main.js.map": "/StudyBuddy/static/js/main.eeb10dc4.chunk.js.map",
-    "runtime-main.js": "/StudyBuddy/static/js/runtime-main.3ada6efc.js",
-    "runtime-main.js.map": "/StudyBuddy/static/js/runtime-main.3ada6efc.js.map",
+    "main.css": "/StudyBuddy/static/css/main.6333de4f.chunk.css",
+    "main.js": "/StudyBuddy/static/js/main.f6b6c628.chunk.js",
+    "main.js.map": "/StudyBuddy/static/js/main.f6b6c628.chunk.js.map",
+    "runtime-main.js": "/StudyBuddy/static/js/runtime-main.eb83b22d.js",
+    "runtime-main.js.map": "/StudyBuddy/static/js/runtime-main.eb83b22d.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/StudyBuddy/static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.6e6a268e.chunk.js": "/StudyBuddy/static/js/2.6e6a268e.chunk.js",
-    "static/js/2.6e6a268e.chunk.js.map": "/StudyBuddy/static/js/2.6e6a268e.chunk.js.map",
-    "static/js/3.627365ee.chunk.js": "/StudyBuddy/static/js/3.627365ee.chunk.js",
-    "static/js/3.627365ee.chunk.js.map": "/StudyBuddy/static/js/3.627365ee.chunk.js.map",
-    "static/js/4.de840317.chunk.js": "/StudyBuddy/static/js/4.de840317.chunk.js",
-    "static/js/4.de840317.chunk.js.map": "/StudyBuddy/static/js/4.de840317.chunk.js.map",
+    "static/js/2.b4ac7929.chunk.js": "/StudyBuddy/static/js/2.b4ac7929.chunk.js",
+    "static/js/2.b4ac7929.chunk.js.map": "/StudyBuddy/static/js/2.b4ac7929.chunk.js.map",
+    "static/js/3.1a23955e.chunk.js": "/StudyBuddy/static/js/3.1a23955e.chunk.js",
+    "static/js/3.1a23955e.chunk.js.map": "/StudyBuddy/static/js/3.1a23955e.chunk.js.map",
+    "static/js/4.e2d35dca.chunk.js": "/StudyBuddy/static/js/4.e2d35dca.chunk.js",
+    "static/js/4.e2d35dca.chunk.js.map": "/StudyBuddy/static/js/4.e2d35dca.chunk.js.map",
     "index.html": "/StudyBuddy/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/StudyBuddy/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.159b46bc.chunk.css.map": "/StudyBuddy/static/css/main.159b46bc.chunk.css.map",
-    "static/js/2.6e6a268e.chunk.js.LICENSE.txt": "/StudyBuddy/static/js/2.6e6a268e.chunk.js.LICENSE.txt",
+    "static/css/main.6333de4f.chunk.css.map": "/StudyBuddy/static/css/main.6333de4f.chunk.css.map",
+    "static/js/2.b4ac7929.chunk.js.LICENSE.txt": "/StudyBuddy/static/js/2.b4ac7929.chunk.js.LICENSE.txt",
     "static/media/index.css": "/StudyBuddy/static/media/bg--1.ad905215.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.3ada6efc.js",
+    "static/js/runtime-main.eb83b22d.js",
     "static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.6e6a268e.chunk.js",
-    "static/css/main.159b46bc.chunk.css",
-    "static/js/main.eeb10dc4.chunk.js"
+    "static/js/2.b4ac7929.chunk.js",
+    "static/css/main.6333de4f.chunk.css",
+    "static/js/main.f6b6c628.chunk.js"
   ]
 }
