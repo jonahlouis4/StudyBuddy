@@ -3,6 +3,8 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 import { useEasybase } from 'easybase-react';
 import { Form } from 'react-bootstrap';
+import Popover from 'react-bootstrap/Popover';
+import OverlayTrigger  from 'react-bootstrap/OverlayTrigger';
 
 const LogIn = () => {
     /** User authentication */
@@ -64,15 +66,39 @@ const LogIn = () => {
         if (signIn === true) {
             return  <>
                         <button className="btn btn-primary" type="submit">Sign In</button>
-                        <a role="button" className="ml-1 btn btn-link" onClick={() => setType(false)}>Or create an account</a>
+                        <a role="button" className="ml-sm-1 btn btn-link" onClick={() => setType(false)}>Or create an account</a>
                     </>
         } else {
             return <>
                         <button className="btn btn-danger" type="submit">Sign Up</button>
-                        <a role="button" className="ml-1 btn btn-link" onClick={() => setType(true)}>Or return to sign in</a>
+                        <a role="button" className="ml-sm-1 btn btn-link" onClick={() => setType(true)}>Or return to sign in</a>
                     </>
         }
     }
+
+    const myFormTitle = () => {
+        const signIn = formType;
+        if (signIn === true) {
+            return  <>
+                        <h1>Sign In</h1>
+                    </>
+        } else {
+            return <>
+                        <h1>Create an Account</h1>
+                    </>
+        }
+    }
+
+    const popover = (
+        <Popover id="popover-basic">
+          <Popover.Title as="h3">Sign in with the following:</Popover.Title>
+          <Popover.Content style={{fontWeight:600}}>
+            Username: <span style={{fontWeight:400}}>studybuddytest</span>
+            <br />
+            Password: <span style={{fontWeight:400}}>studybuddytest</span>
+          </Popover.Content>
+        </Popover>
+      );
 
     return (
         <div
@@ -80,7 +106,7 @@ const LogIn = () => {
         >
             <Nav logged={false} />
             <div
-            className="login--wrapper container"
+            className="login--wrapper container mb-5"
             >
                 <div
                 className="text-center"
@@ -88,12 +114,12 @@ const LogIn = () => {
                     <h1
                     className="mt-5"
                     >
-                        Welcome to StudyBuddy!
+                        Welcome to StudyBuddy
                     </h1>
                     <h4
                     className="text-primary"
                     >
-                        Sign in or create your account by filling up the form.
+                        A simple flashcard web application designed for studying.
                     </h4>
                 </div>
                 <div
@@ -105,12 +131,9 @@ const LogIn = () => {
                     onSubmit={handleSubmit}
                     >
                         <div
-                        className="mb-3"
-                        style={{fontWeight:600}}
+                        className="mb-5"
                         >
-                            Test username: <span style={{fontWeight:400}}>studybuddytest</span>
-                            <br />
-                            Test password: <span style={{fontWeight:400}}>studybuddytest</span>
+                            { myFormTitle() }
                         </div>
                         <Form.Group
                         controlId="username"
@@ -136,6 +159,17 @@ const LogIn = () => {
                         </Form.Group>
                         { myFormType() }
                     </Form>
+                    <div
+                    className="text-center"
+                    >
+                        <OverlayTrigger 
+                        trigger="click" 
+                        placement="bottom" 
+                        overlay={popover}
+                        >
+                            <button variant="success" className="btn btn-lg btn-link mt-3">Try it out without signin up</button>
+                        </OverlayTrigger>
+                    </div>
                 </div>
             </div>
             <Footer />
