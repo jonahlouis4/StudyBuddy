@@ -76,6 +76,19 @@ const LogIn = () => {
         }
     }
 
+    const myFormTitle = () => {
+        const signIn = formType;
+        if (signIn === true) {
+            return  <>
+                        <h1>Sign In</h1>
+                    </>
+        } else {
+            return <>
+                        <h1>Create an Account</h1>
+                    </>
+        }
+    }
+
     const popover = (
         <Popover id="popover-basic">
           <Popover.Title as="h3">Sign in with the following:</Popover.Title>
@@ -101,12 +114,12 @@ const LogIn = () => {
                     <h1
                     className="mt-5"
                     >
-                        Welcome to StudyBuddy!
+                        Welcome to StudyBuddy
                     </h1>
                     <h4
                     className="text-primary"
                     >
-                        Sign in or create your account by filling up the form.
+                        A simple flashcard web application designed for studying.
                     </h4>
                 </div>
                 <div
@@ -118,9 +131,9 @@ const LogIn = () => {
                     onSubmit={handleSubmit}
                     >
                         <div
-                        className="mb-3"
-                        style={{fontWeight:600}}
+                        className="mb-5"
                         >
+                            { myFormTitle() }
                         </div>
                         <Form.Group
                         controlId="username"
