@@ -17,7 +17,7 @@ UNIVERSAL
 ------------ 
 */
   .bg--container--1 {
-    background: url("./images/bg--1.svg");
+    background: url("../images/bg--1.svg");
   }
   .main--wrapper {
     display: flex;

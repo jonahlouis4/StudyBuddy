@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import Home from './components/Home'
-import LogIn from './components/LogIn'
-import Questions from './components/Questions'
-import Quiz from './components/Quiz'
+import Home from './pages/Home'
+import LogIn from './pages/LogIn'
+import Questions from './pages/Questions'
+import Quiz from './pages/Quiz'
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { useEasybase } from 'easybase-react';
