@@ -64,12 +64,12 @@ const LogIn = () => {
         if (signIn === true) {
             return  <>
                         <button className="btn btn-primary" type="submit">Sign In</button>
-                        <button className="ml-1 btn btn-link" onClick={() => setType(false)}>Or create an account</button>
+                        <a role="button" className="ml-1 btn btn-link" onClick={() => setType(false)}>Or create an account</a>
                     </>
         } else {
             return <>
                         <button className="btn btn-danger" type="submit">Sign Up</button>
-                        <button className="ml-1 btn btn-link" onClick={() => setType(true)}>Or return to sign in</button>
+                        <a role="button" className="ml-1 btn btn-link" onClick={() => setType(true)}>Or return to sign in</a>
                     </>
         }
     }
