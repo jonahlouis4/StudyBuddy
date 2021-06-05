@@ -34,7 +34,7 @@ function App() {
     if (!isUserSignedIn()) {
       return <LogIn />
     } else {
-      return <Questions addQA={addQA} delQA={delQA} mainQA={QA} frame={frame}/>
+      return <Quiz mainQA={QA} frame={frame}/>
     }
   }
 
@@ -42,7 +42,7 @@ function App() {
     if (!isUserSignedIn()) {
       return <LogIn />
     } else {
-      return <Quiz mainQA={QA} frame={frame}/>
+      return <Questions addQA={addQA} delQA={delQA} mainQA={QA} frame={frame}/>
     }
   }
 
