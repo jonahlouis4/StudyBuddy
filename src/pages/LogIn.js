@@ -167,7 +167,7 @@ const LogIn = () => {
                         placement="bottom" 
                         overlay={popover}
                         >
-                            <button variant="success" className="btn btn-lg btn-link mt-3">Try it out without signin up</button>
+                            <button variant="success" className="btn btn-link mt-3">Try it out without signin up</button>
                         </OverlayTrigger>
                     </div>
                 </div>
