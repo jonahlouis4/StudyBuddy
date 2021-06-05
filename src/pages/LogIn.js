@@ -138,11 +138,11 @@ const LogIn = () => {
                         <Form.Group
                         controlId="username"
                         >
-                            <Form.Label>Username or Email</Form.Label>
+                            <Form.Label>Username</Form.Label>
                             <Form.Control 
                             required
                             type="text"
-                            placeholder="Enter your username or email"
+                            placeholder="Enter your username"
                             onChange={e => setUsername(e.target.value)}
                             />
                         </Form.Group>
