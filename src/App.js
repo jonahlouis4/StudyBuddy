@@ -30,6 +30,22 @@ function App() {
     }
   }
 
+  const SetQuiz = () => {
+    if (!isUserSignedIn()) {
+      return <LogIn />
+    } else {
+      return <Questions addQA={addQA} delQA={delQA} mainQA={QA} frame={frame}/>
+    }
+  }
+
+  const SetQuestions = () => {
+    if (!isUserSignedIn()) {
+      return <LogIn />
+    } else {
+      return <Quiz mainQA={QA} frame={frame}/>
+    }
+  }
+
   /** Adds all questions from database to state */
   const mounted = async() => {
     const qaData = await db('QUIZ CONTENT').return().all();
@@ -65,12 +81,8 @@ function App() {
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.key} >
           <Route exact path="/" component={SetHome} />
-          <Route path="/questions">
-            <Questions addQA={addQA} delQA={delQA} mainQA={QA} frame={frame}/>
-          </Route>
-          <Route path="/quiz">
-            <Quiz mainQA={QA} frame={frame}/>
-          </Route>
+          <Route path="/questions" component={SetQuestions} />
+          <Route path="/quiz" component={SetQuiz} />
         </Switch>
       </AnimatePresence>
   );
