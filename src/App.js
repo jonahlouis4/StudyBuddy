@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Home from './pages/Home'
 import LogIn from './pages/LogIn'
 import Questions from './pages/Questions'
@@ -42,39 +42,8 @@ function App() {
     if (!isUserSignedIn()) {
       return <LogIn />
     } else {
-      return <Questions addQA={addQA} delQA={delQA} mainQA={QA} frame={frame}/>
+      return <Questions />
     }
-  }
-
-  /** Adds all questions from database to state */
-  const mounted = async() => {
-    const qaData = await db('QUIZ CONTENT').return().all();
-    setQA(qaData);
-  }
-
-  useEffect(() => {
-    mounted();
-  }, mounted)
-
-  /**
-   * Adds a question + answer attached
-   * @param {string} question - question entered by user
-   * @param {string} answer - answer to question entered by user
-   */
-  const addQA = async(question, answer) => {
-    // Add question + answer to db table "QUIZ CONTENT"
-    await db('QUIZ CONTENT').insert({
-      question: question,
-      answer: answer
-    }).one();
-  }
-
-  /**
-   * Deletes a question + answer attached
-   * @param {number} id - id represents the question + answer that will be deleted
-   */
-  const delQA = async(key) => {
-    await db('QUIZ CONTENT', false).delete().where({ _key: key }).one();
   }
 
   return (

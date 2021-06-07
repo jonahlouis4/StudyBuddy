@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import QuestionsModal from './components/QuestionsModal'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Form } from 'react-bootstrap'
+import { useEasybase } from 'easybase-react';
 
 /** Variant for main container */
 const containerVariants = {
@@ -23,17 +24,49 @@ const fadeIn = {
 /**
  * Operates the addition of questions + answers and the ability
  * to view and remote them.
- * @param {function} addQA - Reference to function that adds a question + answer
- * @param {function} delQA - Reference to function that removes a question + answer
- * @param {function} mainQA - Reference to the QA state from App.js 
  */
-const Questions = ({addQA, delQA, frame}) => { 
+const Questions = () => { 
     /** Local useStates for questions and answers */
     const [QA, setQA] = useState({question:"", answer:""})
     /** Sets value to show or hide modal */
     const [modalShow, setModalShow] = React.useState(false);
     /** State of form - valid or invalid */
     const [validated, setValidated] = useState(false);
+    /** Easybase db and useReturn to fetch data when changed */
+    const { db, useReturn } = useEasybase();
+    /** Frame created to fetch data when changed */
+    const { frame } = useReturn(() => db("QUIZ CONTENT").return(), []);
+
+    /** Adds all questions from database to state  */
+    const mounted = async() => {
+        const qaData = await db('QUIZ CONTENT').return().all();
+        setQA(qaData);
+    }
+
+    useEffect(() => {
+        mounted();
+    }, mounted)
+
+    /**
+    * Adds a question + answer attached
+    * @param {string} question - question entered by user
+    * @param {string} answer - answer to question entered by user
+     */
+     const addQA = async(question, answer) => {
+        // Add question + answer to db table "QUIZ CONTENT"
+        await db('QUIZ CONTENT').insert({
+          question: question,
+          answer: answer
+        }).one();
+    }
+    
+    /**
+     * Deletes a question + answer attached
+     * @param {number} id - id represents the question + answer that will be deleted
+     */
+        const delQA = async(key) => {
+        await db('QUIZ CONTENT', false).delete().where({ _key: key }).one();
+    }
 
     /**
      * Handles Submit button
