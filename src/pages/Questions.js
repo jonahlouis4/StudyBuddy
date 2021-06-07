@@ -45,7 +45,7 @@ const Questions = () => {
 
     useEffect(() => {
         mounted();
-    }, mounted)
+    }, [])
 
     /**
     * Adds a question + answer attached
