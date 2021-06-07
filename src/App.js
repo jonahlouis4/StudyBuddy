@@ -54,7 +54,7 @@ function App() {
 
   useEffect(() => {
     mounted();
-  }, [])
+  }, mounted)
 
   /**
    * Adds a question + answer attached
