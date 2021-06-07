@@ -13,12 +13,6 @@ import { useEasybase } from 'easybase-react';
 function App() {
   /** Used to store the current location of the present page */
   const location = useLocation();
-  /** State that holds all questions and answers */
-  const [QA, setQA] = useState([]);
-  /** Easybase db and useReturn to fetch data when changed */
-  const { db, useReturn } = useEasybase();
-  /** Frame created to fetch data when changed */
-  const { frame } = useReturn(() => db("QUIZ CONTENT").return(), []);
   /** User authentication */
   const { isUserSignedIn } = useEasybase();
 
@@ -34,7 +28,7 @@ function App() {
     if (!isUserSignedIn()) {
       return <LogIn />
     } else {
-      return <Quiz mainQA={QA} frame={frame}/>
+      return <Quiz />
     }
   }
 

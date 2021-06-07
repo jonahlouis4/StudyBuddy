@@ -7,6 +7,7 @@ import QuizComplete from './quiz_pages/QuizComplete'
 import Error from './quiz_pages/Error'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useEasybase } from 'easybase-react';
 
 /** Variant for main container */
 const containerVariants = {
@@ -39,13 +40,17 @@ const buttonVariants = {
  * QuizResult, and QuizComplete.
  * @param {QA} mainQA - reference to the QA state from App.js 
  */
-const Quiz = ({frame}) => {
+const Quiz = () => {
     /** Index of current question */
     const [currQuestion, setCurrQuestion] = useState(0);
     /** Stores every answer input */
     const [answer, setAnswer] = useState({answer: ""});
     /** Determines the render of the body */
     const [result, setResult] = useState(-1);
+    /** Easybase db and useReturn to fetch data when changed */
+    const { db, useReturn } = useEasybase();
+    /** Frame created to fetch data when changed */
+    const { frame } = useReturn(() => db("QUIZ CONTENT").return(), []);
 
     /**
      * Sets the answer state
