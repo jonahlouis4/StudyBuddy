@@ -85,7 +85,7 @@ const Quiz = () => {
      * Returns the correct functional component
      * @param {boolean} result - current state of result
      */
-    const SetBody = (props) => {
+    function SetBody(props) {
         // Determine render result 
         if (props.result === -1) {
             return <Error containerVariantsChild={containerVariantsChild} 
