@@ -16,76 +16,65 @@ const LogIn = () => {
     /** Validates form */
     const [validated, setValidated] = useState(false);
     /** True = signin, false = signup */
-    const [formType, setType] = useState(true);
+    const [formType, setFormType] = useState(true);
 
     /** Handle submission of form */
     const handleSubmit = (event) => {
-      const form = event.currentTarget;
+        console.log("TEST")
+        const form = event.currentTarget;
 
-      event.preventDefault();
+        event.preventDefault();
 
-      if (form.checkValidity() === false) {
-        event.stopPropagation();
-      } else {
-        const signIn = formType;
-
-        if (signIn === true) {
-            onSignInClick();
+        if (!form.checkValidity()) {
+            event.stopPropagation();
         } else {
-            onSignUpClick();
+            // Attempt to sign or signup
+            handleRequest()
 
             // Timeout required user to be redirected to home
             setTimeout(() => {
                 window.location.reload();
                 }, 1000);
+            }
         }
-      }
-  
-      setValidated(true);
     };
 
-    const onSignInClick = async () => {
-        const res = await signIn(username, password);
-        if (res.success) {
-        setUsername("");
-        setPassword("");
+    const handleRequest = async () => {
+        if (formType) {
+            const res = await signIn(username, password);
+            if (res.success) {
+                setUsername("");
+                setPassword("");
+            } 
+        } else {
+            const res = await signUp(username, password);
+            if (res.success) {
+            await signIn(username, password);
+                setUsername("");
+                setPassword("");
+            }
         }
-    }
-
-    const onSignUpClick = async () => {
-        const res = await signUp(username, password);
-        if (res.success) {
-        await signIn(username, password);
-        setUsername("");
-        setPassword("");
-        }
-    }
+    } 
 
     const FormType = () => {
-        const signIn = formType;
-        if (signIn === true) {
+        if (formType) {
             return  <>
-                        <button className="btn btn-primary" type="submit">Sign In</button>
-                        <a role="button" className="ml-sm-1 btn btn-link" onClick={() => setType(false)}>Or create an account</a>
+                     <button className="btn btn-primary" type="submit">Sign In</button>
+                     <a role="button" className="ml-sm-1 btn btn-link" onClick={() => setFormType(false)}>Or create an account</a>
                     </>
         } else {
-            return <>
-                        <button className="btn btn-danger" type="submit">Sign Up</button>
-                        <a role="button" className="ml-sm-1 btn btn-link" onClick={() => setType(true)}>Or return to sign in</a>
+            return  <>
+                     <button className="btn btn-danger" type="submit">Sign Up</button>
+                     <a role="button" className="ml-sm-1 btn btn-link" onClick={() => setFormType(true)}>Or return to sign in</a>
                     </>
         }
     }
 
     const FormTitle = () => {
-        const signIn = formType;
-        if (signIn === true) {
-            return  <>
-                        <h1>Sign In</h1>
-                    </>
+        if (formType) {
+            return  <h1>Sign In</h1>
         } else {
-            return <>
-                        <h1>Create an Account</h1>
-                    </>
+            return <h1>Sign Up</h1>
         }
     }
 
@@ -126,7 +115,7 @@ const LogIn = () => {
                 className="mt-5 py-5 px-4 px-sm-5 shadow-lg bg-white"
                 >
                     <Form
-                    noValidate
+                 
                     validated={validated}
                     onSubmit={handleSubmit}
                     >
