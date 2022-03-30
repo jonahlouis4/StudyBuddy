@@ -92,7 +92,6 @@ const Quiz = () => {
         // Shuffle questions 
         else if (currQuestion === 0 && answer.answer === "") { 
             QA.sort(function(a, b){ return 0.5 - Math.random() })
-            console.log("QA --> ", QA)
             setResult(ENTER_PAGE); 
         }
     }, [QA.length, currQuestion, answer.answer])
@@ -110,16 +109,16 @@ const Quiz = () => {
         else if (result === ENTER_PAGE) {
             return <QuizEnter getResult={getResult} currQuestion={currQuestion} 
                         addAnswer={addAnswer} containerVariantsChild={containerVariantsChild} 
-                        fadeIn={fadeIn} buttonVariants={buttonVariants} frame={QA}/>
+                        fadeIn={fadeIn} buttonVariants={buttonVariants} QA={QA}/>
         } 
         else if (result === RESULT_PAGE) {
             return <QuizResult getResult={getResult} currQuestion={currQuestion} answer={answer} 
                         setQuestionIndex={setQuestionIndex} containerVariantsChild={containerVariantsChild} 
-                        buttonVariants={buttonVariants} fadeIn={fadeIn} frame={frame}/>
+                        buttonVariants={buttonVariants} fadeIn={fadeIn} QA={QA}/>
         } 
         else if (result === COMPLETE_PAGE) {
             return <QuizComplete containerVariantsChild={containerVariantsChild} fadeIn={fadeIn} addAnswer={addAnswer}
-                        setQuestionIndex={setQuestionIndex} getResult={getResult} frame={frame}/>
+                        setQuestionIndex={setQuestionIndex} getResult={getResult} />
         } 
     }
 

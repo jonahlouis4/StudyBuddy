@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, containerVariantsChild, fadeIn, buttonVariants, frame}) => {
+const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, containerVariantsChild, fadeIn, buttonVariants, QA}) => {
     
     /** Handle event for next button */
     const handleNext = () => {
@@ -9,7 +9,7 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
         setQuestionIndex(currQuestion + 1);
 
         // IF went through all the questions 
-        if (currQuestion >= frame.length-1) {  getResult(2); return;  }
+        if (currQuestion >= QA.length-1) {  getResult(2); return;  }
 
         // IF NOT Send 0 as result instead of 2
         getResult(0);  
@@ -28,10 +28,10 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
             className="quiz--container-1"
             >
                 <motion.h6 variants={fadeIn} style={{fontWeight:400}} className="text-primary">
-                    {currQuestion+1}/{frame.length}
+                    {currQuestion+1}/{QA.length}
                 </motion.h6>
                 <motion.h6 variants={fadeIn} style={{fontWeight:500}} className="mt-0 pt-0">
-                    {frame[currQuestion].question}
+                    {QA[currQuestion].question}
                 </motion.h6>
             </div>
                 {/* ANSWERS */}
@@ -43,7 +43,7 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
                     The answer
                 </motion.h6>
                 <motion.h6 variants={fadeIn} style={{fontWeight:400}} >
-                    { frame[currQuestion].answer }
+                    { QA[currQuestion].answer }
                 </motion.h6>
                 {/* 'Your' answer */}
                 <motion.h6 variants={fadeIn} className="mt-5" style={{fontWeight:600}}>
