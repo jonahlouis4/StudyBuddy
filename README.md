@@ -20,6 +20,10 @@ npm i
 ```sh
 npm start
 ```
+3. Run Scss compiler (to make changes to boostrap)
+```sh
+sass --watch src/styling/App.scss src/styling/index.css 
+```
 
 ## :art: Main colours
 All colours are from [Bootswatch: Litera](https://bootswatch.com/litera/).
