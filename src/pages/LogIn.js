@@ -18,61 +18,100 @@ const LogIn = () => {
   /** True = signin, false = signup */
   const [formType, setFormType] = useState(true);
   /** Form Error - Username */
-  const [usernameError, setUsernameError] = useState(false)
+  const [usernameError, setUsernameError] = useState(false);
   /** Form Error - Password */
-  const [passwordError, setPasswordError] = useState(false)
+  const [passwordError, setPasswordError] = useState(false);
   /** Form Success - Username */
-  const [usernameSuccess, setUsernameSuccess] = useState(false)
+  const [usernameSuccess, setUsernameSuccess] = useState(false);
   /** Form Success - Password */
-  const [passwordSuccess, setPasswordSuccess] = useState(false)
+  const [passwordSuccess, setPasswordSuccess] = useState(false);
+  /** Form Loading  */
+  const [loading, setLoading] = useState(false);
+  /** Form Error message - signin or signup */
+  const [requestErrorMessage, setRequestErrorMessage] = useState("")
 
+  /* CONSTANTS */
+  const SIGNIN_INVALID_EMAIL = "Email address and/or password was incorrect."
+  const SIGNUP_PASSWORD_SHORT = "Password must be at least 8 characters long."
+  const SIGNUP_USER_EXISTS = "An account with that username already exists."
+  const SIGN_GENERIC_ERROR = "There was an issue processing your request. Please try again later"
 
   /** Handle submission of form */
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
 
-    !form.checkValidity() ? event.stopPropagation() : handleRequest();
+    !form.checkValidity() ? event.stopPropagation() : handleRequest()
   };
 
   const handleRequest = async () => {
+    setLoading(true)
+
+  // SIGN IN
     if (formType) {
       const res = await signIn(username, password);
       if (res.success) {
         setUsername("");
         setPassword("");
-        setUsernameSuccess(true)
-        setPasswordSuccess(true)
+        setUsernameSuccess(true);
+        setPasswordSuccess(true);
       } else {
-        setUsernameError(true)
-        setPasswordError(true)
+        setUsernameError(true);
+        setPasswordError(true);
+        setLoading(false)
+        setRequestErrorMessage(SIGNIN_INVALID_EMAIL)
       }
+  // SIGN UP
     } else {
       const res = await signUp(username, password);
       if (res.success) {
         await signIn(username, password);
         setUsername("");
         setPassword("");
+      } else if (res.errorCode === "BadPasswordLength") {
+        setLoading(false)
+        setPasswordError(true);
+        setRequestErrorMessage(SIGNUP_PASSWORD_SHORT)
+      } else if (res.errorCode === "UserExists") {
+        console.log(res.errorCode)
+        setLoading(false)
+        setPasswordError(true);
+        setRequestErrorMessage(SIGNUP_USER_EXISTS)
+      } else {
+        setLoading(false)
+        setPasswordError(true);
+        setRequestErrorMessage(SIGN_GENERIC_ERROR)
       }
     }
   };
 
   const FormType = () => {
-    const btnClass = formType ? 'btn btn-primary' : 'btn btn-danger' 
+    const btnClass = formType ? "btn btn-primary" : "btn btn-danger";
 
     return (
-     <>
+      <>
         <button className={btnClass} type="submit">
-        {formType ? 'Sign In' : 'Sign Up' }
+          {loading ? (
+            <span
+              className="spinner-border spinner-border-sm mr-2"
+              role="status"
+              aria-hidden="true"
+            ></span>
+          ) : null}
+          {formType ? "Sign In" : "Sign Up"}
         </button>
         <a
-        role="button"
-        className="ml-sm-1 btn btn-link"
-        onClick={() => setFormType(!formType)}
+          role="button"
+          className="ml-sm-1 btn btn-link"
+          onClick={() => {
+              setFormType(!formType)
+              setUsernameError(false);
+              setPasswordError(false);
+            }}
         >
-        {formType ? 'Or create an account' : 'Or return to sign in' }
+          {formType ? "Or create an account" : "Or return to sign in"}
         </a>
-     </>
+      </>
     );
   };
 
@@ -124,6 +163,7 @@ const LogIn = () => {
             <Form.Group controlId="password">
               <Form.Label>Password</Form.Label>
               <Form.Control
+                name="password"
                 required
                 type="password"
                 placeholder="Enter your password"
@@ -131,6 +171,9 @@ const LogIn = () => {
                 isInvalid={passwordError}
                 isValid={passwordSuccess}
               />
+              <Form.Control.Feedback type="invalid">
+                { requestErrorMessage }
+              </Form.Control.Feedback>
             </Form.Group>
             <FormType />
           </Form>
