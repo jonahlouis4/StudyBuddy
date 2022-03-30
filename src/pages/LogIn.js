@@ -34,8 +34,7 @@ const LogIn = () => {
   const SIGNIN_INVALID_EMAIL = "Email address and/or password was incorrect.";
   const SIGNUP_PASSWORD_SHORT = "Password must be at least 8 characters long.";
   const SIGNUP_USER_EXISTS = "An account with that username already exists.";
-  const SIGN_GENERIC_ERROR =
-    "There was an issue processing your request. Please try again later";
+  const SIGN_GENERIC_ERROR = "There was an issue processing your request. Please try again later";
 
   /** Handle submission of form */
   const handleSubmit = (event) => {
