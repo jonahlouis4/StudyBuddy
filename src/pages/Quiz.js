@@ -99,23 +99,23 @@ const Quiz = () => {
      * Returns the correct functional component
      * @param {boolean} result - current state of result
      */
-    function SetBody(props) {
+    const SetBody = ({result}) => {
         // Determine render result 
-        if (props.result === ERROR_PAGE) {
+        if (result === ERROR_PAGE) {
             return <Error containerVariantsChild={containerVariantsChild} 
                         fadeIn={fadeIn} buttonVariants={buttonVariants} />
         } 
-        else if (props.result === ENTER_PAGE) {
+        else if (result === ENTER_PAGE) {
             return <QuizEnter getResult={getResult} currQuestion={currQuestion} 
                         addAnswer={addAnswer} containerVariantsChild={containerVariantsChild} 
                         fadeIn={fadeIn} buttonVariants={buttonVariants} frame={frame}/>
         } 
-        else if (props.result === RESULT_PAGE) {
+        else if (result === RESULT_PAGE) {
             return <QuizResult getResult={getResult} currQuestion={currQuestion} answer={answer} 
                         setQuestionIndex={setQuestionIndex} containerVariantsChild={containerVariantsChild} 
                         buttonVariants={buttonVariants} fadeIn={fadeIn} frame={frame}/>
         } 
-        else if (props.result === COMPLETE_PAGE) {
+        else if (result === COMPLETE_PAGE) {
             return <QuizComplete containerVariantsChild={containerVariantsChild} fadeIn={fadeIn} addAnswer={addAnswer}
                         setQuestionIndex={setQuestionIndex} getResult={getResult} frame={frame}/>
         } 
