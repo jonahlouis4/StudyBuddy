@@ -28,26 +28,27 @@ const LogIn = () => {
   /** Form Loading  */
   const [loading, setLoading] = useState(false);
   /** Form Error message - signin or signup */
-  const [requestErrorMessage, setRequestErrorMessage] = useState("")
+  const [requestErrorMessage, setRequestErrorMessage] = useState("");
 
   /* CONSTANTS */
-  const SIGNIN_INVALID_EMAIL = "Email address and/or password was incorrect."
-  const SIGNUP_PASSWORD_SHORT = "Password must be at least 8 characters long."
-  const SIGNUP_USER_EXISTS = "An account with that username already exists."
-  const SIGN_GENERIC_ERROR = "There was an issue processing your request. Please try again later"
+  const SIGNIN_INVALID_EMAIL = "Email address and/or password was incorrect.";
+  const SIGNUP_PASSWORD_SHORT = "Password must be at least 8 characters long.";
+  const SIGNUP_USER_EXISTS = "An account with that username already exists.";
+  const SIGN_GENERIC_ERROR =
+    "There was an issue processing your request. Please try again later";
 
   /** Handle submission of form */
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
 
-    !form.checkValidity() ? event.stopPropagation() : handleRequest()
+    !form.checkValidity() ? event.stopPropagation() : handleRequest();
   };
 
   const handleRequest = async () => {
-    setLoading(true)
+    setLoading(true);
 
-  // SIGN IN
+    // SIGN IN
     if (formType) {
       const res = await signIn(username, password);
       if (res.success) {
@@ -58,10 +59,10 @@ const LogIn = () => {
       } else {
         setUsernameError(true);
         setPasswordError(true);
-        setLoading(false)
-        setRequestErrorMessage(SIGNIN_INVALID_EMAIL)
+        setLoading(false);
+        setRequestErrorMessage(SIGNIN_INVALID_EMAIL);
       }
-  // SIGN UP
+      // SIGN UP
     } else {
       const res = await signUp(username, password);
       if (res.success) {
@@ -69,18 +70,18 @@ const LogIn = () => {
         setUsername("");
         setPassword("");
       } else if (res.errorCode === "BadPasswordLength") {
-        setLoading(false)
+        setLoading(false);
         setPasswordError(true);
-        setRequestErrorMessage(SIGNUP_PASSWORD_SHORT)
+        setRequestErrorMessage(SIGNUP_PASSWORD_SHORT);
       } else if (res.errorCode === "UserExists") {
-        console.log(res.errorCode)
-        setLoading(false)
+        console.log(res.errorCode);
+        setLoading(false);
         setPasswordError(true);
-        setRequestErrorMessage(SIGNUP_USER_EXISTS)
+        setRequestErrorMessage(SIGNUP_USER_EXISTS);
       } else {
-        setLoading(false)
+        setLoading(false);
         setPasswordError(true);
-        setRequestErrorMessage(SIGN_GENERIC_ERROR)
+        setRequestErrorMessage(SIGN_GENERIC_ERROR);
       }
     }
   };
@@ -104,10 +105,10 @@ const LogIn = () => {
           role="button"
           className="ml-sm-1 btn btn-link"
           onClick={() => {
-              setFormType(!formType)
-              setUsernameError(false);
-              setPasswordError(false);
-            }}
+            setFormType(!formType);
+            setUsernameError(false);
+            setPasswordError(false);
+          }}
         >
           {formType ? "Or create an account" : "Or return to sign in"}
         </a>
@@ -172,7 +173,7 @@ const LogIn = () => {
                 isValid={passwordSuccess}
               />
               <Form.Control.Feedback type="invalid">
-                { requestErrorMessage }
+                {requestErrorMessage}
               </Form.Control.Feedback>
             </Form.Group>
             <FormType />
