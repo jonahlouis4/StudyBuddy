@@ -9,6 +9,12 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useEasybase } from 'easybase-react';
 
+/* CONSTANTS */
+const ERROR_PAGE = -1
+const ENTER_PAGE = 0
+const RESULT_PAGE = 1
+const COMPLETE_PAGE = 2
+
 /** Variant for main container */
 const containerVariants = {
     visible: { 
@@ -46,11 +52,19 @@ const Quiz = () => {
     /** Stores every answer input */
     const [answer, setAnswer] = useState({answer: ""});
     /** Determines the render of the body */
-    const [result, setResult] = useState(-1);
+    const [result, setResult] = useState(ERROR_PAGE);
     /** Easybase db and useReturn to fetch data when changed */
     const { db, useReturn } = useEasybase();
     /** Frame created to fetch data when changed */
     const { frame } = useReturn(() => db("QUIZ CONTENT").return(), []);
+    /** Holds all question & answers */
+    const [QA, setQA] = useState([...frame]);
+
+    useEffect(() => {
+        frame.map( element => {
+            setQA(prev => [...prev, element])
+        })
+    }, [frame])
 
     /**
      * Sets the answer state
@@ -72,14 +86,14 @@ const Quiz = () => {
 
     useEffect(() => {
         // No questions in database
-        if (frame.length === 0) { 
-        setResult(-1); 
+        if (QA.length === 0) { 
+        setResult(ERROR_PAGE); 
         }
         // Shuffle questions 
         else if (currQuestion === 0 && answer.answer === "") { 
-            setResult(0); 
+            setResult(ENTER_PAGE); 
         }
-    }, [frame.length, currQuestion, answer.answer])
+    }, [QA.length, currQuestion, answer.answer])
 
     /**
      * Returns the correct functional component
@@ -87,21 +101,21 @@ const Quiz = () => {
      */
     function SetBody(props) {
         // Determine render result 
-        if (props.result === -1) {
+        if (props.result === ERROR_PAGE) {
             return <Error containerVariantsChild={containerVariantsChild} 
                         fadeIn={fadeIn} buttonVariants={buttonVariants} />
         } 
-        else if (props.result === 0) {
+        else if (props.result === ENTER_PAGE) {
             return <QuizEnter getResult={getResult} currQuestion={currQuestion} 
                         addAnswer={addAnswer} containerVariantsChild={containerVariantsChild} 
                         fadeIn={fadeIn} buttonVariants={buttonVariants} frame={frame}/>
         } 
-        else if (props.result === 1) {
+        else if (props.result === RESULT_PAGE) {
             return <QuizResult getResult={getResult} currQuestion={currQuestion} answer={answer} 
                         setQuestionIndex={setQuestionIndex} containerVariantsChild={containerVariantsChild} 
                         buttonVariants={buttonVariants} fadeIn={fadeIn} frame={frame}/>
         } 
-        else if (props.result === 2) {
+        else if (props.result === COMPLETE_PAGE) {
             return <QuizComplete containerVariantsChild={containerVariantsChild} fadeIn={fadeIn} addAnswer={addAnswer}
                         setQuestionIndex={setQuestionIndex} getResult={getResult} frame={frame}/>
         } 
