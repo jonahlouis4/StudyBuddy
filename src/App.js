@@ -1,6 +1,7 @@
 import React from 'react'
+import './styling/App.css'; 
 import Home from './pages/Home'
-import LogIn from './pages/LogIn'
+import LogIn from './pages/Login'
 import Questions from './pages/Questions'
 import Quiz from './pages/Quiz'
 import { Route, Switch, useLocation } from 'react-router-dom'

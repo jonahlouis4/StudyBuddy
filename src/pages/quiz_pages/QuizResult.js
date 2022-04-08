@@ -1,7 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
-const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, containerVariantsChild, fadeIn, buttonVariants, frame}) => {
+const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, containerVariantsChild, fadeIn, buttonVariants, QA}) => {
     
     /** Handle event for next button */
     const handleNext = () => {
@@ -9,7 +11,7 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
         setQuestionIndex(currQuestion + 1);
 
         // IF went through all the questions 
-        if (currQuestion >= frame.length-1) {  getResult(2); return;  }
+        if (currQuestion >= QA.length-1) {  getResult(2); return;  }
 
         // IF NOT Send 0 as result instead of 2
         getResult(0);  
@@ -28,10 +30,10 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
             className="quiz--container-1"
             >
                 <motion.h6 variants={fadeIn} style={{fontWeight:400}} className="text-primary">
-                    {currQuestion+1}/{frame.length}
+                    {currQuestion+1}/{QA.length}
                 </motion.h6>
                 <motion.h6 variants={fadeIn} style={{fontWeight:500}} className="mt-0 pt-0">
-                    {frame[currQuestion].question}
+                    {QA[currQuestion].question}
                 </motion.h6>
             </div>
                 {/* ANSWERS */}
@@ -43,7 +45,7 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
                     The answer
                 </motion.h6>
                 <motion.h6 variants={fadeIn} style={{fontWeight:400}} >
-                    { frame[currQuestion].answer }
+                    { QA[currQuestion].answer }
                 </motion.h6>
                 {/* 'Your' answer */}
                 <motion.h6 variants={fadeIn} className="mt-5" style={{fontWeight:600}}>
@@ -52,6 +54,18 @@ const QuizResult = ({QAcopy, answer, getResult, currQuestion, setQuestionIndex, 
                 <motion.h6 variants={fadeIn} style={{fontWeight:400}}>
                     { answer.answer }
                 </motion.h6>
+                {/* Mark as incorrect */}
+                <motion.div variants={fadeIn} class="form-check mt-5 mb-3 shadow-sm p-5 bg-light rounded">
+                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                    <label className="form-check-label text-danger" for="flexCheckDefault">
+                        Mark as incorrect
+                    </label>
+                    <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">This will mark a question as incorrect so you can review it later.</Tooltip>}>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 text-danger" style={{height: 20}} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" >
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </OverlayTrigger>
+                </motion.div>
                 {/* Next */}
                 <motion.div variants={fadeIn}>
                     <motion.button 

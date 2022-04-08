@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Form } from 'react-bootstrap';
 
-const QuizEnter = ({ getResult, currQuestion, addAnswer, containerVariantsChild, fadeIn, buttonVariants, frame}) => {
+const QuizEnter = ({ getResult, currQuestion, addAnswer, containerVariantsChild, fadeIn, buttonVariants, QA}) => {
     /** Stores local answer input */
     const [lclAns, setLclAns] = useState({answer: ""});
 
@@ -41,14 +41,14 @@ const QuizEnter = ({ getResult, currQuestion, addAnswer, containerVariantsChild,
                 style={{fontWeight:400}}
                 className="text-primary"
                 >
-                    {currQuestion+1}/{frame.length}
+                    {currQuestion+1}/{QA.length}
                 </motion.h6>
                 <motion.h6 
                 variants={fadeIn} 
                 className="my-0 py-0"
                 style={{fontWeight:500}}
                 >
-                    {frame[currQuestion].question}
+                    {QA[currQuestion].question}
                 </motion.h6>
             </div>
                 {/* ENTER ANSWER */}
