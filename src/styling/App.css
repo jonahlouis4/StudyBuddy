@@ -1,10 +1,3 @@
-/* Error: Can't find stylesheet to import.
- *    ,
- * 11 | @import "~bootswatch/dist/litera/variables";
- *    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- *    '
- *   src\styling\App.scss 11:9  root stylesheet */
-
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
       "Droid Sans Mono", monospace, monospace;
