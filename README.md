@@ -1,3 +1,4 @@
+<p align="center">Currently down. Easybase used for database is deprecated.</p>
 <h1 align="center"><a href="https://jonahlouis4.github.io/StudyBuddy/">Study Buddy</a></h1>
 <p align="center">A simple <b>flash card</b> web application made with <a href="https://reactjs.org/docs/hooks-overview.html" target="_blank">React</a>.</p>
 <!-- <div align="center"><img src="public/sB_demo_2.png" width="747" height="534"></div> -->
